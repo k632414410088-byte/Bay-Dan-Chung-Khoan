@@ -184,7 +184,7 @@ footer{background:var(--ink);color:#fff;padding:40px 0}.foot{display:flex;justif
   <div class="guidance-disclaimer"><strong>Lưu ý:</strong> Phần hướng dẫn chỉ hỗ trợ quản trị rủi ro và diễn giải mô hình. Hệ thống không xác định giá trị hợp lý, không thay thế phân tích cơ bản và không đưa ra khuyến nghị mua hoặc bán.</div>
 </div>
 
-<div class="card chart-card chart-wide"><h3>Diễn biến giá và tín hiệu bán tháo</h3><p>Tam giác đỏ là các phiên đạt điều kiện cảnh báo.</p><svg id="priceChart"></svg><div class="legend"><span style="--legend-color:#2f8f68">Giá đóng cửa</span><span style="--legend-color:#e45858">Cảnh báo</span></div></div><div class="grid-2"><div class="card chart-card"><h3>Tỷ lệ chiến lược</h3><p>Theo xu hướng và đi ngược đám đông.</p><svg id="strategyChart"></svg><div class="legend"><span style="--legend-color:#7759b8">Theo xu hướng</span><span style="--legend-color:#2b9f91">Contrarian</span></div></div><div class="card chart-card"><h3>Herding Risk Score</h3><p>Thấp dưới 40, trung bình 40–69, cao từ 70.</p><svg id="riskChart"></svg><div class="legend"><span style="--legend-color:#e5a72f">Điểm rủi ro</span></div></div></div><div class="card" id="alerts"><h3>Các phiên có tín hiệu hoảng loạn bán tháo</h3><p>Rủi ro từ 70, lợi suất âm và trend share từ 65%.</p><div class="table-wrap"><table><thead><tr><th>Ngày</th><th>Giá đóng cửa</th><th>Lợi suất (%)</th><th>Khối lượng</th><th>Theo xu hướng (%)</th><th>Điểm rủi ro</th><th>Mức độ</th></tr></thead><tbody id="panicTable"></tbody></table></div></div></div></div></div></div></section>
+<div class="card chart-card chart-wide"><h3>Diễn biến giá và tín hiệu bán tháo</h3><p>Tam giác đỏ là các phiên đạt điều kiện cảnh báo.</p><svg id="priceChart"></svg><div class="legend"><span style="--legend-color:#2f8f68">Giá đóng cửa</span><span style="--legend-color:#e45858">Cảnh báo</span></div></div><div class="grid-2"><div class="card chart-card"><h3>Tỷ lệ chiến lược</h3><p>Tỷ lệ nhà đầu tư mô phỏng theo xu hướng (phần còn lại là contrarian, vì hai tỷ lệ luôn cộng lại bằng 100%).</p><svg id="strategyChart"></svg><div class="legend"><span style="--legend-color:#7759b8">Theo xu hướng</span></div></div><div class="card chart-card"><h3>Herding Risk Score</h3><p>Thấp dưới 40, trung bình 40–69, cao từ 70.</p><svg id="riskChart"></svg><div class="legend"><span style="--legend-color:#e5a72f">Điểm rủi ro</span></div></div></div><div class="card" id="alerts"><h3>Các phiên có tín hiệu hoảng loạn bán tháo</h3><p>Rủi ro từ 70, lợi suất âm và trend share từ 65%.</p><div class="table-wrap"><table><thead><tr><th>Ngày</th><th>Giá đóng cửa</th><th>Lợi suất (%)</th><th>Khối lượng</th><th>Theo xu hướng (%)</th><th>Điểm rủi ro</th><th>Mức độ</th></tr></thead><tbody id="panicTable"></tbody></table></div></div></div></div></div></div></section>
 </main><footer><div class="container foot"><div><div class="logo"><span class="mark"></span><span>BầyĐànChứngKhoán</span></div><p>MVP phục vụ học tập và nghiên cứu, không phải khuyến nghị đầu tư.</p></div><div class="badge">Evolutionary Game Theory</div></div></footer></div>
 <script>
   const state = {
@@ -833,24 +833,31 @@ footer{background:var(--ink);color:#fff;padding:40px 0}.foot{display:flex;justif
   }
 
   function drawStrategyChart(data) {
+    // FIX: trước đây vẽ cả TrendShare và ContrarianShare, nhưng
+    // ContrarianShare = 1 - TrendShare nên hai đường luôn là ảnh gương của
+    // nhau, không mang thêm thông tin độc lập. Chỉ vẽ Trend Share, có thêm
+    // đường mốc 50% để dễ đọc bên nào đang chiếm ưu thế.
     const context = setupChart("strategyChart");
     drawAxes(context, 0, 100, value => `${Math.round(value)}%`);
     drawXAxisLabels(data, context);
 
+    const midY = context.margin.top + context.plotHeight * 0.5;
+    context.svg.appendChild(svgElement("line", {
+      x1: context.margin.left,
+      y1: midY,
+      x2: context.width - context.margin.right,
+      y2: midY,
+      stroke: "#cbd5df",
+      "stroke-width": 1,
+      "stroke-dasharray": "4 4"
+    }));
+
     const trend = data.map(row => row.TrendShare * 100);
-    const contrarian = data.map(row => row.ContrarianShare * 100);
 
     context.svg.appendChild(svgElement("path", {
       d: linePath(trend, context, 0, 100),
       fill: "none",
       stroke: "#8b5cf6",
-      "stroke-width": 2.2
-    }));
-
-    context.svg.appendChild(svgElement("path", {
-      d: linePath(contrarian, context, 0, 100),
-      fill: "none",
-      stroke: "#06b6d4",
       "stroke-width": 2.2
     }));
   }
