@@ -956,22 +956,959 @@ footer {
 }
       
 /* ===== Khối Phân tích định lượng chuyên sâu (deep-analysis) ===== */
-.analysis-panel{border:1px solid var(--line);border-radius:18px;padding:18px;background:linear-gradient(145deg,#fbfdfb,#f2f7f3);margin-bottom:13px}.analysis-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:15px}.analysis-head h3{margin:0 0 5px;font-size:18px;letter-spacing:-.035em}.analysis-head p{margin:0;color:var(--muted);font-size:10px;line-height:1.6}.analysis-tag{padding:7px 10px;border-radius:999px;background:var(--ink);color:#fff;font-size:9px;font-weight:900;white-space:nowrap}.analysis-summary{padding:15px 16px;border-radius:15px;background:#fff;border:1px solid var(--line);font-size:12px;line-height:1.75;color:#31574d;margin-bottom:13px}.analysis-summary strong{color:var(--ink)}.insight-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:13px}.insight-card{padding:14px;border-radius:15px;border:1px solid rgba(16,37,31,.06);min-height:116px}.insight-card:nth-child(1){background:var(--purple)}.insight-card:nth-child(2){background:var(--mint)}.insight-card:nth-child(3){background:var(--blue)}.insight-card:nth-child(4){background:var(--yellow)}.insight-card small{display:block;color:#47665d;font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.05em}.insight-card strong{display:block;font-size:21px;line-height:1.1;margin:10px 0 6px;letter-spacing:-.04em}.insight-card span{display:block;color:#47665d;font-size:9px;line-height:1.45}.analysis-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:13px}.analysis-box{border:1px solid var(--line);border-radius:16px;padding:15px;background:#fff}.analysis-box h4{font-size:14px;margin:0 0 4px}.analysis-box>p{font-size:9px;color:var(--muted);line-height:1.55;margin:0 0 13px}.component-row{margin-bottom:13px}.component-row:last-child{margin-bottom:0}.component-top{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:10px;font-weight:850;margin-bottom:6px}.component-top span{color:var(--muted);font-size:9px}.component-track{height:9px;border-radius:999px;background:#edf1ed;overflow:hidden}.component-track i{display:block;height:100%;border-radius:999px;transition:width .35s ease}.component-row:nth-of-type(1) i{background:#7759b8}.component-row:nth-of-type(2) i{background:#e45858}.component-row:nth-of-type(3) i{background:#2b9f91}.component-row:nth-of-type(4) i{background:#e5a72f}.research-list{display:grid;gap:9px}.research-item{display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:start;padding:10px;border-radius:12px;background:#f7f9f6}.research-item b{width:30px;height:30px;border-radius:9px;background:var(--green);color:#fff;display:grid;place-items:center;font-size:11px}.research-item strong{display:block;font-size:10px;margin-bottom:3px}.research-item span{display:block;color:var(--muted);font-size:9px;line-height:1.5}.metric-table{width:100%;min-width:0;font-size:10px}.metric-table td{padding:9px 7px}.metric-table td:first-child{text-align:left;color:var(--muted)}.metric-table td:last-child{text-align:right;font-weight:900;color:var(--ink)}.top-risk-wrap{max-height:270px;overflow:auto;border-radius:12px}.top-risk-table{min-width:640px}.methodology-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:13px;margin-top:13px}.formula-box{background:var(--ink);color:#fff;border-radius:16px;padding:16px}.formula-box h4{margin:0 0 10px;font-size:14px}.formula{padding:11px;border-radius:11px;background:rgba(255,255,255,.08);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;line-height:1.7;overflow:auto}.formula-box p{color:rgba(255,255,255,.58);font-size:9px;line-height:1.6;margin:11px 0 0}.limitations{border:1px solid var(--line);border-radius:16px;padding:16px;background:#fff}.limitations h4{margin:0 0 9px;font-size:14px}.limitations ul{padding-left:17px;margin:0;color:var(--muted);font-size:9px;line-height:1.7}.analysis-note{margin-top:12px;padding:11px 13px;border-radius:12px;background:#fff5db;color:#72510f;font-size:9px;line-height:1.6;border:1px solid #f0dfa8}
-@media(max-width:1100px){.insight-grid{grid-template-columns:repeat(2,1fr)}.analysis-grid,.methodology-grid{grid-template-columns:1fr}}@media(max-width:760px){.analysis-head{flex-direction:column}.insight-grid{grid-template-columns:1fr}}
 
+.analysis-panel {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 18px;
+  background: linear-gradient(145deg, #fbfdfb, #f2f7f3);
+  margin-bottom: 13px;
+}
+
+.analysis-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.analysis-head h3 {
+  margin: 0 0 5px;
+  font-size: 18px;
+  letter-spacing: -.035em;
+}
+
+.analysis-head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.analysis-tag {
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.analysis-summary {
+  padding: 15px 16px;
+  border-radius: 15px;
+  background: #fff;
+  border: 1px solid var(--line);
+  font-size: 12px;
+  line-height: 1.75;
+  color: #31574d;
+  margin-bottom: 13px;
+}
+
+.analysis-summary strong {
+  color: var(--ink);
+}
+
+.insight-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 13px;
+}
+
+.insight-card {
+  padding: 14px;
+  border-radius: 15px;
+  border: 1px solid rgba(16, 37, 31, .06);
+  min-height: 116px;
+}
+
+.insight-card:nth-child(1) { background: var(--purple); }
+.insight-card:nth-child(2) { background: var(--mint); }
+.insight-card:nth-child(3) { background: var(--blue); }
+.insight-card:nth-child(4) { background: var(--yellow); }
+
+.insight-card small {
+  display: block;
+  color: #47665d;
+  font-size: 9px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+
+.insight-card strong {
+  display: block;
+  font-size: 21px;
+  line-height: 1.1;
+  margin: 10px 0 6px;
+  letter-spacing: -.04em;
+}
+
+.insight-card span {
+  display: block;
+  color: #47665d;
+  font-size: 9px;
+  line-height: 1.45;
+}
+
+.analysis-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13px;
+  margin-bottom: 13px;
+}
+
+.analysis-box {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 15px;
+  background: #fff;
+}
+
+.analysis-box h4 {
+  font-size: 14px;
+  margin: 0 0 4px;
+}
+
+.analysis-box > p {
+  font-size: 9px;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0 0 13px;
+}
+
+.component-row {
+  margin-bottom: 13px;
+}
+
+.component-row:last-child {
+  margin-bottom: 0;
+}
+
+.component-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 10px;
+  font-weight: 850;
+  margin-bottom: 6px;
+}
+
+.component-top span {
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.component-track {
+  height: 9px;
+  border-radius: 999px;
+  background: #edf1ed;
+  overflow: hidden;
+}
+
+.component-track i {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  transition: width .35s ease;
+}
+
+.component-row:nth-of-type(1) i { background: #7759b8; }
+.component-row:nth-of-type(2) i { background: #e45858; }
+.component-row:nth-of-type(3) i { background: #2b9f91; }
+.component-row:nth-of-type(4) i { background: #e5a72f; }
+
+.research-list {
+  display: grid;
+  gap: 9px;
+}
+
+.research-item {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 10px;
+  align-items: start;
+  padding: 10px;
+  border-radius: 12px;
+  background: #f7f9f6;
+}
+
+.research-item b {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: var(--green);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+}
+
+.research-item strong {
+  display: block;
+  font-size: 10px;
+  margin-bottom: 3px;
+}
+
+.research-item span {
+  display: block;
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.metric-table {
+  width: 100%;
+  min-width: 0;
+  font-size: 10px;
+}
+
+.metric-table td {
+  padding: 9px 7px;
+}
+
+.metric-table td:first-child {
+  text-align: left;
+  color: var(--muted);
+}
+
+.metric-table td:last-child {
+  text-align: right;
+  font-weight: 900;
+  color: var(--ink);
+}
+
+.top-risk-wrap {
+  max-height: 270px;
+  overflow: auto;
+  border-radius: 12px;
+}
+
+.top-risk-table {
+  min-width: 640px;
+}
+
+.methodology-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 13px;
+  margin-top: 13px;
+}
+
+.formula-box {
+  background: var(--ink);
+  color: #fff;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.formula-box h4 {
+  margin: 0 0 10px;
+  font-size: 14px;
+}
+
+.formula {
+  padding: 11px;
+  border-radius: 11px;
+  background: rgba(255, 255, 255, .08);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px;
+  line-height: 1.7;
+  overflow: auto;
+}
+
+.formula-box p {
+  color: rgba(255, 255, 255, .58);
+  font-size: 9px;
+  line-height: 1.6;
+  margin: 11px 0 0;
+}
+
+.limitations {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+  background: #fff;
+}
+
+.limitations h4 {
+  margin: 0 0 9px;
+  font-size: 14px;
+}
+
+.limitations ul {
+  padding-left: 17px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.7;
+}
+
+.analysis-note {
+  margin-top: 12px;
+  padding: 11px 13px;
+  border-radius: 12px;
+  background: #fff5db;
+  color: #72510f;
+  font-size: 9px;
+  line-height: 1.6;
+  border: 1px solid #f0dfa8;
+}
+
+@media (max-width: 1100px) {
+  .insight-grid { grid-template-columns: repeat(2, 1fr); }
+  .analysis-grid, .methodology-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 760px) {
+  .analysis-head { flex-direction: column; }
+  .insight-grid { grid-template-columns: 1fr; }
+}
+      
 /* ===== Khối Hướng dẫn hành động cho người dùng (user-action) ===== */
-.guidance-panel{border:1px solid var(--line);border-radius:18px;padding:18px;background:#fff;margin:13px 0}.guidance-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:15px}.guidance-head h3{margin:0 0 5px;font-size:18px;letter-spacing:-.035em}.guidance-head p{margin:0;color:var(--muted);font-size:10px;line-height:1.6}.guidance-badge{padding:7px 10px;border-radius:999px;background:var(--yellow);color:var(--ink);font-size:9px;font-weight:950;white-space:nowrap}.stock-conclusion{padding:16px;border-radius:16px;background:linear-gradient(135deg,#10251f,#24483f);color:#fff;margin-bottom:13px}.stock-conclusion small{display:block;color:rgba(255,255,255,.58);font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;margin-bottom:7px}.stock-conclusion h4{margin:0 0 7px;font-size:20px;letter-spacing:-.04em}.stock-conclusion p{margin:0;color:rgba(255,255,255,.76);font-size:11px;line-height:1.7}.guidance-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:13px}.guidance-card{border-radius:15px;padding:14px;min-height:126px;border:1px solid rgba(16,37,31,.06)}.guidance-card:nth-child(1){background:var(--blue)}.guidance-card:nth-child(2){background:var(--pink)}.guidance-card:nth-child(3){background:var(--mint)}.guidance-card:nth-child(4){background:var(--cream)}.guidance-card small{display:block;color:#47665d;font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.05em}.guidance-card strong{display:block;font-size:18px;line-height:1.15;margin:10px 0 6px;letter-spacing:-.035em}.guidance-card span{font-size:9px;line-height:1.5;color:#47665d}.action-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:13px}.action-box{border:1px solid var(--line);border-radius:16px;padding:15px;background:#fbfcfa}.action-box h4{margin:0 0 4px;font-size:14px}.action-box>p{margin:0 0 12px;color:var(--muted);font-size:9px;line-height:1.55}.action-list,.condition-list{display:grid;gap:8px}.action-item{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;padding:10px;border-radius:12px;background:#fff;border:1px solid var(--line)}.action-item b{width:28px;height:28px;border-radius:9px;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:10px}.action-item strong{display:block;font-size:10px;margin-bottom:3px}.action-item span{display:block;color:var(--muted);font-size:9px;line-height:1.5}.condition-item{display:grid;grid-template-columns:12px 1fr auto;gap:9px;align-items:center;padding:10px;border-radius:12px;background:#fff;border:1px solid var(--line);font-size:9px}.condition-item i{width:10px;height:10px;border-radius:50%;display:block}.condition-item strong{font-size:10px}.condition-item span{color:var(--muted);font-size:8px;text-align:right}.condition-item.ok i{background:#2f9d63;box-shadow:0 0 0 4px rgba(47,157,99,.12)}.condition-item.watch i{background:#e5a72f;box-shadow:0 0 0 4px rgba(229,167,47,.12)}.condition-item.risk i{background:#e45858;box-shadow:0 0 0 4px rgba(228,88,88,.12)}.workflow-title{margin:2px 0 11px;font-size:14px}.workflow-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}.workflow-step{padding:12px;border-radius:14px;background:#f7f9f6;border:1px solid var(--line);min-height:126px}.workflow-step b{width:29px;height:29px;border-radius:9px;background:var(--green);color:#fff;display:grid;place-items:center;font-size:10px;margin-bottom:10px}.workflow-step strong{display:block;font-size:10px;margin-bottom:5px}.workflow-step span{display:block;font-size:8.5px;color:var(--muted);line-height:1.5}.guidance-disclaimer{margin-top:12px;padding:11px 13px;border-radius:12px;background:#fff5db;color:#72510f;border:1px solid #f0dfa8;font-size:9px;line-height:1.6}input[type=text]{width:100%;padding:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:11px;color:#fff;font-size:11px;outline:none}input[type=text]::placeholder{color:rgba(255,255,255,.42)}input[type=text]:focus{border-color:var(--yellow)}
-@media(max-width:1100px){.guidance-cards{grid-template-columns:repeat(2,1fr)}.workflow-grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:760px){.guidance-head{flex-direction:column}.guidance-cards,.action-grid,.workflow-grid{grid-template-columns:1fr}.condition-item{grid-template-columns:12px 1fr}.condition-item span{grid-column:2;text-align:left}}
-</style></head><body>
+
+.guidance-panel {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 18px;
+  background: #fff;
+  margin: 13px 0;
+}
+
+.guidance-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.guidance-head h3 {
+  margin: 0 0 5px;
+  font-size: 18px;
+  letter-spacing: -.035em;
+}
+
+.guidance-head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.guidance-badge {
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: var(--yellow);
+  color: var(--ink);
+  font-size: 9px;
+  font-weight: 950;
+  white-space: nowrap;
+}
+
+.stock-conclusion {
+  padding: 16px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #10251f, #24483f);
+  color: #fff;
+  margin-bottom: 13px;
+}
+
+.stock-conclusion small {
+  display: block;
+  color: rgba(255, 255, 255, .58);
+  font-size: 9px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 7px;
+}
+
+.stock-conclusion h4 {
+  margin: 0 0 7px;
+  font-size: 20px;
+  letter-spacing: -.04em;
+}
+
+.stock-conclusion p {
+  margin: 0;
+  color: rgba(255, 255, 255, .76);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.guidance-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 13px;
+}
+
+.guidance-card {
+  border-radius: 15px;
+  padding: 14px;
+  min-height: 126px;
+  border: 1px solid rgba(16, 37, 31, .06);
+}
+
+.guidance-card:nth-child(1) { background: var(--blue); }
+.guidance-card:nth-child(2) { background: var(--pink); }
+.guidance-card:nth-child(3) { background: var(--mint); }
+.guidance-card:nth-child(4) { background: var(--cream); }
+
+.guidance-card small {
+  display: block;
+  color: #47665d;
+  font-size: 9px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+
+.guidance-card strong {
+  display: block;
+  font-size: 18px;
+  line-height: 1.15;
+  margin: 10px 0 6px;
+  letter-spacing: -.035em;
+}
+
+.guidance-card span {
+  font-size: 9px;
+  line-height: 1.5;
+  color: #47665d;
+}
+
+.action-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13px;
+  margin-bottom: 13px;
+}
+
+.action-box {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 15px;
+  background: #fbfcfa;
+}
+
+.action-box h4 {
+  margin: 0 0 4px;
+  font-size: 14px;
+}
+
+.action-box > p {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.55;
+}
+
+.action-list, .condition-list {
+  display: grid;
+  gap: 8px;
+}
+
+.action-item {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 10px;
+  align-items: start;
+  padding: 10px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid var(--line);
+}
+
+.action-item b {
+  width: 28px;
+  height: 28px;
+  border-radius: 9px;
+  background: var(--ink);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 10px;
+}
+
+.action-item strong {
+  display: block;
+  font-size: 10px;
+  margin-bottom: 3px;
+}
+
+.action-item span {
+  display: block;
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.condition-item {
+  display: grid;
+  grid-template-columns: 12px 1fr auto;
+  gap: 9px;
+  align-items: center;
+  padding: 10px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid var(--line);
+  font-size: 9px;
+}
+
+.condition-item i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: block;
+}
+
+.condition-item strong {
+  font-size: 10px;
+}
+
+.condition-item span {
+  color: var(--muted);
+  font-size: 8px;
+  text-align: right;
+}
+
+.condition-item.ok i {
+  background: #2f9d63;
+  box-shadow: 0 0 0 4px rgba(47, 157, 99, .12);
+}
+
+.condition-item.watch i {
+  background: #e5a72f;
+  box-shadow: 0 0 0 4px rgba(229, 167, 47, .12);
+}
+
+.condition-item.risk i {
+  background: #e45858;
+  box-shadow: 0 0 0 4px rgba(228, 88, 88, .12);
+}
+
+.workflow-title {
+  margin: 2px 0 11px;
+  font-size: 14px;
+}
+
+.workflow-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 9px;
+}
+
+.workflow-step {
+  padding: 12px;
+  border-radius: 14px;
+  background: #f7f9f6;
+  border: 1px solid var(--line);
+  min-height: 126px;
+}
+
+.workflow-step b {
+  width: 29px;
+  height: 29px;
+  border-radius: 9px;
+  background: var(--green);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 10px;
+  margin-bottom: 10px;
+}
+
+.workflow-step strong {
+  display: block;
+  font-size: 10px;
+  margin-bottom: 5px;
+}
+
+.workflow-step span {
+  display: block;
+  font-size: 8.5px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.guidance-disclaimer {
+  margin-top: 12px;
+  padding: 11px 13px;
+  border-radius: 12px;
+  background: #fff5db;
+  color: #72510f;
+  border: 1px solid #f0dfa8;
+  font-size: 9px;
+  line-height: 1.6;
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 10px;
+  background: rgba(255, 255, 255, .07);
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: 11px;
+  color: #fff;
+  font-size: 11px;
+  outline: none;
+}
+
+input[type=text]::placeholder {
+  color: rgba(255, 255, 255, .42);
+}
+
+input[type=text]:focus {
+  border-color: var(--yellow);
+}
+
+@media (max-width: 1100px) {
+  .guidance-cards { grid-template-columns: repeat(2, 1fr); }
+  .workflow-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 760px) {
+  .guidance-head { flex-direction: column; }
+  .guidance-cards, .action-grid, .workflow-grid { grid-template-columns: 1fr; }
+  .condition-item { grid-template-columns: 12px 1fr; }
+  .condition-item span { grid-column: 2; text-align: left; }
+}</style></head><body>
 <div class="shell">
-<header><div class="container nav"><a href="#top" class="logo"><span class="mark"></span><span>BầyĐàn</span></a><nav class="links"><a href="#overview">Tổng quan</a><a href="#features">Tính năng</a><a href="#dashboard">Mô hình</a><a href="#deep-analysis">Phân tích sâu</a><a href="#user-action">Nên làm gì?</a><a href="#alerts">Cảnh báo</a></nav><div><a class="btn light" href="#features">Tìm hiểu</a> <a class="btn dark" href="#dashboard">Chạy phân tích</a></div></div></header>
-<main id="top">
-<section class="hero"><div class="container hero-grid"><div><div class="tag"><span class="dot"></span>Fintech quantitative MVP</div><h1>Phát hiện hành vi bầy đàn trước khi thị trường hoảng loạn.</h1><p>Ứng dụng Lý thuyết Trò chơi Tiến hóa để mô hình hóa nhà đầu tư theo xu hướng và đi ngược đám đông, từ đó tạo cảnh báo sớm về nguy cơ bán tháo.</p><div class="hero-actions"><a class="btn dark" href="#dashboard">Phân tích ngay</a><a class="btn light" href="#overview">Xem cách hoạt động</a></div></div><div class="visual"><div class="float a">📈 Trend share tăng nhanh</div><div class="float b">⚠️ Herding risk 72/100</div><div class="mock"><div class="mock-top"><span class="live"><i></i>Mô hình đang hoạt động</span><span class="chip">Dữ liệu cuối ngày</span></div><div class="screen"><div><small>Điểm rủi ro bầy đàn</small><strong>72.4</strong><em>▲ Tăng 8.7 điểm</em></div><svg viewBox="0 0 240 120" preserveAspectRatio="none"><path d="M0 99C28 92 35 67 63 76S95 47 122 57s37-31 66-19 31-23 52-17" fill="none" stroke="#f3f778" stroke-width="5" stroke-linecap="round"/></svg></div><div class="mini"><div class="purple"><small>Theo xu hướng</small><strong>68%</strong></div><div class="mint"><small>Biến động</small><strong>24.1%</strong></div><div class="pink"><small>Cảnh báo</small><strong>05</strong></div></div></div></div></div></section>
-<section class="stats"><div class="container"><h2>Các con số tự nói lên mức độ hữu ích của mô hình</h2><div class="stats-grid"><div class="stat"><b>2</b><span>chiến lược đầu tư được mô hình hóa</span></div><div class="stat"><b>100</b><span>điểm tối đa của Herding Risk Score</span></div><div class="stat"><b>4</b><span>nhóm biến hình thành điểm rủi ro</span></div><div class="stat"><b>1</b><span>tệp HTML độc lập, chạy trực tiếp</span></div></div></div></section>
-<section class="section soft" id="overview"><div class="container split"><div class="art"><div class="pop"><h3 style="margin:0 0 7px">Tỷ lệ theo xu hướng</h3><b>68.3%</b><p class="copy" style="font-size:11px;margin:6px 0 0">Ước lượng từ động lực tái tạo và payoff chiến lược.</p></div><div class="phone"><div><div class="line" style="width:45%"></div><div class="line" style="width:70%"></div><div class="block"><b style="font-size:12px">Evolutionary dynamics</b><div class="bars"><i style="height:28%"></i><i style="height:43%"></i><i style="height:55%"></i><i style="height:74%"></i><i style="height:92%"></i></div></div><div class="line" style="width:85%;margin-top:20px"></div><div class="line" style="width:62%"></div></div></div></div><div><div class="kicker">Phương pháp nghiên cứu</div><h2 class="title">Không chỉ nhìn vào giá, mô hình theo dõi cách chiến lược lan truyền.</h2><p class="copy">Khi một chiến lược mang lại lợi ích cao hơn, tỷ lệ nhà đầu tư sử dụng chiến lược đó sẽ tăng. Replicator dynamics mô phỏng quá trình thích nghi và kết hợp với lợi suất, biến động cùng khối lượng để nhận diện rủi ro bầy đàn.</p><div class="list"><div><span class="num">1</span>Tính lợi suất logarithmic, momentum và biến động lăn.</div><div><span class="num">2</span>So sánh payoff của trend-following và contrarian.</div><div><span class="num">3</span>Ước lượng tỷ lệ chiến lược bằng động lực tái tạo.</div><div><span class="num">4</span>Tạo Herding Risk Score từ 0 đến 100.</div></div></div></div></section>
-<section class="section" id="features"><div class="container"><div class="center"><div class="kicker">Tính năng chính</div><h2 class="title">Công cụ cần thiết cho một bài code định lượng tài chính.</h2><p class="copy">Thiết kế fintech hiện đại, tập trung vào dữ liệu, khả năng giải thích và trình bày kết quả nghiên cứu.</p></div><div class="cards"><article class="fcard purple"><div class="ico">📊</div><div><h3>Phân tích dữ liệu</h3><p>Đọc CSV, làm sạch dữ liệu và tính các biến tài chính.</p></div></article><article class="fcard mint"><div class="ico">🧬</div><div><h3>Trò chơi tiến hóa</h3><p>Mô phỏng sự chuyển đổi giữa hai chiến lược đầu tư.</p></div></article><article class="fcard pink"><div class="ico">⚠️</div><div><h3>Cảnh báo bán tháo</h3><p>Đánh dấu phiên có rủi ro cao và áp lực bán mạnh.</p></div></article><article class="fcard blue"><div class="ico">📈</div><div><h3>Dashboard trực quan</h3><p>Biểu đồ giá, chiến lược và điểm rủi ro tương tác.</p></div></article><article class="fcard cream"><div class="ico">🧮</div><div><h3>Điều chỉnh tham số</h3><p>Thay đổi momentum, volatility, payoff và learning rate.</p></div></article><article class="fcard yellow"><div class="ico">⬇️</div><div><h3>Xuất kết quả</h3><p>Tải dữ liệu mô hình dưới dạng CSV để phân tích tiếp.</p></div></article></div></div></section>
-<section class="section dashboard" id="dashboard"><div class="container"><div class="center" style="margin-bottom:0"><div class="kicker">MVP tương tác</div><h2 class="title">Chạy mô hình trực tiếp trên trình duyệt.</h2><p class="copy">Không cần máy chủ hoặc cài Python. Tải CSV của bạn hoặc dùng dữ liệu mẫu.</p></div><div class="dash-shell"><div class="dash-grid"><aside class="controls"><h3>Thiết lập mô hình</h3><p>Điều chỉnh tham số rồi chạy phân tích.</p><div class="control"><label>Mã cổ phiếu / chỉ số</label><input id="tickerInput" type="text" value="VNINDEX" placeholder="Ví dụ: FPT, HPG, VNINDEX"></div><div class="control"><label>Tải dữ liệu CSV</label><input id="csvFile" type="file" accept=".csv"></div><div class="control"><label>Cửa sổ xu hướng</label><input id="momentumWindow" type="range" min="3" max="30" value="10"><div class="range-row"><span>3</span><strong id="momentumValue">10 phiên</strong><span>30</span></div></div><div class="control"><label>Cửa sổ biến động</label><input id="volatilityWindow" type="range" min="10" max="60" value="20"><div class="range-row"><span>10</span><strong id="volatilityValue">20 phiên</strong><span>60</span></div></div><div class="control"><label>Làm mượt payoff</label><input id="payoffWindow" type="range" min="3" max="30" value="10"><div class="range-row"><span>3</span><strong id="payoffValue">10 phiên</strong><span>30</span></div></div><div class="control"><label>Tốc độ thích nghi (η)</label><input id="learningRate" type="range" min="1" max="100" value="35"><div class="range-row"><span>Chậm</span><strong id="learningValue">0.35</strong><span>Nhanh</span></div></div><button id="runButton">Chạy phân tích</button><button class="secondary" id="demoButton">Khôi phục dữ liệu mẫu</button><button class="secondary" id="downloadButton">Tải kết quả CSV</button><div class="note">CSV cần có các cột tương đương Date/Close/Volume — chấp nhận tên tiếng Việt (Ngày, Giá đóng cửa, Khối lượng) và tối thiểu 80 phiên (nên ≥ 4 lần window lớn nhất để kết quả ổn định). Ngày hỗ trợ yyyy-mm-dd hoặc dd/mm/yyyy. Số hỗ trợ cả định dạng có dấu chấm/phẩy ngăn cách hàng nghìn kiểu Việt Nam. Mô hình phục vụ nghiên cứu, không phải khuyến nghị đầu tư.</div></aside><div><div class="dash-head"><div><h3>Market behavior analytics</h3><p>Evolutionary Game Theory & Herding Risk Detection</p></div><div class="source-badge" id="sourceBadge">Nguồn: Dữ liệu mẫu mô phỏng</div></div><div class="metrics"><div class="metric"><div class="metric-label">Giá đóng cửa mới nhất</div><div class="metric-value" id="latestClose">-</div><div class="metric-sub" id="latestDate">-</div></div><div class="metric"><div class="metric-label">Lợi suất phiên</div><div class="metric-value" id="latestReturn">-</div><div class="metric-sub">Lợi suất logarithmic</div></div><div class="metric"><div class="metric-label">Tỷ lệ theo xu hướng</div><div class="metric-value" id="latestTrend">-</div><div class="metric-sub">Replicator dynamics</div></div><div class="metric"><div class="metric-label">Herding Risk Score</div><div class="metric-value" id="latestRisk">-</div><div class="metric-sub" id="latestLevel">-</div></div></div><div class="alert low" id="riskAlert">Đang khởi tạo mô hình...</div>
-<div class="analysis-panel" id="deep-analysis">
+
+  <!-- ===== Header ===== -->
+  <header>
+    <div class="container nav">
+      <a href="#top" class="logo">
+        <span class="mark"></span>
+        <span>BầyĐàn</span>
+      </a>
+      <nav class="links">
+        <a href="#overview">Tổng quan</a>
+        <a href="#features">Tính năng</a>
+        <a href="#dashboard">Mô hình</a>
+        <a href="#deep-analysis">Phân tích sâu</a>
+        <a href="#user-action">Nên làm gì?</a>
+        <a href="#alerts">Cảnh báo</a>
+      </nav>
+      <div>
+        <a class="btn light" href="#features">Tìm hiểu</a>
+        <a class="btn dark" href="#dashboard">Chạy phân tích</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="tag"><span class="dot"></span>Fintech quantitative MVP</div>
+          <h1>Phát hiện hành vi bầy đàn trước khi thị trường hoảng loạn.</h1>
+          <p>Ứng dụng Lý thuyết Trò chơi Tiến hóa để mô hình hóa nhà đầu tư theo xu hướng và đi ngược đám đông, từ đó tạo cảnh báo sớm về nguy cơ bán tháo.</p>
+          <div class="hero-actions">
+            <a class="btn dark" href="#dashboard">Phân tích ngay</a>
+            <a class="btn light" href="#overview">Xem cách hoạt động</a>
+          </div>
+        </div>
+
+        <div class="visual">
+          <div class="float a">📈 Trend share tăng nhanh</div>
+          <div class="float b">⚠️ Herding risk 72/100</div>
+
+          <div class="mock">
+            <div class="mock-top">
+              <span class="live"><i></i>Mô hình đang hoạt động</span>
+              <span class="chip">Dữ liệu cuối ngày</span>
+            </div>
+
+            <div class="screen">
+              <div>
+                <small>Điểm rủi ro bầy đàn</small>
+                <strong>72.4</strong>
+                <em>▲ Tăng 8.7 điểm</em>
+              </div>
+              <svg viewBox="0 0 240 120" preserveAspectRatio="none">
+                <path d="M0 99C28 92 35 67 63 76S95 47 122 57s37-31 66-19 31-23 52-17" fill="none" stroke="#f3f778" stroke-width="5" stroke-linecap="round"/>
+              </svg>
+            </div>
+
+            <div class="mini">
+              <div class="purple">
+                <small>Theo xu hướng</small>
+                <strong>68%</strong>
+              </div>
+              <div class="mint">
+                <small>Biến động</small>
+                <strong>24.1%</strong>
+              </div>
+              <div class="pink">
+                <small>Cảnh báo</small>
+                <strong>05</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Stats ===== -->
+    <section class="stats">
+      <div class="container">
+        <h2>Các con số tự nói lên mức độ hữu ích của mô hình</h2>
+        <div class="stats-grid">
+          <div class="stat">
+            <b>2</b>
+            <span>chiến lược đầu tư được mô hình hóa</span>
+          </div>
+          <div class="stat">
+            <b>100</b>
+            <span>điểm tối đa của Herding Risk Score</span>
+          </div>
+          <div class="stat">
+            <b>4</b>
+            <span>nhóm biến hình thành điểm rủi ro</span>
+          </div>
+          <div class="stat">
+            <b>1</b>
+            <span>tệp HTML độc lập, chạy trực tiếp</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Overview / Phương pháp nghiên cứu ===== -->
+    <section class="section soft" id="overview">
+      <div class="container split">
+        <div class="art">
+          <div class="pop">
+            <h3 style="margin:0 0 7px">Tỷ lệ theo xu hướng</h3>
+            <b>68.3%</b>
+            <p class="copy" style="font-size:11px;margin:6px 0 0">
+              Ước lượng từ động lực tái tạo và payoff chiến lược.
+            </p>
+          </div>
+
+          <div class="phone">
+            <div>
+              <div class="line" style="width:45%"></div>
+              <div class="line" style="width:70%"></div>
+              <div class="block">
+                <b style="font-size:12px">Evolutionary dynamics</b>
+                <div class="bars">
+                  <i style="height:28%"></i>
+                  <i style="height:43%"></i>
+                  <i style="height:55%"></i>
+                  <i style="height:74%"></i>
+                  <i style="height:92%"></i>
+                </div>
+              </div>
+              <div class="line" style="width:85%;margin-top:20px"></div>
+              <div class="line" style="width:62%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="kicker">Phương pháp nghiên cứu</div>
+          <h2 class="title">
+            Không chỉ nhìn vào giá, mô hình theo dõi cách chiến lược lan truyền.
+          </h2>
+          <p class="copy">
+            Khi một chiến lược mang lại lợi ích cao hơn, tỷ lệ nhà đầu tư sử dụng
+            chiến lược đó sẽ tăng. Replicator dynamics mô phỏng quá trình thích
+            nghi và kết hợp với lợi suất, biến động cùng khối lượng để nhận diện
+            rủi ro bầy đàn.
+          </p>
+          <div class="list">
+            <div><span class="num">1</span>Tính lợi suất logarithmic, momentum và biến động lăn.</div>
+            <div><span class="num">2</span>So sánh payoff của trend-following và contrarian.</div>
+            <div><span class="num">3</span>Ước lượng tỷ lệ chiến lược bằng động lực tái tạo.</div>
+            <div><span class="num">4</span>Tạo Herding Risk Score từ 0 đến 100.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Feature cards ===== -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="center">
+          <div class="kicker">Tính năng chính</div>
+          <h2 class="title">Công cụ cần thiết cho một bài code định lượng tài chính.</h2>
+          <p class="copy">Thiết kế fintech hiện đại, tập trung vào dữ liệu, khả năng giải thích và trình bày kết quả nghiên cứu.</p>
+        </div>
+
+        <div class="cards">
+          <article class="fcard purple">
+            <div class="ico">📊</div>
+            <div>
+              <h3>Phân tích dữ liệu</h3>
+              <p>Đọc CSV, làm sạch dữ liệu và tính các biến tài chính.</p>
+            </div>
+          </article>
+
+          <article class="fcard mint">
+            <div class="ico">🧬</div>
+            <div>
+              <h3>Trò chơi tiến hóa</h3>
+              <p>Mô phỏng sự chuyển đổi giữa hai chiến lược đầu tư.</p>
+            </div>
+          </article>
+
+          <article class="fcard pink">
+            <div class="ico">⚠️</div>
+            <div>
+              <h3>Cảnh báo bán tháo</h3>
+              <p>Đánh dấu phiên có rủi ro cao và áp lực bán mạnh.</p>
+            </div>
+          </article>
+
+          <article class="fcard blue">
+            <div class="ico">📈</div>
+            <div>
+              <h3>Dashboard trực quan</h3>
+              <p>Biểu đồ giá, chiến lược và điểm rủi ro tương tác.</p>
+            </div>
+          </article>
+
+          <article class="fcard cream">
+            <div class="ico">🧮</div>
+            <div>
+              <h3>Điều chỉnh tham số</h3>
+              <p>Thay đổi momentum, volatility, payoff và learning rate.</p>
+            </div>
+          </article>
+
+          <article class="fcard yellow">
+            <div class="ico">⬇️</div>
+            <div>
+              <h3>Xuất kết quả</h3>
+              <p>Tải dữ liệu mô hình dưới dạng CSV để phân tích tiếp.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Dashboard (phần đầu: tiêu đề + controls + metrics) ===== -->
+    <section class="section dashboard" id="dashboard">
+      <div class="container">
+        <div class="center" style="margin-bottom:0">
+          <div class="kicker">MVP tương tác</div>
+          <h2 class="title">Chạy mô hình trực tiếp trên trình duyệt.</h2>
+          <p class="copy">Không cần máy chủ hoặc cài Python. Tải CSV của bạn hoặc dùng dữ liệu mẫu.</p>
+        </div>
+
+        <div class="dash-shell">
+          <div class="dash-grid">
+
+            <aside class="controls">
+              <h3>Thiết lập mô hình</h3>
+              <p>Điều chỉnh tham số rồi chạy phân tích.</p>
+
+              <div class="control">
+                <label>Mã cổ phiếu / chỉ số</label>
+                <input id="tickerInput" type="text" value="VNINDEX" placeholder="Ví dụ: FPT, HPG, VNINDEX">
+              </div>
+
+              <div class="control">
+                <label>Tải dữ liệu CSV</label>
+                <input id="csvFile" type="file" accept=".csv">
+              </div>
+
+              <div class="control">
+                <label>Cửa sổ xu hướng</label>
+                <input id="momentumWindow" type="range" min="3" max="30" value="10">
+                <div class="range-row">
+                  <span>3</span>
+                  <strong id="momentumValue">10 phiên</strong>
+                  <span>30</span>
+                </div>
+              </div>
+
+              <div class="control">
+                <label>Cửa sổ biến động</label>
+                <input id="volatilityWindow" type="range" min="10" max="60" value="20">
+                <div class="range-row">
+                  <span>10</span>
+                  <strong id="volatilityValue">20 phiên</strong>
+                  <span>60</span>
+                </div>
+              </div>
+
+              <div class="control">
+                <label>Làm mượt payoff</label>
+                <input id="payoffWindow" type="range" min="3" max="30" value="10">
+                <div class="range-row">
+                  <span>3</span>
+                  <strong id="payoffValue">10 phiên</strong>
+                  <span>30</span>
+                </div>
+              </div>
+
+              <div class="control">
+                <label>Tốc độ thích nghi (η)</label>
+                <input id="learningRate" type="range" min="1" max="100" value="35">
+                <div class="range-row">
+                  <span>Chậm</span>
+                  <strong id="learningValue">0.35</strong>
+                  <span>Nhanh</span>
+                </div>
+              </div>
+
+              <button id="runButton">Chạy phân tích</button>
+              <button class="secondary" id="demoButton">Khôi phục dữ liệu mẫu</button>
+              <button class="secondary" id="downloadButton">Tải kết quả CSV</button>
+
+              <div class="note">
+                CSV cần có các cột tương đương Date/Close/Volume — chấp nhận tên tiếng Việt
+                (Ngày, Giá đóng cửa, Khối lượng) và tối thiểu 80 phiên (nên ≥ 4 lần window lớn
+                nhất để kết quả ổn định). Ngày hỗ trợ yyyy-mm-dd hoặc dd/mm/yyyy. Số hỗ trợ cả
+                định dạng có dấu chấm/phẩy ngăn cách hàng nghìn kiểu Việt Nam. Mô hình phục vụ
+                nghiên cứu, không phải khuyến nghị đầu tư.
+              </div>
+            </aside>
+
+            <div>
+              <div class="dash-head">
+                <div>
+                  <h3>Market behavior analytics</h3>
+                  <p>Evolutionary Game Theory & Herding Risk Detection</p>
+                </div>
+                <div class="source-badge" id="sourceBadge">Nguồn: Dữ liệu mẫu mô phỏng</div>
+              </div>
+
+              <div class="metrics">
+                <div class="metric">
+                  <div class="metric-label">Giá đóng cửa mới nhất</div>
+                  <div class="metric-value" id="latestClose">-</div>
+                  <div class="metric-sub" id="latestDate">-</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Lợi suất phiên</div>
+                  <div class="metric-value" id="latestReturn">-</div>
+                  <div class="metric-sub">Lợi suất logarithmic</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Tỷ lệ theo xu hướng</div>
+                  <div class="metric-value" id="latestTrend">-</div>
+                  <div class="metric-sub">Replicator dynamics</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Herding Risk Score</div>
+                  <div class="metric-value" id="latestRisk">-</div>
+                  <div class="metric-sub" id="latestLevel">-</div>
+                </div>
+              </div>
+
+              <div class="alert low" id="riskAlert">Đang khởi tạo mô hình...</div>
+              <div class="analysis-panel" id="deep-analysis">
   <div class="analysis-head">
     <div>
       <h3>Phân tích định lượng chuyên sâu</h3>
@@ -1128,8 +2065,84 @@ footer {
   <div class="guidance-disclaimer"><strong>Lưu ý:</strong> Phần hướng dẫn chỉ hỗ trợ quản trị rủi ro và diễn giải mô hình. Hệ thống không xác định giá trị hợp lý, không thay thế phân tích cơ bản và không đưa ra khuyến nghị mua hoặc bán.</div>
 </div>
 
-<div class="card chart-card chart-wide"><h3>Diễn biến giá và tín hiệu bán tháo</h3><p>Tam giác đỏ là các phiên đạt điều kiện cảnh báo.</p><svg id="priceChart"></svg><div class="legend"><span style="--legend-color:#2f8f68">Giá đóng cửa</span><span style="--legend-color:#e45858">Cảnh báo</span></div></div><div class="grid-2"><div class="card chart-card"><h3>Tỷ lệ chiến lược</h3><p>Tỷ lệ nhà đầu tư mô phỏng theo xu hướng (phần còn lại là contrarian, vì hai tỷ lệ luôn cộng lại bằng 100%).</p><svg id="strategyChart"></svg><div class="legend"><span style="--legend-color:#7759b8">Theo xu hướng</span></div></div><div class="card chart-card"><h3>Herding Risk Score</h3><p>Thấp dưới 40, trung bình 40–69, cao từ 70.</p><svg id="riskChart"></svg><div class="legend"><span style="--legend-color:#e5a72f">Điểm rủi ro</span></div></div></div><div class="card" id="alerts"><h3>Các phiên có tín hiệu hoảng loạn bán tháo</h3><p>Rủi ro từ 70, lợi suất âm và trend share từ 65%.</p><div class="table-wrap"><table><thead><tr><th>Ngày</th><th>Giá đóng cửa</th><th>Lợi suất (%)</th><th>Khối lượng</th><th>Theo xu hướng (%)</th><th>Điểm rủi ro</th><th>Mức độ</th></tr></thead><tbody id="panicTable"></tbody></table></div></div></div></div></div></div></section>
-</main><footer><div class="container foot"><div><div class="logo"><span class="mark"></span><span>BầyĐànChứngKhoán</span></div><p>MVP phục vụ học tập và nghiên cứu, không phải khuyến nghị đầu tư.</p></div><div class="badge">Evolutionary Game Theory</div></div></footer></div>
+<!-- ===== Biểu đồ giá & tín hiệu bán tháo ===== -->
+              <div class="card chart-card chart-wide">
+                <h3>Diễn biến giá và tín hiệu bán tháo</h3>
+                <p>Tam giác đỏ là các phiên đạt điều kiện cảnh báo.</p>
+                <svg id="priceChart"></svg>
+                <div class="legend">
+                  <span style="--legend-color:#2f8f68">Giá đóng cửa</span>
+                  <span style="--legend-color:#e45858">Cảnh báo</span>
+                </div>
+              </div>
+
+              <!-- ===== Biểu đồ tỷ lệ chiến lược & Herding Risk Score ===== -->
+              <div class="grid-2">
+                <div class="card chart-card">
+                  <h3>Tỷ lệ chiến lược</h3>
+                  <p>Tỷ lệ nhà đầu tư mô phỏng theo xu hướng (phần còn lại là contrarian, vì hai tỷ lệ luôn cộng lại bằng 100%).</p>
+                  <svg id="strategyChart"></svg>
+                  <div class="legend">
+                    <span style="--legend-color:#7759b8">Theo xu hướng</span>
+                  </div>
+                </div>
+
+                <div class="card chart-card">
+                  <h3>Herding Risk Score</h3>
+                  <p>Thấp dưới 40, trung bình 40–69, cao từ 70.</p>
+                  <svg id="riskChart"></svg>
+                  <div class="legend">
+                    <span style="--legend-color:#e5a72f">Điểm rủi ro</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ===== Bảng các phiên cảnh báo hoảng loạn bán tháo ===== -->
+              <div class="card" id="alerts">
+                <h3>Các phiên có tín hiệu hoảng loạn bán tháo</h3>
+                <p>Rủi ro từ 70, lợi suất âm và trend share từ 65%.</p>
+                <div class="table-wrap">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Ngày</th>
+                        <th>Giá đóng cửa</th>
+                        <th>Lợi suất (%)</th>
+                        <th>Khối lượng</th>
+                        <th>Theo xu hướng (%)</th>
+                        <th>Điểm rủi ro</th>
+                        <th>Mức độ</th>
+                      </tr>
+                    </thead>
+                    <tbody id="panicTable"></tbody>
+                  </table>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="container foot">
+      <div>
+        <div class="logo">
+          <span class="mark"></span>
+          <span>BầyĐànChứngKhoán</span>
+        </div>
+        <p>MVP phục vụ học tập và nghiên cứu, không phải khuyến nghị đầu tư.</p>
+      </div>
+      <div class="badge">Evolutionary Game Theory</div>
+    </div>
+  </footer>
+
+</div>
+
 <script>
 
 /* ===== State toàn cục & helper định dạng số/ngày ===== */
