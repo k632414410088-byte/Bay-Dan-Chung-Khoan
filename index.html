@@ -48,7 +48,7 @@ footer{background:var(--ink);color:#fff;padding:40px 0}.foot{display:flex;justif
   <div class="analysis-grid">
     <div class="analysis-box">
       <h4>Phân rã Herding Risk Score</h4>
-      <p>Mỗi thanh biểu diễn số điểm thực tế mà thành phần đóng góp vào tổng điểm rủi ro.</p>
+      <p>Mỗi thanh biểu diễn số điểm thực tế mà thành phần đóng góp vào tổng điểm rủi ro. Lưu ý: bốn thành phần bên dưới đều bắt nguồn từ cùng một cú sốc lợi suất/biến động nên có tương quan cao với nhau (xem ghi chú "Giả định và giới hạn") — không nên đọc chúng như bốn bằng chứng hoàn toàn độc lập.</p>
 
       <div class="component-row">
         <div class="component-top"><b>Tập trung chiến lược theo xu hướng</b><span id="trendComponentValue">-</span></div>
@@ -102,7 +102,7 @@ footer{background:var(--ink);color:#fff;padding:40px 0}.foot{display:flex;justif
         <tr><td>Tỷ lệ phiên rủi ro cao toàn mẫu</td><td id="highRiskShare">-</td></tr>
         <tr><td>Tương quan tuyệt đối lợi suất và rủi ro</td><td id="riskReturnCorrelation">-</td></tr>
       </tbody></table>
-      <div class="analysis-note">Hiệu lực trong mẫu chỉ là bằng chứng mô tả. Để kết luận chắc chắn cần kiểm định ngoài mẫu, walk-forward validation và so sánh với mô hình chuẩn.</div>
+      <div class="analysis-note">Hiệu lực trong mẫu chỉ là bằng chứng mô tả, được tính trên cùng bộ dữ liệu và tham số dùng để xây điểm rủi ro (in-sample) — không phải out-of-sample/backtest thực sự. Với dữ liệu mẫu mô phỏng, ba giai đoạn "khủng hoảng" được cấy sẵn đúng vào loại biến động mà mô hình được thiết kế để bắt, nên hit-rate đẹp trên dữ liệu mẫu gần như được đảm bảo trước và KHÔNG phải bằng chứng cho hiệu lực trên dữ liệu thị trường thật. Để kết luận chắc chắn cần kiểm định ngoài mẫu, walk-forward validation và so sánh với mô hình chuẩn.</div>
     </div>
   </div>
 
@@ -117,18 +117,20 @@ footer{background:var(--ink);color:#fff;padding:40px 0}.foot{display:flex;justif
   <div class="methodology-grid">
     <div class="formula-box">
       <h4>Cấu trúc mô hình</h4>
-      <div class="formula">x(t+1) = x(t) + η × x(t) × [1 − x(t)] × [πtrend(t) − πcontrarian(t)]<br><br>Herding Risk = 35% × Concentration + 30% × Sell Pressure + 20% × Volatility Stress + 15% × Volume Stress</div>
-      <p>x(t) là tỷ lệ nhà đầu tư theo xu hướng; η là tốc độ thích nghi (thanh trượt hiển thị 1–100 nhưng được chuẩn hóa về 0.01–1.00 khi tính toán để tránh bước nhảy quá lớn); π là payoff kỳ vọng của từng chiến lược. Các biến stress được chuẩn hóa bằng rolling Z-score và chặn trong khoảng từ 0 đến 1.</p>
+      <div class="formula">x(t+1) = x(t) + η × x(t) × [1 − x(t)] × [πtrend(t) − πcontrarian(t)]<br><br>πtrend: payoff khi đặt cược theo dấu momentum dài hạn (cửa sổ xu hướng)<br>πcontrarian: payoff khi đặt cược đảo chiều theo dấu lợi suất phiên liền trước (short-term reversal)<br><br>Herding Risk = 35% × Concentration + 30% × Sell Pressure + 20% × Volatility Stress + 15% × Volume Stress</div>
+      <p>x(t) là tỷ lệ nhà đầu tư theo xu hướng; η là tốc độ thích nghi (thanh trượt hiển thị 1–100 nhưng được chuẩn hóa về 0.01–1.00 khi tính toán để tránh bước nhảy quá lớn); π là payoff kỳ vọng của từng chiến lược, tính trên cửa sổ dữ liệu QUÁ KHỨ (không gồm phiên hiện tại) để tránh nhìn trước dữ liệu. Trend-following và contrarian dùng hai tín hiệu khác nhau về mặt thống kê (momentum dài hạn so với đảo chiều ngắn hạn), không còn là phủ định đại số của nhau. Các biến stress được chuẩn hóa bằng rolling Z-score tính trên cửa sổ quá khứ (không gồm điểm hiện tại) và chặn trong khoảng từ 0 đến 1.</p>
     </div>
     <div class="limitations">
       <h4>Giả định và giới hạn</h4>
       <ul>
-        <li>Thị trường được giản lược thành hai chiến lược: trend-following và contrarian.</li>
+        <li>Thị trường được giản lược thành hai chiến lược: trend-following (momentum dài hạn) và contrarian (đảo chiều ngắn hạn theo lợi suất phiên trước).</li>
         <li>Tỷ lệ chiến lược là biến ẩn suy luận từ giá, không phải dữ liệu tài khoản nhà đầu tư.</li>
-        <li>Trọng số Herding Risk Score mang tính thiết kế MVP và cần hiệu chỉnh thực nghiệm.</li>
+        <li>Bốn thành phần của Herding Risk Score đều bắt nguồn từ cùng một cú sốc lợi suất/biến động nên có tương quan cao với nhau (đa cộng tuyến); một phiên giảm mạnh đơn lẻ thường đẩy đồng thời cả 4 thành phần lên, nên không nên đọc chúng như 4 bằng chứng độc lập cùng xác nhận rủi ro.</li>
+        <li>Trọng số 35/30/20/15% và các ngưỡng (panic risk≥70, trend share≥0.65...) mang tính thiết kế MVP, được chọn thủ công chứ không đến từ tối ưu hoá (ROC curve, grid search, cross-validation), nên cần hiệu chỉnh thực nghiệm trước khi dùng ngoài mục đích minh hoạ.</li>
+        <li>Tín hiệu xu hướng dùng dấu của momentum (sign), nên chưa phân biệt được mức độ mạnh/yếu của xu hướng — một momentum +0.1% và +50% tạo cùng một tín hiệu; thành phần payoff dùng để cập nhật tỷ lệ chiến lược vẫn có phần khuếch đại theo biên độ vì payoff = tín hiệu × lợi suất thực tế.</li>
         <li>Dữ liệu cuối ngày không phản ánh đầy đủ hành vi trong phiên hoặc độ sâu sổ lệnh.</li>
-        <li>Mô hình chưa kiểm soát tin tức, yếu tố vĩ mô, hiệu ứng ngành và thay đổi chế độ thị trường.</li>
-        <li>Herding Risk Score tại phiên hiện tại được tính có sử dụng payoff thực hiện trong chính phiên đó, nên mang tính mô tả (diễn giải sau khi đóng cửa) hơn là tín hiệu dự báo có thể dùng trước giờ đóng cửa.</li>
+        <li>Mô hình chưa kiểm soát tin tức, yếu tố vĩ mô, hiệu ứng ngành và thay đổi chế độ thị trường — do đó KHÔNG thể phân biệt một cú bán tháo hợp lý (phản ứng đúng với tin xấu thật) với một cú bán tháo do tâm lý bầy đàn phi lý tính. Điểm số phản ánh "cường độ căng thẳng thị trường + mức độ crowding theo xu hướng", không phải bằng chứng hành vi phi lý tính theo đúng nghĩa học thuật của herding.</li>
+        <li>Herding Risk Score tại phiên hiện tại sử dụng lợi suất/khối lượng thực hiện trong chính phiên đó (qua Sell Pressure và Volume Stress), nên mang tính mô tả (diễn giải sau khi đóng cửa) hơn là tín hiệu dự báo có thể dùng trước giờ đóng cửa; riêng thành phần Trend Concentration đã được tính trên tỷ lệ chiến lược cập nhật từ payoff quá khứ nên không nhìn trước dữ liệu.</li>
       </ul>
     </div>
   </div>
@@ -457,11 +459,17 @@ footer{background:var(--ink);color:#fff;padding:40px 0}.foot{display:flex;justif
     return rows;
   }
 
+  // FIX (đã sửa - lỗi #4 "z-score tự tham chiếu" trong báo cáo rà soát):
+  // trước đây cửa sổ [index-window+1, index] BAO GỒM chính điểm dữ liệu
+  // hiện tại, khiến một giá trị cực đoan tự kéo mean/std của chính nó lên
+  // và làm giảm độ lớn z-score thực tế so với cách tính chuẩn. Giờ đây
+  // rollingMean/rollingStd chỉ dùng dữ liệu QUÁ KHỨ [index-window, index-1],
+  // không bao gồm điểm hiện tại.
   function rollingMean(values, window, index) {
-    if (index < window - 1) return null;
+    if (index < window) return null;
     let sum = 0;
     let count = 0;
-    for (let i = index - window + 1; i <= index; i++) {
+    for (let i = index - window; i <= index - 1; i++) {
       const value = values[i];
       if (Number.isFinite(value)) {
         sum += value;
@@ -477,7 +485,7 @@ footer{background:var(--ink);color:#fff;padding:40px 0}.foot{display:flex;justif
 
     let sum = 0;
     let count = 0;
-    for (let i = index - window + 1; i <= index; i++) {
+    for (let i = index - window; i <= index - 1; i++) {
       const value = values[i];
       if (Number.isFinite(value)) {
         sum += Math.pow(value - mean, 2);
@@ -537,11 +545,28 @@ footer{background:var(--ink);color:#fff;padding:40px 0}.foot{display:flex;justif
       momentums.push(momentum);
 
       const previousMomentum = i > 0 ? momentums[i - 1] : 0;
-      const trendSignal = Math.sign(previousMomentum);
+      // FIX (đã sửa - lỗi #7 "sign(momentum) bỏ qua biên độ"): trước đây
+      // trendSignal chỉ là dấu (+1/-1/0) của momentum, nên một momentum
+      // +0.1% và +50% tạo ra cùng một tín hiệu. Dùng tanh() để giữ tín
+      // hiệu liên tục, có phân biệt biên độ nhưng vẫn bị chặn trong
+      // khoảng [-1, 1] để không làm nổ payoff. Hệ số nhân 8 là một lựa
+      // chọn heuristic để momentum cỡ vài % đã tạo tín hiệu gần bão hoà.
+      const trendSignal = Math.tanh(previousMomentum * 8);
       trendSignals.push(trendSignal);
 
+      // FIX (đã sửa - lỗi #2 "trò chơi tiến hóa suy biến thành 1 tín
+      // hiệu"): trước đây contrarianPayoff = -trendPayoff theo định nghĩa
+      // toán học (contrarianSignal = -trendSignal), khiến payoffDifference
+      // = 2 × trendExpected — không có thông tin độc lập nào từ "chiến
+      // lược thứ hai". Ở đây, contrarian dùng một tín hiệu khác về mặt
+      // thống kê: đảo chiều ngắn hạn (short-term reversal) dựa trên dấu
+      // lợi suất của phiên liền trước, thay vì phủ định của tín hiệu
+      // trend-following dài hạn.
+      const previousReturn = i > 0 ? returns[i - 1] : 0;
+      const contrarianSignal = -Math.sign(previousReturn);
+
       trendPayoffs.push(trendSignal * ret);
-      contrarianPayoffs.push(-trendSignal * ret);
+      contrarianPayoffs.push(contrarianSignal * ret);
 
       const std = rollingStd(returns, volatilityWindow, i);
       volatilities.push(Number.isFinite(std) ? std * Math.sqrt(252) : 0);
@@ -981,7 +1006,7 @@ footer{background:var(--ink);color:#fff;padding:40px 0}.foot{display:flex;justif
     const payoffWinner = trendPayoff20 > contrarianPayoff20 ? "trend-following" : trendPayoff20 < contrarianPayoff20 ? "contrarian" : "hai chiến lược";
     const riskDirection = riskAcceleration >= 0 ? "cao hơn" : "thấp hơn";
 
-    $("executiveSummary").innerHTML = `Tại phiên <strong>${formatDate(latest.Date)}</strong>, mô hình phân loại thị trường ở trạng thái <strong>${regime.name}</strong>. Tỷ lệ trend-following đạt <strong>${formatNumber(latest.TrendShare * 100, 1)}%</strong>, trong khi Herding Risk Score là <strong>${formatNumber(latest.HerdingRiskScore, 1)}/100</strong>, ${riskDirection} trung bình 20 phiên <strong>${formatNumber(Math.abs(riskAcceleration), 1)} điểm</strong>. Thành phần đóng góp lớn nhất hiện tại là <strong>${strongestComponents[0][0]}</strong>. Trong 20 phiên gần nhất, chiến lược <strong>${payoffWinner}</strong> có payoff trung bình tốt hơn.`;
+    $("executiveSummary").innerHTML = `Tại phiên <strong>${formatDate(latest.Date)}</strong>, mô hình phân loại thị trường ở trạng thái <strong>${regime.name}</strong>. Tỷ lệ trend-following đạt <strong>${formatNumber(latest.TrendShare * 100, 1)}%</strong>, trong khi Herding Risk Score là <strong>${formatNumber(latest.HerdingRiskScore, 1)}/100</strong>, ${riskDirection} trung bình 20 phiên <strong>${formatNumber(Math.abs(riskAcceleration), 1)} điểm</strong>. Thành phần đóng góp lớn nhất hiện tại là <strong>${strongestComponents[0][0]}</strong>. Trong 20 phiên gần nhất, chiến lược <strong>${payoffWinner}</strong> có payoff trung bình tốt hơn. Lưu ý: các thành phần rủi ro có tương quan cao với nhau và tín hiệu hiệu lực bên dưới được kiểm định trong-mẫu (in-sample), xem ghi chú giới hạn ở cuối trang.`;
 
     $("marketRegime").textContent = regime.name;
     $("marketRegimeDetail").textContent = regime.detail;
@@ -990,7 +1015,7 @@ footer{background:var(--ink);color:#fff;padding:40px 0}.foot{display:flex;justif
     $("riskAcceleration").textContent = `${riskAcceleration >= 0 ? "+" : ""}${formatNumber(riskAcceleration, 1)} điểm`;
     $("riskAccelerationDetail").textContent = `So với mức trung bình ${formatNumber(averageRisk20, 1)}/100 trong 20 phiên.`;
     $("signalHitRate").textContent = validation.length ? `${formatNumber(hitRate * 100, 1)}%` : "Chưa đủ dữ liệu";
-    $("signalHitRateDetail").textContent = validation.length ? `${validation.filter(v => v < 0).length}/${validation.length} tín hiệu tiếp tục giảm sau 5 phiên.` : "Chưa có tín hiệu đủ khoảng quan sát 5 phiên.";
+    $("signalHitRateDetail").textContent = validation.length ? `${validation.filter(v => v < 0).length}/${validation.length} tín hiệu tiếp tục giảm sau 5 phiên (in-sample).` : "Chưa có tín hiệu đủ khoảng quan sát 5 phiên.";
 
     const components = [
       ["trendComponentValue", "trendComponentBar", latest.TrendContribution, 35],
@@ -1006,8 +1031,8 @@ footer{background:var(--ink);color:#fff;padding:40px 0}.foot{display:flex;justif
     const interpretations = [
       ["01", "Động lực chiến lược", latest.TrendShare >= 0.60 ? "Tỷ lệ trend-following cao cho thấy hành vi bắt chước xu hướng đang lan rộng, làm tăng nguy cơ giao dịch cùng chiều." : latest.TrendShare <= 0.40 ? "Contrarian chiếm ưu thế, cho thấy nhiều nhà đầu tư kỳ vọng giá quay về giá trị trung bình." : "Hai chiến lược đang ở trạng thái tương đối cân bằng, vì vậy rủi ro đồng thuận cực đoan chưa rõ rệt."],
       ["02", "Động cơ chuyển đổi", trendPayoff20 > contrarianPayoff20 ? "Payoff trend-following cao hơn trong 20 phiên gần nhất, tạo động cơ để nhà đầu tư chuyển sang chiến lược theo xu hướng." : "Payoff contrarian cao hơn trong 20 phiên gần nhất, tạo động cơ cho hành vi bắt đáy hoặc chốt lời ngược xu hướng."],
-      ["03", "Nguồn hình thành rủi ro", `Yếu tố nổi trội nhất là ${strongestComponents[0][0]}, đóng góp ${formatNumber(strongestComponents[0][1], 1)} điểm vào tổng rủi ro.`],
-      ["04", "Hàm ý nghiên cứu", latest.HerdingRiskScore >= 70 ? "Nên đối chiếu giai đoạn này với tin tức, thanh khoản và độ rộng thị trường để xác định đây là bầy đàn thực sự hay cú sốc thông tin hợp lý." : "Chưa có tín hiệu bầy đàn cực đoan, nhưng cần theo dõi tốc độ tăng của trend share và điểm rủi ro thay vì chỉ nhìn mức hiện tại."]
+      ["03", "Nguồn hình thành rủi ro", `Yếu tố nổi trội nhất là ${strongestComponents[0][0]}, đóng góp ${formatNumber(strongestComponents[0][1], 1)} điểm vào tổng rủi ro. Lưu ý các thành phần này có tương quan cao với nhau nên không nên xem là các bằng chứng độc lập.`],
+      ["04", "Hàm ý nghiên cứu", latest.HerdingRiskScore >= 70 ? "Nên đối chiếu giai đoạn này với tin tức, thanh khoản và độ rộng thị trường để xác định đây là bầy đàn thực sự hay phản ứng hợp lý với một cú sốc thông tin — mô hình không tự phân biệt được hai trường hợp này." : "Chưa có tín hiệu bầy đàn cực đoan, nhưng cần theo dõi tốc độ tăng của trend share và điểm rủi ro thay vì chỉ nhìn mức hiện tại."]
     ];
     $("researchInterpretation").innerHTML = interpretations.map(item => `<div class="research-item"><b>${item[0]}</b><div><strong>${item[1]}</strong><span>${item[2]}</span></div></div>`).join("");
 
@@ -1101,7 +1126,7 @@ footer{background:var(--ink);color:#fff;padding:40px 0}.foot{display:flex;justif
         ["Rà soát quy mô vị thế", "So sánh mức lỗ hiện tại với giới hạn chịu rủi ro đã đặt trước và tránh để một cổ phiếu chiếm tỷ trọng quá lớn."],
         ["Hạn chế đòn bẩy", "Không tăng margin trong giai đoạn điểm rủi ro cao; xem xét giảm mức vay nếu vượt kế hoạch quản trị rủi ro cá nhân."],
         ["Không bình quân giá xuống vội", "Chờ áp lực bán, biến động và khối lượng bất thường cùng suy yếu trước khi đánh giá lại."],
-        ["Kiểm tra nguyên nhân cơ bản", "Đối chiếu cảnh báo với tin tức doanh nghiệp, kết quả kinh doanh, ngành và thị trường chung."],
+        ["Kiểm tra nguyên nhân cơ bản", "Đối chiếu cảnh báo với tin tức doanh nghiệp, kết quả kinh doanh, ngành và thị trường chung — vì mô hình không phân biệt được bán tháo hợp lý và bán tháo bầy đàn."],
         ["Đặt điều kiện đánh giá lại", "Chỉ xem trạng thái cải thiện khi Herding Risk Score xuống dưới 70 và không tiếp tục tạo đáy ngắn hạn mới."]
       ];
     } else if (latest.RiskLevel === "Trung bình") {
