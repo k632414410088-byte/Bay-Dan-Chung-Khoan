@@ -166,22 +166,10 @@ header {
 }
 
 /* ===== Hero ===== */
-.hero {
-  min-height: 600px;
-  color: #fff;
-  background:
-    linear-gradient(90deg, rgba(16, 47, 39, .9), rgba(16, 47, 39, .16)),
-    radial-gradient(circle at 82% 20%, rgba(243, 247, 120, .5), transparent 22%),
-    linear-gradient(135deg, #568673, #79ad85 55%, #d4c886);
-}
-
-.hero-grid {
-  min-height: 600px;
-  display: grid;
-  grid-template-columns: 1.02fr .98fr;
-  gap: 52px;
-  align-items: center;
-}
+.hero{min-height:600px;color:#fff;position:relative;overflow:hidden}
+.hero-bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(16,47,39,.82),rgba(16,47,39,.28)),radial-gradient(circle at 82% 20%,rgba(243,247,120,.35),transparent 22%);z-index:1}
+.hero-grid{min-height:600px;display:grid;grid-template-columns:1.02fr .98fr;gap:52px;align-items:center;position:relative;z-index:2}
 
 .tag {
   display: inline-flex;
@@ -1606,7 +1594,10 @@ input[type=text]:focus {
 
     <!-- ===== Hero ===== -->
     <section class="hero">
-      <div class="container hero-grid">
+<video class="hero-bg-video" autoplay muted loop playsinline>
+  <source src="https://raw.githubusercontent.com/k632414410088-byte/Bay-Dan-Chung-Khoan/main/financial%20background.mp4" type="video/mp4">
+</video>
+<div class="container hero-grid">
         <div>
           <div class="tag"><span class="dot"></span>Fintech quantitative MVP</div>
           <h1>Phát hiện hành vi bầy đàn trước khi thị trường hoảng loạn.</h1>
