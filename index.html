@@ -21,11 +21,39 @@ footer{background:var(--ink);color:#fff;padding:40px 0}.foot{display:flex;justif
 
 .bg-video-wrap{position:fixed;inset:0;z-index:-1;overflow:hidden;background:var(--ink)}
 .bg-video-wrap video{width:100%;height:100%;object-fit:cover}
-.bg-video-wrap:after{content:"";position:absolute;inset:0;background:rgba(16,37,31,.55)}
+.bg-video-wrap:after{content:"";position:absolute;inset:0;background:rgba(16,37,31,.25)}
 body{background:transparent}
 
+/* === Video xuyên nền: làm trong suốt các khối nền đặc === */
+.shell{background:rgba(255,255,255,.12);box-shadow:none}
+header{background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.stats{background:rgba(16,37,31,.78)}
+.soft{background:rgba(246,248,245,.45)}
+.dashboard{background:rgba(237,242,236,.4)}
+.dash-shell{background:rgba(255,255,255,.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.controls{background:rgba(16,37,31,.88)}
+.card{background:rgba(255,255,255,.82);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.metric{background:rgba(251,252,250,.85)}
+.analysis-panel{background:rgba(251,253,251,.82)}
+.analysis-summary{background:rgba(255,255,255,.85)}
+.analysis-box{background:rgba(255,255,255,.85)}
+.action-box{background:rgba(251,252,250,.85)}
+.guidance-panel{background:rgba(255,255,255,.85)}
+.stock-conclusion{background:linear-gradient(135deg,rgba(16,37,31,.85),rgba(36,72,63,.85))}
+footer{background:rgba(16,37,31,.85)}
+.mock{background:rgba(255,255,255,.9)}
+.dashboard svg{background:rgba(248,250,247,.6)}
+.formula-box{background:rgba(16,37,31,.85)}
+.limitations{background:rgba(255,255,255,.85)}
+.action-item,.condition-item,.research-item,.workflow-step{background:rgba(255,255,255,.85)}
+.fcard.purple{background:rgba(234,220,255,.75)}
+.fcard.mint{background:rgba(186,240,231,.75)}
+.fcard.pink{background:rgba(255,200,232,.75)}
+.fcard.blue{background:rgba(207,231,255,.75)}
+.fcard.cream{background:rgba(244,239,232,.75)}
+.fcard.yellow{background:rgba(243,247,120,.75)}
+  
 </style></head><body>
-  <body>
 <div class="bg-video-wrap">
   <video autoplay muted loop playsinline>
     <source src="https://raw.githubusercontent.com/k632414410088-byte/Bay-Dan-Chung-Khoan/main/financial%20background.mp4" type="video/mp4">
