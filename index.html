@@ -26,7 +26,7 @@ footer{background:var(--ink);color:#fff;padding:40px 0}.foot{display:flex;justif
 <section class="stats"><div class="container"><h2>Các con số tự nói lên mức độ hữu ích của mô hình</h2><div class="stats-grid"><div class="stat"><b>2</b><span>chiến lược đầu tư được mô hình hóa</span></div><div class="stat"><b>100</b><span>điểm tối đa của Herding Risk Score</span></div><div class="stat"><b>4</b><span>nhóm biến hình thành điểm rủi ro</span></div><div class="stat"><b>1</b><span>tệp HTML độc lập, chạy trực tiếp</span></div></div></div></section>
 <section class="section soft" id="overview"><div class="container split"><div class="art"><div class="pop"><h3 style="margin:0 0 7px">Tỷ lệ theo xu hướng</h3><b>68.3%</b><p class="copy" style="font-size:11px;margin:6px 0 0">Ước lượng từ động lực tái tạo và payoff chiến lược.</p></div><div class="phone"><div><div class="line" style="width:45%"></div><div class="line" style="width:70%"></div><div class="block"><b style="font-size:12px">Evolutionary dynamics</b><div class="bars"><i style="height:28%"></i><i style="height:43%"></i><i style="height:55%"></i><i style="height:74%"></i><i style="height:92%"></i></div></div><div class="line" style="width:85%;margin-top:20px"></div><div class="line" style="width:62%"></div></div></div></div><div><div class="kicker">Phương pháp nghiên cứu</div><h2 class="title">Không chỉ nhìn vào giá, mô hình theo dõi cách chiến lược lan truyền.</h2><p class="copy">Khi một chiến lược mang lại lợi ích cao hơn, tỷ lệ nhà đầu tư sử dụng chiến lược đó sẽ tăng. Replicator dynamics mô phỏng quá trình thích nghi và kết hợp với lợi suất, biến động cùng khối lượng để nhận diện rủi ro bầy đàn.</p><div class="list"><div><span class="num">1</span>Tính lợi suất logarithmic, momentum và biến động lăn.</div><div><span class="num">2</span>So sánh payoff của trend-following và contrarian.</div><div><span class="num">3</span>Ước lượng tỷ lệ chiến lược bằng động lực tái tạo.</div><div><span class="num">4</span>Tạo Herding Risk Score từ 0 đến 100.</div></div></div></div></section>
 <section class="section" id="features"><div class="container"><div class="center"><div class="kicker">Tính năng chính</div><h2 class="title">Công cụ cần thiết cho một bài code định lượng tài chính.</h2><p class="copy">Thiết kế fintech hiện đại, tập trung vào dữ liệu, khả năng giải thích và trình bày kết quả nghiên cứu.</p></div><div class="cards"><article class="fcard purple"><div class="ico">📊</div><div><h3>Phân tích dữ liệu</h3><p>Đọc CSV, làm sạch dữ liệu và tính các biến tài chính.</p></div></article><article class="fcard mint"><div class="ico">🧬</div><div><h3>Trò chơi tiến hóa</h3><p>Mô phỏng sự chuyển đổi giữa hai chiến lược đầu tư.</p></div></article><article class="fcard pink"><div class="ico">⚠️</div><div><h3>Cảnh báo bán tháo</h3><p>Đánh dấu phiên có rủi ro cao và áp lực bán mạnh.</p></div></article><article class="fcard blue"><div class="ico">📈</div><div><h3>Dashboard trực quan</h3><p>Biểu đồ giá, chiến lược và điểm rủi ro tương tác.</p></div></article><article class="fcard cream"><div class="ico">🧮</div><div><h3>Điều chỉnh tham số</h3><p>Thay đổi momentum, volatility, payoff và learning rate.</p></div></article><article class="fcard yellow"><div class="ico">⬇️</div><div><h3>Xuất kết quả</h3><p>Tải dữ liệu mô hình dưới dạng CSV để phân tích tiếp.</p></div></article></div></div></section>
-<section class="section dashboard" id="dashboard"><div class="container"><div class="center" style="margin-bottom:0"><div class="kicker">MVP tương tác</div><h2 class="title">Chạy mô hình trực tiếp trên trình duyệt.</h2><p class="copy">Không cần máy chủ hoặc cài Python. Tải CSV của bạn hoặc dùng dữ liệu mẫu.</p></div><div class="dash-shell"><div class="dash-grid"><aside class="controls"><h3>Thiết lập mô hình</h3><p>Điều chỉnh tham số rồi chạy phân tích.</p><div class="control"><label>Mã cổ phiếu / chỉ số</label><input id="tickerInput" type="text" value="VNINDEX" placeholder="Ví dụ: FPT, HPG, VNINDEX"></div><div class="control"><label>Tải dữ liệu CSV</label><input id="csvFile" type="file" accept=".csv"></div><div class="control"><label>Cửa sổ xu hướng</label><input id="momentumWindow" type="range" min="3" max="30" value="10"><div class="range-row"><span>3</span><strong id="momentumValue">10 phiên</strong><span>30</span></div></div><div class="control"><label>Cửa sổ biến động</label><input id="volatilityWindow" type="range" min="10" max="60" value="20"><div class="range-row"><span>10</span><strong id="volatilityValue">20 phiên</strong><span>60</span></div></div><div class="control"><label>Làm mượt payoff</label><input id="payoffWindow" type="range" min="3" max="30" value="10"><div class="range-row"><span>3</span><strong id="payoffValue">10 phiên</strong><span>30</span></div></div><div class="control"><label>Tốc độ thích nghi</label><input id="learningRate" type="range" min="1" max="100" value="35"><div class="range-row"><span>Chậm</span><strong id="learningValue">35</strong><span>Nhanh</span></div></div><button id="runButton">Chạy phân tích</button><button class="secondary" id="demoButton">Khôi phục dữ liệu mẫu</button><button class="secondary" id="downloadButton">Tải kết quả CSV</button><div class="note">CSV cần có Date, Close, Volume và tối thiểu 80 phiên. Mô hình phục vụ nghiên cứu, không phải khuyến nghị đầu tư.</div></aside><div><div class="dash-head"><div><h3>Market behavior analytics</h3><p>Evolutionary Game Theory & Herding Risk Detection</p></div><div class="source-badge" id="sourceBadge">Nguồn: Dữ liệu mẫu mô phỏng</div></div><div class="metrics"><div class="metric"><div class="metric-label">Giá đóng cửa mới nhất</div><div class="metric-value" id="latestClose">-</div><div class="metric-sub" id="latestDate">-</div></div><div class="metric"><div class="metric-label">Lợi suất phiên</div><div class="metric-value" id="latestReturn">-</div><div class="metric-sub">Lợi suất logarithmic</div></div><div class="metric"><div class="metric-label">Tỷ lệ theo xu hướng</div><div class="metric-value" id="latestTrend">-</div><div class="metric-sub">Replicator dynamics</div></div><div class="metric"><div class="metric-label">Herding Risk Score</div><div class="metric-value" id="latestRisk">-</div><div class="metric-sub" id="latestLevel">-</div></div></div><div class="alert low" id="riskAlert">Đang khởi tạo mô hình...</div>
+<section class="section dashboard" id="dashboard"><div class="container"><div class="center" style="margin-bottom:0"><div class="kicker">MVP tương tác</div><h2 class="title">Chạy mô hình trực tiếp trên trình duyệt.</h2><p class="copy">Không cần máy chủ hoặc cài Python. Tải CSV của bạn hoặc dùng dữ liệu mẫu.</p></div><div class="dash-shell"><div class="dash-grid"><aside class="controls"><h3>Thiết lập mô hình</h3><p>Điều chỉnh tham số rồi chạy phân tích.</p><div class="control"><label>Mã cổ phiếu / chỉ số</label><input id="tickerInput" type="text" value="VNINDEX" placeholder="Ví dụ: FPT, HPG, VNINDEX"></div><div class="control"><label>Tải dữ liệu CSV</label><input id="csvFile" type="file" accept=".csv"></div><div class="control"><label>Cửa sổ xu hướng</label><input id="momentumWindow" type="range" min="3" max="30" value="10"><div class="range-row"><span>3</span><strong id="momentumValue">10 phiên</strong><span>30</span></div></div><div class="control"><label>Cửa sổ biến động</label><input id="volatilityWindow" type="range" min="10" max="60" value="20"><div class="range-row"><span>10</span><strong id="volatilityValue">20 phiên</strong><span>60</span></div></div><div class="control"><label>Làm mượt payoff</label><input id="payoffWindow" type="range" min="3" max="30" value="10"><div class="range-row"><span>3</span><strong id="payoffValue">10 phiên</strong><span>30</span></div></div><div class="control"><label>Tốc độ thích nghi</label><input id="learningRate" type="range" min="1" max="100" value="35"><div class="range-row"><span>Chậm</span><strong id="learningValue">35</strong><span>Nhanh</span></div></div><button id="runButton">Chạy phân tích</button><button class="secondary" id="demoButton">Khôi phục dữ liệu mẫu</button><button class="secondary" id="downloadButton">Tải kết quả CSV</button><div class="note">CSV cần có Date, Close, Volume và tối thiểu 80 phiên (nên ≥ 4 lần window lớn nhất để kết quả ổn định). Định dạng ngày hỗ trợ: yyyy-mm-dd hoặc dd/mm/yyyy. Mô hình phục vụ nghiên cứu, không phải khuyến nghị đầu tư.</div></aside><div><div class="dash-head"><div><h3>Market behavior analytics</h3><p>Evolutionary Game Theory & Herding Risk Detection</p></div><div class="source-badge" id="sourceBadge">Nguồn: Dữ liệu mẫu mô phỏng</div></div><div class="metrics"><div class="metric"><div class="metric-label">Giá đóng cửa mới nhất</div><div class="metric-value" id="latestClose">-</div><div class="metric-sub" id="latestDate">-</div></div><div class="metric"><div class="metric-label">Lợi suất phiên</div><div class="metric-value" id="latestReturn">-</div><div class="metric-sub">Lợi suất logarithmic</div></div><div class="metric"><div class="metric-label">Tỷ lệ theo xu hướng</div><div class="metric-value" id="latestTrend">-</div><div class="metric-sub">Replicator dynamics</div></div><div class="metric"><div class="metric-label">Herding Risk Score</div><div class="metric-value" id="latestRisk">-</div><div class="metric-sub" id="latestLevel">-</div></div></div><div class="alert low" id="riskAlert">Đang khởi tạo mô hình...</div>
 <div class="analysis-panel" id="deep-analysis">
   <div class="analysis-head">
     <div>
@@ -207,8 +207,36 @@ footer{background:var(--ink);color:#fff;padding:40px 0}.foot{display:flex;justif
     }).format(value);
   }
 
+  // FIX #1 (lỗ hổng đã phát hiện): new Date(string) mặc định của JS hiểu
+  // "05/03/2024" là tháng 5 ngày 3 (kiểu Mỹ mm/dd/yyyy), trong khi dữ liệu
+  // Việt Nam thường xuất theo dd/mm/yyyy -> gây sai thứ tự ngày mà KHÔNG
+  // báo lỗi gì (silent bug). Hàm dưới đây parse tường minh 2 định dạng
+  // phổ biến nhất (ISO yyyy-mm-dd và dd/mm/yyyy) trước khi fallback.
+  function parseDateSafe(value) {
+    if (value instanceof Date) return value;
+    const str = String(value).trim();
+
+    // ISO: yyyy-mm-dd (có thể kèm giờ, ví dụ từ vnstock/pandas)
+    const isoMatch = str.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/);
+    if (isoMatch) {
+      const [, y, m, d] = isoMatch;
+      return new Date(Number(y), Number(m) - 1, Number(d));
+    }
+
+    // dd/mm/yyyy hoặc d/m/yyyy (định dạng phổ biến khi export Excel VN)
+    const dmyMatch = str.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+    if (dmyMatch) {
+      const [, d, m, y] = dmyMatch;
+      return new Date(Number(y), Number(m) - 1, Number(d));
+    }
+
+    // Fallback: để JS tự đoán, nhưng đây là trường hợp không khuyến khích
+    console.warn(`Không nhận diện được định dạng ngày "${str}", dùng parser mặc định của trình duyệt — kết quả có thể sai thứ tự.`);
+    return new Date(str);
+  }
+
   function formatDate(date) {
-    const d = new Date(date);
+    const d = parseDateSafe(date);
     return d.toLocaleDateString("vi-VN");
   }
 
@@ -305,7 +333,7 @@ footer{background:var(--ink);color:#fff;padding:40px 0}.foot{display:flex;justif
       row.Volume >= 0
     );
 
-    rows.sort((a, b) => new Date(a.Date) - new Date(b.Date));
+    rows.sort((a, b) => parseDateSafe(a.Date) - parseDateSafe(b.Date));
 
     if (rows.length < 80) {
       throw new Error("Dữ liệu cần ít nhất 80 phiên giao dịch.");
@@ -473,8 +501,31 @@ footer{background:var(--ink);color:#fff;padding:40px 0}.foot{display:flex;justif
     return result;
   }
 
+  // FIX #2 (lỗ hổng đã phát hiện): trước đây chỉ yêu cầu tối thiểu 80 phiên
+  // trong parseCSV, không kiểm tra so với các cửa sổ (window) đang chọn.
+  // Nếu volatilityWindow = 60 mà dữ liệu chỉ có 80-100 phiên, phần lớn kết
+  // quả (Z-score, volatility...) sẽ dựa trên rất ít điểm dữ liệu hợp lệ,
+  // dễ gây kết luận sai lệch mà không có cảnh báo nào cho người dùng.
+  function checkDataSufficiency(data) {
+    const momentumWindow = Number($("momentumWindow").value);
+    const volatilityWindow = Number($("volatilityWindow").value);
+    const payoffWindow = Number($("payoffWindow").value);
+    const maxWindow = Math.max(momentumWindow, volatilityWindow, payoffWindow);
+    const recommendedMin = maxWindow * 4;
+
+    if (data.length < recommendedMin) {
+      return {
+        insufficient: true,
+        message: `Cảnh báo dữ liệu mỏng: chỉ có ${data.length} phiên trong khi cửa sổ lớn nhất đang chọn là ${maxWindow} phiên. Nên có tối thiểu khoảng ${recommendedMin} phiên (gấp ~4 lần window) để Z-score và các chỉ báo ổn định, nếu không kết quả đầu chuỗi dữ liệu có thể kém tin cậy.`
+      };
+    }
+    return { insufficient: false, message: "" };
+  }
+
   function renderDashboard() {
     try {
+      const sufficiency = checkDataSufficiency(state.rawData);
+
       state.result = runModel(state.rawData);
 
       const latest = state.result[state.result.length - 1];
@@ -487,16 +538,20 @@ footer{background:var(--ink);color:#fff;padding:40px 0}.foot{display:flex;justif
       $("sourceBadge").textContent = `Nguồn: ${state.sourceName}`;
 
       const alertBox = $("riskAlert");
-      alertBox.className = "alert " + (
-        latest.RiskLevel === "Cao" ? "high" :
-        latest.RiskLevel === "Trung bình" ? "medium" : "low"
-      );
 
-      if (latest.RiskLevel === "Cao") {
+      if (sufficiency.insufficient) {
+        // Cảnh báo dữ liệu mỏng được ưu tiên hiển thị vì ảnh hưởng đến
+        // độ tin cậy của MỌI con số bên dưới, không chỉ risk score.
+        alertBox.className = "alert medium";
+        alertBox.textContent = sufficiency.message;
+      } else if (latest.RiskLevel === "Cao") {
+        alertBox.className = "alert high";
         alertBox.textContent = "Cảnh báo: thị trường đang có mức rủi ro bầy đàn cao. Cần theo dõi thêm biến động, thanh khoản và áp lực bán.";
       } else if (latest.RiskLevel === "Trung bình") {
+        alertBox.className = "alert medium";
         alertBox.textContent = "Mức rủi ro bầy đàn trung bình. Nên tiếp tục theo dõi sự tập trung chiến lược và khối lượng giao dịch.";
       } else {
+        alertBox.className = "alert low";
         alertBox.textContent = "Mức rủi ro bầy đàn hiện tại thấp theo các tham số đang chọn.";
       }
 
