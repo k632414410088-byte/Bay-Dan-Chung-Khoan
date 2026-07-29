@@ -1,1912 +1,33 @@
-<!DOCTYPE html>
-<html lang="vi">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>BầyĐànChứngKhoán | Fintech MVP
-    </title>
-    <!-- Fonts -->
-    <style>
-
-/* ===== Biến màu & design tokens dùng chung toàn trang ===== */
-      
-:root{
-  --ink:#10251f;
-  --green:#2f8f68;
-  --mint:#baf0e7;
-  --purple:#eadcff;
-  --pink:#ffc8e8;
-  --blue:#cfe7ff;
-  --yellow:#f3f778;
-  --cream:#f4efe8;
-  --page:#edf1ec;
-  --line:#dfe5df;
-  --muted:#6d7d74;
-  --red:#e45858;
-  --white:#fff}
-
-/* ===== Reset mặc định của trình duyệt ===== */
-      
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
-  background: var(--page);
-  color: var(--ink);
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-button, input {
-  font: inherit;
-}
-
-/* ===== Khung bao ngoài toàn trang (card lớn, bo góc, đổ bóng) ===== */
-      
-.shell {
-  width: min(1440px, calc(100% - 36px));
-  margin: 18px auto;
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 30px;
-  overflow: hidden;
-  box-shadow: 0 26px 80px rgba(16, 37, 31, .12);
-}
-
-.container {
-  width: min(1180px, calc(100% - 46px));
-  margin: auto;
-}
-
-/* ===== Header ===== */
-header {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  background: rgba(255, 255, 255, .94);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--line);
-}
-
-.nav {
-  height: 76px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  font-size: 20px;
-  font-weight: 950;
-  letter-spacing: -.04em;
-}
-
-.mark {
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  background: var(--ink);
-  position: relative;
-  overflow: hidden;
-}
-
-.mark:before, .mark:after {
-  content: "";
-  position: absolute;
-  width: 8px;
-  border-radius: 7px;
-  bottom: 6px;
-  transform: rotate(42deg);
-}
-
-.mark:before {
-  height: 24px;
-  left: 12px;
-  background: var(--yellow);
-}
-
-.mark:after {
-  height: 32px;
-  right: 11px;
-  bottom: 2px;
-  background: #fff;
-}
-
-.links {
-  display: flex;
-  gap: 28px;
-  font-size: 13px;
-  font-weight: 800;
-  color: #35584f;
-}
-
-.links a:hover {
-  color: var(--green);
-}
-
-.btn {
-  border: 0;
-  border-radius: 999px;
-  min-height: 44px;
-  padding: 0 19px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 900;
-  cursor: pointer;
-  transition: .2s;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-}
-
-.btn.dark {
-  background: var(--ink);
-  color: #fff;
-}
-
-.btn.light {
-  background: #fff;
-  border: 1px solid var(--line);
-  color: var(--ink);
-}
-
-/* ===== Hero ===== */
-.hero{min-height:600px;color:#fff;position:relative;overflow:hidden}
-.hero-bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
-.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(16,47,39,.82),rgba(16,47,39,.28)),radial-gradient(circle at 82% 20%,rgba(243,247,120,.35),transparent 22%);z-index:1}
-.hero-grid{min-height:600px;display:grid;grid-template-columns:1.02fr .98fr;gap:52px;align-items:center;position:relative;z-index:2}
-
-.tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border: 1px solid rgba(255, 255, 255, .25);
-  background: rgba(255, 255, 255, .12);
-  padding: 7px 11px;
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 950;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-
-.dot {
-  width: 8px;
-  height: 8px;
-  background: var(--yellow);
-  border-radius: 50%;
-  box-shadow: 0 0 0 6px rgba(243, 247, 120, .16);
-}
-
-h1 {
-  font-size: clamp(46px, 6vw, 78px);
-  line-height: .98;
-  letter-spacing: -.065em;
-  margin: 20px 0 0;
-  max-width: 730px;
-}
-
-.hero p {
-  max-width: 640px;
-  color: rgba(255, 255, 255, .84);
-  font-size: 16px;
-  line-height: 1.7;
-  margin: 24px 0 0;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: 31px;
-}
-
-.hero .light {
-  background: rgba(255, 255, 255, .12);
-  color: #fff;
-  border-color: rgba(255, 255, 255, .26);
-}
-
-.visual {
-  position: relative;
-  min-height: 520px;
-  display: grid;
-  place-items: center;
-}
-
-/* -- Khối mock điện thoại/dashboard mini trong Hero -- */
-      
-.mock {
-  width: min(500px, 100%);
-  padding: 17px;
-  border-radius: 27px;
-  background: rgba(255, 255, 255, .96);
-  box-shadow: 0 35px 90px rgba(8, 36, 28, .28);
-  transform: rotate(1.4deg);
-}
-
-.mock-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 4px 4px 16px;
-  font-size: 13px;
-  font-weight: 900;
-}
-
-.live {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-.live i {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #36a767;
-  box-shadow: 0 0 0 6px rgba(54, 167, 103, .12);
-}
-
-.chip {
-  padding: 7px 10px;
-  border-radius: 999px;
-  background: #dff5e8;
-  color: #2f8f68;
-  font-size: 10px;
-}
-
-.screen {
-  background: var(--ink);
-  color: #fff;
-  border-radius: 21px;
-  padding: 22px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-  align-items: end;
-}
-
-.screen small {
-  color: rgba(255, 255, 255, .55);
-  font-weight: 800;
-}
-
-.screen strong {
-  display: block;
-  font-size: 42px;
-  letter-spacing: -.05em;
-  margin: 8px 0 4px;
-}
-
-.screen em {
-  color: #c9f5d8;
-  font-style: normal;
-  font-size: 12px;
-  font-weight: 900;
-}
-
-.screen svg {
-  height: 120px;
-  width: 100%;
-}
-
-.mini {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin-top: 13px;
-}
-
-.mini div {
-  padding: 13px;
-  border-radius: 15px;
-  min-height: 86px;
-}
-
-.mini small {
-  display: block;
-  font-size: 9px;
-  font-weight: 900;
-  text-transform: uppercase;
-}
-
-.mini strong {
-  display: block;
-  font-size: 22px;
-  margin-top: 10px;
-}
-
-.float {
-  position: absolute;
-  padding: 11px 14px;
-  border-radius: 15px;
-  background: #fff;
-  color: var(--ink);
-  box-shadow: 0 16px 40px rgba(12, 42, 34, .17);
-  font-size: 11px;
-  font-weight: 900;
-}
-
-.float.a {
-  left: -10px;
-  top: 105px;
-  transform: rotate(-7deg);
-}
-
-.float.b {
-  right: -15px;
-  bottom: 90px;
-  background: var(--yellow);
-  transform: rotate(5deg);
-}
-
-/* ===== Stats ===== */
-.stats {
-  background: var(--ink);
-  color: #fff;
-  padding: 50px 0;
-}
-
-.stats h2 {
-  text-align: center;
-  font-size: 23px;
-  margin: 0 0 30px;
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.stat {
-  text-align: center;
-  padding: 8px 24px;
-  border-right: 1px solid rgba(255, 255, 255, .13);
-}
-
-.stat:last-child {
-  border: 0;
-}
-
-.stat b {
-  display: block;
-  font-size: 40px;
-  letter-spacing: -.05em;
-}
-
-.stat span {
-  font-size: 11px;
-  color: rgba(255, 255, 255, .55);
-}
-
-/* ===== Section chung ===== */
-.section {
-  padding: 82px 0;
-}
-
-.soft {
-  background: #f6f8f5;
-}
-
-.kicker {
-  color: var(--green);
-  font-size: 11px;
-  font-weight: 950;
-  letter-spacing: .11em;
-  text-transform: uppercase;
-  margin-bottom: 13px;
-}
-
-.title {
-  font-family: "Anton", sans-serif;
-  font-size: clamp(34px, 4vw, 52px);
-  line-height: 1.04;
-  letter-spacing: -.055em;
-  margin: 0;
-  font-weight: 950;
-}
-
-h3, h4, .logo {
-  font-family: "Bitter", serif;
-  font-weight: 800;
-}
-      
-.copy {
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.75;
-}
-
-.split {
-  display: grid;
-  grid-template-columns: .9fr 1.1fr;
-  gap: 68px;
-  align-items: center;
-}
-
-/* -- Khối minh họa "Phương pháp nghiên cứu" (phone mockup, popup %) -- */
-      
-.art {
-  min-height: 420px;
-  border-radius: 27px;
-  background:
-    radial-gradient(circle at 36% 27%, rgba(243, 247, 120, .65), transparent 22%),
-    linear-gradient(145deg, #d7e8dc, #efdcc8 58%, #b9d9d0);
-  position: relative;
-  overflow: hidden;
-}
-
-.phone {
-  width: 228px;
-  height: 350px;
-  position: absolute;
-  right: 48px;
-  bottom: -26px;
-  border-radius: 32px;
-  background: var(--ink);
-  padding: 11px;
-  transform: rotate(8deg);
-  box-shadow: 0 28px 60px rgba(16, 37, 31, .22);
-}
-
-.phone > div {
-  height: 100%;
-  border-radius: 24px;
-  background: #f8faf7;
-  padding: 18px;
-}
-
-.line {
-  height: 11px;
-  border-radius: 9px;
-  background: #dce4de;
-  margin-bottom: 11px;
-}
-
-.block {
-  height: 110px;
-  border-radius: 17px;
-  background: #dff5e8;
-  margin-top: 18px;
-  padding: 15px;
-}
-
-.bars {
-  height: 58px;
-  display: flex;
-  gap: 6px;
-  align-items: flex-end;
-}
-
-.bars i {
-  flex: 1;
-  background: var(--green);
-  border-radius: 5px 5px 0 0;
-}
-
-.pop {
-  position: absolute;
-  left: 35px;
-  top: 58px;
-  width: 220px;
-  padding: 20px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, .95);
-  box-shadow: 0 22px 50px rgba(16, 37, 31, .16);
-}
-
-.pop b {
-  display: block;
-  font-size: 36px;
-  color: var(--green);
-  letter-spacing: -.05em;
-}
-
-.list {
-  display: grid;
-  gap: 12px;
-  margin-top: 25px;
-}
-
-.list div {
-  display: flex;
-  gap: 11px;
-  font-size: 14px;
-  font-weight: 750;
-}
-
-.num {
-  width: 27px;
-  height: 27px;
-  border-radius: 9px;
-  background: #dff5e8;
-  color: var(--green);
-  display: grid;
-  place-items: center;
-  font-weight: 950;
-  flex: 0 0 27px;
-}
-
-/* ===== Feature cards ===== */
-.center {
-  text-align: center;
-  max-width: 760px;
-  margin: 0 auto 42px;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-}
-
-.fcard {
-  min-height: 218px;
-  border-radius: 21px;
-  padding: 23px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: .2s;
-  border: 1px solid rgba(16, 37, 31, .06);
-}
-
-.fcard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 18px 50px rgba(16, 37, 31, .09);
-}
-
-.fcard .ico {
-  width: 52px;
-  height: 52px;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, .65);
-  display: grid;
-  place-items: center;
-  font-size: 23px;
-}
-
-.fcard h3 {
-  font-size: 19px;
-  margin: 25px 0 7px;
-  letter-spacing: -.03em;
-}
-
-.fcard p {
-  font-size: 12px;
-  line-height: 1.6;
-  color: #35584f;
-  margin: 0;
-}
-
-.purple { background: var(--purple); }
-.mint   { background: var(--mint); }
-.pink   { background: var(--pink); }
-.blue   { background: var(--blue); }
-.cream  { background: var(--cream); }
-.yellow { background: var(--yellow); }
-
-/* ===== Dashboard ===== */
-.dashboard {
-  background: #edf2ec;
-}
-
-.dash-shell {
-  margin-top: 42px;
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 27px;
-  padding: 20px;
-  box-shadow: 0 22px 60px rgba(16, 37, 31, .09);
-}
-
-.dash-grid {
-  display: grid;
-  grid-template-columns: 285px 1fr;
-  gap: 17px;
-  align-items: start;
-}
-
-/* -- Panel điều khiển tham số bên trái (sidebar controls) -- */
-      
-.controls {
-  background: var(--ink);
-  color: #fff;
-  border-radius: 21px;
-  padding: 21px;
-  position: sticky;
-  top: 98px;
-}
-
-.controls h3 {
-  margin: 0 0 4px;
-}
-
-.controls > p {
-  color: rgba(255, 255, 255, .55);
-  font-size: 11px;
-  margin: 0 0 18px;
-}
-
-.control {
-  margin-bottom: 16px;
-}
-
-.control label {
-  display: block;
-  font-size: 11px;
-  font-weight: 900;
-  margin-bottom: 7px;
-}
-
-.range-row {
-  display: flex;
-  justify-content: space-between;
-  color: rgba(255, 255, 255, .55);
-  font-size: 10px;
-  margin-top: 4px;
-}
-
-.range-row strong {
-  color: #d8f5e1;
-}
-
-input[type=range] {
-  width: 100%;
-  accent-color: var(--yellow);
-}
-
-input[type=file] {
-  width: 100%;
-  padding: 10px;
-  background: rgba(255, 255, 255, .07);
-  border: 1px dashed rgba(255, 255, 255, .2);
-  border-radius: 11px;
-  color: rgba(255, 255, 255, .65);
-  font-size: 10px;
-}
-
-.controls button {
-  width: 100%;
-  border: 0;
-  border-radius: 12px;
-  padding: 12px;
-  font-weight: 900;
-  cursor: pointer;
-  margin-top: 8px;
-}
-
-.controls button:not(.secondary) {
-  background: var(--green);
-  color: #fff;
-}
-
-.controls .secondary {
-  background: rgba(255, 255, 255, .08);
-  border: 1px solid rgba(255, 255, 255, .15);
-  color: #fff;
-}
-
-.note {
-  margin-top: 17px;
-  padding-top: 15px;
-  border-top: 1px solid rgba(255, 255, 255, .12);
-  font-size: 10px;
-  color: rgba(255, 255, 255, .5);
-  line-height: 1.6;
-}
-
-.dash-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 14px;
-}
-
-.dash-head h3 {
-  margin: 0 0 3px;
-  font-size: 23px;
-}
-
-.dash-head p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 11px;
-}
-
-.source-badge {
-  padding: 8px 11px;
-  border-radius: 999px;
-  background: #dff5e8;
-  color: var(--green);
-  font-size: 10px;
-  font-weight: 900;
-}
-
-/* -- Biểu đồ SVG, bảng dữ liệu, legend -- */
-      
-.metrics {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 11px;
-  margin-bottom: 13px;
-}
-
-.metric {
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 15px;
-  background: #fbfcfa;
-}
-
-.metric-label {
-  color: var(--muted);
-  font-size: 10px;
-  font-weight: 800;
-  margin-bottom: 8px;
-}
-
-.metric-value {
-  font-size: 23px;
-  font-weight: 950;
-  letter-spacing: -.04em;
-}
-
-.metric-sub {
-  color: var(--muted);
-  font-size: 9px;
-  margin-top: 6px;
-}
-
-.alert {
-  border-radius: 14px;
-  padding: 12px 14px;
-  margin-bottom: 13px;
-  font-size: 11px;
-  font-weight: 750;
-}
-
-.alert.low    { background: #e6f7ed; color: #1e6841; }
-.alert.medium { background: #fff5db; color: #79530d; }
-.alert.high   { background: #ffebeb; color: #8b2929; }
-
-.card {
-  border: 1px solid var(--line);
-  border-radius: 17px;
-  padding: 15px;
-  background: #fff;
-  box-shadow: none;
-}
-
-.card h3 {
-  font-size: 14px;
-  margin: 0 0 4px;
-}
-
-.card > p {
-  font-size: 9px;
-  color: var(--muted);
-}
-
-.chart-wide {
-  margin-bottom: 13px;
-}
-
-.grid-2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 13px;
-  margin-bottom: 13px;
-}
-
-.chart-card {
-  min-height: 360px;
-}
-
-svg {
-  width: 100%;
-  height: 290px;
-  background: #f8faf7;
-  border-radius: 12px;
-}
-
-.legend {
-  display: flex;
-  gap: 13px;
-  flex-wrap: wrap;
-  margin-top: 8px;
-  font-size: 9px;
-  color: var(--muted);
-}
-
-.legend span:before {
-  content: "";
-  width: 8px;
-  height: 8px;
-  display: inline-block;
-  margin-right: 5px;
-  border-radius: 3px;
-  background: var(--legend-color);
-}
-
-.table-wrap {
-  overflow: auto;
-  max-height: 350px;
-  border-radius: 11px;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 10px;
-  min-width: 760px;
-}
-
-th, td {
-  padding: 10px 9px;
-  border-bottom: 1px solid var(--line);
-  text-align: right;
-  white-space: nowrap;
-}
-
-th:first-child, td:first-child {
-  text-align: left;
-}
-
-th {
-  position: sticky;
-  top: 0;
-  background: #f7f9f6;
-  color: var(--muted);
-}
-
-.pill {
-  padding: 4px 7px;
-  border-radius: 999px;
-  font-size: 8px;
-  font-weight: 900;
-}
-
-.pill.high {
-  background: #ffdfdf;
-  color: #8b2929;
-}
-
-/* ===== Footer ===== */
-footer {
-  background: var(--ink);
-  color: #fff;
-  padding: 40px 0;
-}
-
-.foot {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-}
-
-.foot p {
-  color: rgba(255, 255, 255, .55);
-  font-size: 11px;
-}
-
-.badge {
-  background: var(--yellow);
-  color: var(--ink);
-  padding: 9px 13px;
-  border-radius: 999px;
-  font-size: 10px;
-  font-weight: 950;
-}
-
-/* ===== Responsive ===== */
-@media (max-width: 1050px) {
-  .links { display: none; }
-  .hero-grid { grid-template-columns: 1fr; }
-  .hero { padding: 60px 0; }
-  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 22px 0; }
-  .stat:nth-child(2) { border: 0; }
-  .split { grid-template-columns: 1fr; }
-  .cards { grid-template-columns: repeat(2, 1fr); }
-  .dash-grid { grid-template-columns: 1fr; }
-  .controls { position: static; }
-  .metrics { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 720px) {
-  .shell { width: 100%; margin: 0; border-radius: 0; }
-  .container { width: calc(100% - 28px); }
-  .nav .light { display: none; }
-  .hero h1 { font-size: 48px; }
-  .visual { min-height: 430px; }
-  .float { display: none; }
-  .mock { transform: none; }
-  .stats-grid, .cards, .metrics, .grid-2 { grid-template-columns: 1fr; }
-  .stat { border-right: 0; border-bottom: 1px solid rgba(255, 255, 255, .13); }
-  .split { gap: 38px; }
-  .section { padding: 62px 0; }
-  .phone { right: 15px; }
-  .pop { left: 15px; }
-  .dash-head, .foot { flex-direction: column; align-items: flex-start; }
-  .source-badge { white-space: normal; }
-}
-      
-/* ===== Khối Phân tích định lượng chuyên sâu (deep-analysis) ===== */
-
-.analysis-panel {
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  padding: 18px;
-  background: linear-gradient(145deg, #fbfdfb, #f2f7f3);
-  margin-bottom: 13px;
-}
-
-.analysis-head {
-  display: flex;
-  justify-content: space-between;
-  gap: 18px;
-  align-items: flex-start;
-  margin-bottom: 15px;
-}
-
-.analysis-head h3 {
-  margin: 0 0 5px;
-  font-size: 18px;
-  letter-spacing: -.035em;
-}
-
-.analysis-head p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 10px;
-  line-height: 1.6;
-}
-
-.analysis-tag {
-  padding: 7px 10px;
-  border-radius: 999px;
-  background: var(--ink);
-  color: #fff;
-  font-size: 9px;
-  font-weight: 900;
-  white-space: nowrap;
-}
-
-.analysis-summary {
-  padding: 15px 16px;
-  border-radius: 15px;
-  background: #fff;
-  border: 1px solid var(--line);
-  font-size: 12px;
-  line-height: 1.75;
-  color: #31574d;
-  margin-bottom: 13px;
-}
-
-.analysis-summary strong {
-  color: var(--ink);
-}
-
-.insight-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin-bottom: 13px;
-}
-
-.insight-card {
-  padding: 14px;
-  border-radius: 15px;
-  border: 1px solid rgba(16, 37, 31, .06);
-  min-height: 116px;
-}
-
-.insight-card:nth-child(1) { background: var(--purple); }
-.insight-card:nth-child(2) { background: var(--mint); }
-.insight-card:nth-child(3) { background: var(--blue); }
-.insight-card:nth-child(4) { background: var(--yellow); }
-
-.insight-card small {
-  display: block;
-  color: #47665d;
-  font-size: 9px;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: .05em;
-}
-
-.insight-card strong {
-  display: block;
-  font-size: 21px;
-  line-height: 1.1;
-  margin: 10px 0 6px;
-  letter-spacing: -.04em;
-}
-
-.insight-card span {
-  display: block;
-  color: #47665d;
-  font-size: 9px;
-  line-height: 1.45;
-}
-
-.analysis-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 13px;
-  margin-bottom: 13px;
-}
-
-.analysis-box {
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 15px;
-  background: #fff;
-}
-
-.analysis-box h4 {
-  font-size: 14px;
-  margin: 0 0 4px;
-}
-
-.analysis-box > p {
-  font-size: 9px;
-  color: var(--muted);
-  line-height: 1.55;
-  margin: 0 0 13px;
-}
-
-.component-row {
-  margin-bottom: 13px;
-}
-
-.component-row:last-child {
-  margin-bottom: 0;
-}
-
-.component-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  font-size: 10px;
-  font-weight: 850;
-  margin-bottom: 6px;
-}
-
-.component-top span {
-  color: var(--muted);
-  font-size: 9px;
-}
-
-.component-track {
-  height: 9px;
-  border-radius: 999px;
-  background: #edf1ed;
-  overflow: hidden;
-}
-
-.component-track i {
-  display: block;
-  height: 100%;
-  border-radius: 999px;
-  transition: width .35s ease;
-}
-
-.component-row:nth-of-type(1) i { background: #7759b8; }
-.component-row:nth-of-type(2) i { background: #e45858; }
-.component-row:nth-of-type(3) i { background: #2b9f91; }
-.component-row:nth-of-type(4) i { background: #e5a72f; }
-
-.research-list {
-  display: grid;
-  gap: 9px;
-}
-
-.research-item {
-  display: grid;
-  grid-template-columns: 30px 1fr;
-  gap: 10px;
-  align-items: start;
-  padding: 10px;
-  border-radius: 12px;
-  background: #f7f9f6;
-}
-
-.research-item b {
-  width: 30px;
-  height: 30px;
-  border-radius: 9px;
-  background: var(--green);
-  color: #fff;
-  display: grid;
-  place-items: center;
-  font-size: 11px;
-}
-
-.research-item strong {
-  display: block;
-  font-size: 10px;
-  margin-bottom: 3px;
-}
-
-.research-item span {
-  display: block;
-  color: var(--muted);
-  font-size: 9px;
-  line-height: 1.5;
-}
-
-.metric-table {
-  width: 100%;
-  min-width: 0;
-  font-size: 10px;
-}
-
-.metric-table td {
-  padding: 9px 7px;
-}
-
-.metric-table td:first-child {
-  text-align: left;
-  color: var(--muted);
-}
-
-.metric-table td:last-child {
-  text-align: right;
-  font-weight: 900;
-  color: var(--ink);
-}
-
-.top-risk-wrap {
-  max-height: 270px;
-  overflow: auto;
-  border-radius: 12px;
-}
-
-.top-risk-table {
-  min-width: 640px;
-}
-
-.methodology-grid {
-  display: grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap: 13px;
-  margin-top: 13px;
-}
-
-.formula-box {
-  background: var(--ink);
-  color: #fff;
-  border-radius: 16px;
-  padding: 16px;
-}
-
-.formula-box h4 {
-  margin: 0 0 10px;
-  font-size: 14px;
-}
-
-.formula {
-  padding: 11px;
-  border-radius: 11px;
-  background: rgba(255, 255, 255, .08);
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 10px;
-  line-height: 1.7;
-  overflow: auto;
-}
-
-.formula-box p {
-  color: rgba(255, 255, 255, .58);
-  font-size: 9px;
-  line-height: 1.6;
-  margin: 11px 0 0;
-}
-
-.limitations {
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 16px;
-  background: #fff;
-}
-
-.limitations h4 {
-  margin: 0 0 9px;
-  font-size: 14px;
-}
-
-.limitations ul {
-  padding-left: 17px;
-  margin: 0;
-  color: var(--muted);
-  font-size: 9px;
-  line-height: 1.7;
-}
-
-.analysis-note {
-  margin-top: 12px;
-  padding: 11px 13px;
-  border-radius: 12px;
-  background: #fff5db;
-  color: #72510f;
-  font-size: 9px;
-  line-height: 1.6;
-  border: 1px solid #f0dfa8;
-}
-
-@media (max-width: 1100px) {
-  .insight-grid { grid-template-columns: repeat(2, 1fr); }
-  .analysis-grid, .methodology-grid { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 760px) {
-  .analysis-head { flex-direction: column; }
-  .insight-grid { grid-template-columns: 1fr; }
-}
-      
-/* ===== Khối Hướng dẫn hành động cho người dùng (user-action) ===== */
-
-.guidance-panel {
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  padding: 18px;
-  background: #fff;
-  margin: 13px 0;
-}
-
-.guidance-head {
-  display: flex;
-  justify-content: space-between;
-  gap: 18px;
-  align-items: flex-start;
-  margin-bottom: 15px;
-}
-
-.guidance-head h3 {
-  margin: 0 0 5px;
-  font-size: 18px;
-  letter-spacing: -.035em;
-}
-
-.guidance-head p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 10px;
-  line-height: 1.6;
-}
-
-.guidance-badge {
-  padding: 7px 10px;
-  border-radius: 999px;
-  background: var(--yellow);
-  color: var(--ink);
-  font-size: 9px;
-  font-weight: 950;
-  white-space: nowrap;
-}
-
-.stock-conclusion {
-  padding: 16px;
-  border-radius: 16px;
-  background: linear-gradient(135deg, #10251f, #24483f);
-  color: #fff;
-  margin-bottom: 13px;
-}
-
-.stock-conclusion small {
-  display: block;
-  color: rgba(255, 255, 255, .58);
-  font-size: 9px;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: .08em;
-  margin-bottom: 7px;
-}
-
-.stock-conclusion h4 {
-  margin: 0 0 7px;
-  font-size: 20px;
-  letter-spacing: -.04em;
-}
-
-.stock-conclusion p {
-  margin: 0;
-  color: rgba(255, 255, 255, .76);
-  font-size: 11px;
-  line-height: 1.7;
-}
-
-.guidance-cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin-bottom: 13px;
-}
-
-.guidance-card {
-  border-radius: 15px;
-  padding: 14px;
-  min-height: 126px;
-  border: 1px solid rgba(16, 37, 31, .06);
-}
-
-.guidance-card:nth-child(1) { background: var(--blue); }
-.guidance-card:nth-child(2) { background: var(--pink); }
-.guidance-card:nth-child(3) { background: var(--mint); }
-.guidance-card:nth-child(4) { background: var(--cream); }
-
-.guidance-card small {
-  display: block;
-  color: #47665d;
-  font-size: 9px;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: .05em;
-}
-
-.guidance-card strong {
-  display: block;
-  font-size: 18px;
-  line-height: 1.15;
-  margin: 10px 0 6px;
-  letter-spacing: -.035em;
-}
-
-.guidance-card span {
-  font-size: 9px;
-  line-height: 1.5;
-  color: #47665d;
-}
-
-.action-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 13px;
-  margin-bottom: 13px;
-}
-
-.action-box {
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 15px;
-  background: #fbfcfa;
-}
-
-.action-box h4 {
-  margin: 0 0 4px;
-  font-size: 14px;
-}
-
-.action-box > p {
-  margin: 0 0 12px;
-  color: var(--muted);
-  font-size: 9px;
-  line-height: 1.55;
-}
-
-.action-list, .condition-list {
-  display: grid;
-  gap: 8px;
-}
-
-.action-item {
-  display: grid;
-  grid-template-columns: 28px 1fr;
-  gap: 10px;
-  align-items: start;
-  padding: 10px;
-  border-radius: 12px;
-  background: #fff;
-  border: 1px solid var(--line);
-}
-
-.action-item b {
-  width: 28px;
-  height: 28px;
-  border-radius: 9px;
-  background: var(--ink);
-  color: #fff;
-  display: grid;
-  place-items: center;
-  font-size: 10px;
-}
-
-.action-item strong {
-  display: block;
-  font-size: 10px;
-  margin-bottom: 3px;
-}
-
-.action-item span {
-  display: block;
-  color: var(--muted);
-  font-size: 9px;
-  line-height: 1.5;
-}
-
-.condition-item {
-  display: grid;
-  grid-template-columns: 12px 1fr auto;
-  gap: 9px;
-  align-items: center;
-  padding: 10px;
-  border-radius: 12px;
-  background: #fff;
-  border: 1px solid var(--line);
-  font-size: 9px;
-}
-
-.condition-item i {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  display: block;
-}
-
-.condition-item strong {
-  font-size: 10px;
-}
-
-.condition-item span {
-  color: var(--muted);
-  font-size: 8px;
-  text-align: right;
-}
-
-.condition-item.ok i {
-  background: #2f9d63;
-  box-shadow: 0 0 0 4px rgba(47, 157, 99, .12);
-}
-
-.condition-item.watch i {
-  background: #e5a72f;
-  box-shadow: 0 0 0 4px rgba(229, 167, 47, .12);
-}
-
-.condition-item.risk i {
-  background: #e45858;
-  box-shadow: 0 0 0 4px rgba(228, 88, 88, .12);
-}
-
-.workflow-title {
-  margin: 2px 0 11px;
-  font-size: 14px;
-}
-
-.workflow-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 9px;
-}
-
-.workflow-step {
-  padding: 12px;
-  border-radius: 14px;
-  background: #f7f9f6;
-  border: 1px solid var(--line);
-  min-height: 126px;
-}
-
-.workflow-step b {
-  width: 29px;
-  height: 29px;
-  border-radius: 9px;
-  background: var(--green);
-  color: #fff;
-  display: grid;
-  place-items: center;
-  font-size: 10px;
-  margin-bottom: 10px;
-}
-
-.workflow-step strong {
-  display: block;
-  font-size: 10px;
-  margin-bottom: 5px;
-}
-
-.workflow-step span {
-  display: block;
-  font-size: 8.5px;
-  color: var(--muted);
-  line-height: 1.5;
-}
-
-.guidance-disclaimer {
-  margin-top: 12px;
-  padding: 11px 13px;
-  border-radius: 12px;
-  background: #fff5db;
-  color: #72510f;
-  border: 1px solid #f0dfa8;
-  font-size: 9px;
-  line-height: 1.6;
-}
-
-input[type=text] {
-  width: 100%;
-  padding: 10px;
-  background: rgba(255, 255, 255, .07);
-  border: 1px solid rgba(255, 255, 255, .18);
-  border-radius: 11px;
-  color: #fff;
-  font-size: 11px;
-  outline: none;
-}
-
-input[type=text]::placeholder {
-  color: rgba(255, 255, 255, .42);
-}
-
-input[type=text]:focus {
-  border-color: var(--yellow);
-}
-
-@media (max-width: 1100px) {
-  .guidance-cards { grid-template-columns: repeat(2, 1fr); }
-  .workflow-grid { grid-template-columns: repeat(3, 1fr); }
-}
-
-@media (max-width: 760px) {
-  .guidance-head { flex-direction: column; }
-  .guidance-cards, .action-grid, .workflow-grid { grid-template-columns: 1fr; }
-  .condition-item { grid-template-columns: 12px 1fr; }
-  .condition-item span { grid-column: 2; text-align: left; }
-}</style></head><body>
+<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BầyĐànChứngKhoán | Fintech MVP</title><style>
+:root{--ink:#10251f;--green:#2f8f68;--mint:#baf0e7;--purple:#eadcff;--pink:#ffc8e8;--blue:#cfe7ff;--yellow:#f3f778;--cream:#f4efe8;--page:#edf1ec;--line:#dfe5df;--muted:#6d7d74;--red:#e45858;--white:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--page);color:var(--ink)}a{text-decoration:none;color:inherit}button,input{font:inherit}.shell{width:min(1440px,calc(100% - 36px));margin:18px auto;background:#fff;border:1px solid var(--line);border-radius:30px;overflow:hidden;box-shadow:0 26px 80px rgba(16,37,31,.12)}.container{width:min(1180px,calc(100% - 46px));margin:auto}
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}.logo{display:flex;align-items:center;gap:11px;font-size:20px;font-weight:950;letter-spacing:-.04em}.mark{width:40px;height:40px;border-radius:12px;background:var(--ink);position:relative;overflow:hidden}.mark:before,.mark:after{content:"";position:absolute;width:8px;border-radius:7px;bottom:6px;transform:rotate(42deg)}.mark:before{height:24px;left:12px;background:var(--yellow)}.mark:after{height:32px;right:11px;bottom:2px;background:#fff}.links{display:flex;gap:28px;font-size:13px;font-weight:800;color:#35584f}.links a:hover{color:var(--green)}.btn{border:0;border-radius:999px;min-height:44px;padding:0 19px;display:inline-flex;align-items:center;justify-content:center;font-weight:900;cursor:pointer;transition:.2s}.btn:hover{transform:translateY(-2px)}.btn.dark{background:var(--ink);color:#fff}.btn.light{background:#fff;border:1px solid var(--line);color:var(--ink)}
+.hero{min-height:600px;color:#fff;background:linear-gradient(90deg,rgba(16,47,39,.9),rgba(16,47,39,.16)),radial-gradient(circle at 82% 20%,rgba(243,247,120,.5),transparent 22%),linear-gradient(135deg,#568673,#79ad85 55%,#d4c886)}.hero-grid{min-height:600px;display:grid;grid-template-columns:1.02fr .98fr;gap:52px;align-items:center}.tag{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.12);padding:7px 11px;border-radius:999px;font-size:11px;font-weight:950;letter-spacing:.08em;text-transform:uppercase}.dot{width:8px;height:8px;background:var(--yellow);border-radius:50%;box-shadow:0 0 0 6px rgba(243,247,120,.16)}h1{font-size:clamp(46px,6vw,78px);line-height:.98;letter-spacing:-.065em;margin:20px 0 0;max-width:730px} .hero p{max-width:640px;color:rgba(255,255,255,.84);font-size:16px;line-height:1.7;margin:24px 0 0}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:31px}.hero .light{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.26)}.visual{position:relative;min-height:520px;display:grid;place-items:center}.mock{width:min(500px,100%);padding:17px;border-radius:27px;background:rgba(255,255,255,.96);box-shadow:0 35px 90px rgba(8,36,28,.28);transform:rotate(1.4deg)}.mock-top{display:flex;justify-content:space-between;align-items:center;padding:4px 4px 16px;font-size:13px;font-weight:900}.live{display:flex;gap:8px;align-items:center}.live i{width:10px;height:10px;border-radius:50%;background:#36a767;box-shadow:0 0 0 6px rgba(54,167,103,.12)}.chip{padding:7px 10px;border-radius:999px;background:#dff5e8;color:#2f8f68;font-size:10px}.screen{background:var(--ink);color:#fff;border-radius:21px;padding:22px;display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:end}.screen small{color:rgba(255,255,255,.55);font-weight:800}.screen strong{display:block;font-size:42px;letter-spacing:-.05em;margin:8px 0 4px}.screen em{color:#c9f5d8;font-style:normal;font-size:12px;font-weight:900}.screen svg{height:120px;width:100%}.mini{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:13px}.mini div{padding:13px;border-radius:15px;min-height:86px}.mini small{display:block;font-size:9px;font-weight:900;text-transform:uppercase}.mini strong{display:block;font-size:22px;margin-top:10px}.float{position:absolute;padding:11px 14px;border-radius:15px;background:#fff;color:var(--ink);box-shadow:0 16px 40px rgba(12,42,34,.17);font-size:11px;font-weight:900}.float.a{left:-10px;top:105px;transform:rotate(-7deg)}.float.b{right:-15px;bottom:90px;background:var(--yellow);transform:rotate(5deg)}
+.stats{background:var(--ink);color:#fff;padding:50px 0}.stats h2{text-align:center;font-size:23px;margin:0 0 30px}.stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}.stat{text-align:center;padding:8px 24px;border-right:1px solid rgba(255,255,255,.13)}.stat:last-child{border:0}.stat b{display:block;font-size:40px;letter-spacing:-.05em}.stat span{font-size:11px;color:rgba(255,255,255,.55)}
+.section{padding:82px 0}.soft{background:#f6f8f5}.kicker{color:var(--green);font-size:11px;font-weight:950;letter-spacing:.11em;text-transform:uppercase;margin-bottom:13px}.title{font-size:clamp(34px,4vw,52px);line-height:1.04;letter-spacing:-.055em;margin:0;font-weight:950}.copy{color:var(--muted);font-size:15px;line-height:1.75}.split{display:grid;grid-template-columns:.9fr 1.1fr;gap:68px;align-items:center}.art{min-height:420px;border-radius:27px;background:radial-gradient(circle at 36% 27%,rgba(243,247,120,.65),transparent 22%),linear-gradient(145deg,#d7e8dc,#efdcc8 58%,#b9d9d0);position:relative;overflow:hidden}.phone{width:228px;height:350px;position:absolute;right:48px;bottom:-26px;border-radius:32px;background:var(--ink);padding:11px;transform:rotate(8deg);box-shadow:0 28px 60px rgba(16,37,31,.22)}.phone>div{height:100%;border-radius:24px;background:#f8faf7;padding:18px}.line{height:11px;border-radius:9px;background:#dce4de;margin-bottom:11px}.block{height:110px;border-radius:17px;background:#dff5e8;margin-top:18px;padding:15px}.bars{height:58px;display:flex;gap:6px;align-items:flex-end}.bars i{flex:1;background:var(--green);border-radius:5px 5px 0 0}.pop{position:absolute;left:35px;top:58px;width:220px;padding:20px;border-radius:20px;background:rgba(255,255,255,.95);box-shadow:0 22px 50px rgba(16,37,31,.16)}.pop b{display:block;font-size:36px;color:var(--green);letter-spacing:-.05em}.list{display:grid;gap:12px;margin-top:25px}.list div{display:flex;gap:11px;font-size:14px;font-weight:750}.num{width:27px;height:27px;border-radius:9px;background:#dff5e8;color:var(--green);display:grid;place-items:center;font-weight:950;flex:0 0 27px}
+.center{text-align:center;max-width:760px;margin:0 auto 42px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.fcard{min-height:218px;border-radius:21px;padding:23px;display:flex;flex-direction:column;justify-content:space-between;transition:.2s;border:1px solid rgba(16,37,31,.06)}.fcard:hover{transform:translateY(-5px);box-shadow:0 18px 50px rgba(16,37,31,.09)}.fcard .ico{width:52px;height:52px;border-radius:16px;background:rgba(255,255,255,.65);display:grid;place-items:center;font-size:23px}.fcard h3{font-size:19px;margin:25px 0 7px;letter-spacing:-.03em}.fcard p{font-size:12px;line-height:1.6;color:#35584f;margin:0}.purple{background:var(--purple)}.mint{background:var(--mint)}.pink{background:var(--pink)}.blue{background:var(--blue)}.cream{background:var(--cream)}.yellow{background:var(--yellow)}
+.dashboard{background:#edf2ec}.dash-shell{margin-top:42px;background:#fff;border:1px solid var(--line);border-radius:27px;padding:20px;box-shadow:0 22px 60px rgba(16,37,31,.09)}.dash-grid{display:grid;grid-template-columns:285px 1fr;gap:17px;align-items:start}.controls{background:var(--ink);color:#fff;border-radius:21px;padding:21px;position:sticky;top:98px}.controls h3{margin:0 0 4px}.controls>p{color:rgba(255,255,255,.55);font-size:11px;margin:0 0 18px}.control{margin-bottom:16px}.control label{display:block;font-size:11px;font-weight:900;margin-bottom:7px}.range-row{display:flex;justify-content:space-between;color:rgba(255,255,255,.55);font-size:10px;margin-top:4px}.range-row strong{color:#d8f5e1}input[type=range]{width:100%;accent-color:var(--yellow)}input[type=file]{width:100%;padding:10px;background:rgba(255,255,255,.07);border:1px dashed rgba(255,255,255,.2);border-radius:11px;color:rgba(255,255,255,.65);font-size:10px}.controls button{width:100%;border:0;border-radius:12px;padding:12px;font-weight:900;cursor:pointer;margin-top:8px}.controls button:not(.secondary){background:var(--green);color:#fff}.controls .secondary{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#fff}.note{margin-top:17px;padding-top:15px;border-top:1px solid rgba(255,255,255,.12);font-size:10px;color:rgba(255,255,255,.5);line-height:1.6}.dash-head{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:14px}.dash-head h3{margin:0 0 3px;font-size:23px}.dash-head p{margin:0;color:var(--muted);font-size:11px}.source-badge{padding:8px 11px;border-radius:999px;background:#dff5e8;color:var(--green);font-size:10px;font-weight:900}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-bottom:13px}.metric{border:1px solid var(--line);border-radius:16px;padding:15px;background:#fbfcfa}.metric-label{color:var(--muted);font-size:10px;font-weight:800;margin-bottom:8px}.metric-value{font-size:23px;font-weight:950;letter-spacing:-.04em}.metric-sub{color:var(--muted);font-size:9px;margin-top:6px}.alert{border-radius:14px;padding:12px 14px;margin-bottom:13px;font-size:11px;font-weight:750}.alert.low{background:#e6f7ed;color:#1e6841}.alert.medium{background:#fff5db;color:#79530d}.alert.high{background:#ffebeb;color:#8b2929}.card{border:1px solid var(--line);border-radius:17px;padding:15px;background:#fff;box-shadow:none}.card h3{font-size:14px;margin:0 0 4px}.card>p{font-size:9px;color:var(--muted)}.chart-wide{margin-bottom:13px}.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:13px}.chart-card{min-height:360px}svg{width:100%;height:290px;background:#f8faf7;border-radius:12px}.legend{display:flex;gap:13px;flex-wrap:wrap;margin-top:8px;font-size:9px;color:var(--muted)}.legend span:before{content:"";width:8px;height:8px;display:inline-block;margin-right:5px;border-radius:3px;background:var(--legend-color)}.table-wrap{overflow:auto;max-height:350px;border-radius:11px}table{width:100%;border-collapse:collapse;font-size:10px;min-width:760px}th,td{padding:10px 9px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}th:first-child,td:first-child{text-align:left}th{position:sticky;top:0;background:#f7f9f6;color:var(--muted)}.pill{padding:4px 7px;border-radius:999px;font-size:8px;font-weight:900}.pill.high{background:#ffdfdf;color:#8b2929}
+footer{background:var(--ink);color:#fff;padding:40px 0}.foot{display:flex;justify-content:space-between;align-items:center;gap:20px}.foot p{color:rgba(255,255,255,.55);font-size:11px}.badge{background:var(--yellow);color:var(--ink);padding:9px 13px;border-radius:999px;font-size:10px;font-weight:950}
+@media(max-width:1050px){.links{display:none}.hero-grid{grid-template-columns:1fr}.hero{padding:60px 0}.stats-grid{grid-template-columns:repeat(2,1fr);gap:22px 0}.stat:nth-child(2){border:0}.split{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,1fr)}.dash-grid{grid-template-columns:1fr}.controls{position:static}.metrics{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:720px){.shell{width:100%;margin:0;border-radius:0}.container{width:calc(100% - 28px)}.nav .light{display:none}.hero h1{font-size:48px}.visual{min-height:430px}.float{display:none}.mock{transform:none}.stats-grid,.cards,.metrics,.grid-2{grid-template-columns:1fr}.stat{border-right:0;border-bottom:1px solid rgba(255,255,255,.13)}.split{gap:38px}.section{padding:62px 0}.phone{right:15px}.pop{left:15px}.dash-head,.foot{flex-direction:column;align-items:flex-start}.source-badge{white-space:normal}}
+
+/* Detailed analysis */
+.analysis-panel{border:1px solid var(--line);border-radius:18px;padding:18px;background:linear-gradient(145deg,#fbfdfb,#f2f7f3);margin-bottom:13px}.analysis-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:15px}.analysis-head h3{margin:0 0 5px;font-size:18px;letter-spacing:-.035em}.analysis-head p{margin:0;color:var(--muted);font-size:10px;line-height:1.6}.analysis-tag{padding:7px 10px;border-radius:999px;background:var(--ink);color:#fff;font-size:9px;font-weight:900;white-space:nowrap}.analysis-summary{padding:15px 16px;border-radius:15px;background:#fff;border:1px solid var(--line);font-size:12px;line-height:1.75;color:#31574d;margin-bottom:13px}.analysis-summary strong{color:var(--ink)}.insight-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:13px}.insight-card{padding:14px;border-radius:15px;border:1px solid rgba(16,37,31,.06);min-height:116px}.insight-card:nth-child(1){background:var(--purple)}.insight-card:nth-child(2){background:var(--mint)}.insight-card:nth-child(3){background:var(--blue)}.insight-card:nth-child(4){background:var(--yellow)}.insight-card small{display:block;color:#47665d;font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.05em}.insight-card strong{display:block;font-size:21px;line-height:1.1;margin:10px 0 6px;letter-spacing:-.04em}.insight-card span{display:block;color:#47665d;font-size:9px;line-height:1.45}.analysis-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:13px}.analysis-box{border:1px solid var(--line);border-radius:16px;padding:15px;background:#fff}.analysis-box h4{font-size:14px;margin:0 0 4px}.analysis-box>p{font-size:9px;color:var(--muted);line-height:1.55;margin:0 0 13px}.component-row{margin-bottom:13px}.component-row:last-child{margin-bottom:0}.component-top{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:10px;font-weight:850;margin-bottom:6px}.component-top span{color:var(--muted);font-size:9px}.component-track{height:9px;border-radius:999px;background:#edf1ed;overflow:hidden}.component-track i{display:block;height:100%;border-radius:999px;transition:width .35s ease}.component-row:nth-of-type(1) i{background:#7759b8}.component-row:nth-of-type(2) i{background:#e45858}.component-row:nth-of-type(3) i{background:#2b9f91}.component-row:nth-of-type(4) i{background:#e5a72f}.research-list{display:grid;gap:9px}.research-item{display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:start;padding:10px;border-radius:12px;background:#f7f9f6}.research-item b{width:30px;height:30px;border-radius:9px;background:var(--green);color:#fff;display:grid;place-items:center;font-size:11px}.research-item strong{display:block;font-size:10px;margin-bottom:3px}.research-item span{display:block;color:var(--muted);font-size:9px;line-height:1.5}.metric-table{width:100%;min-width:0;font-size:10px}.metric-table td{padding:9px 7px}.metric-table td:first-child{text-align:left;color:var(--muted)}.metric-table td:last-child{text-align:right;font-weight:900;color:var(--ink)}.top-risk-wrap{max-height:270px;overflow:auto;border-radius:12px}.top-risk-table{min-width:640px}.methodology-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:13px;margin-top:13px}.formula-box{background:var(--ink);color:#fff;border-radius:16px;padding:16px}.formula-box h4{margin:0 0 10px;font-size:14px}.formula{padding:11px;border-radius:11px;background:rgba(255,255,255,.08);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;line-height:1.7;overflow:auto}.formula-box p{color:rgba(255,255,255,.58);font-size:9px;line-height:1.6;margin:11px 0 0}.limitations{border:1px solid var(--line);border-radius:16px;padding:16px;background:#fff}.limitations h4{margin:0 0 9px;font-size:14px}.limitations ul{padding-left:17px;margin:0;color:var(--muted);font-size:9px;line-height:1.7}.analysis-note{margin-top:12px;padding:11px 13px;border-radius:12px;background:#fff5db;color:#72510f;font-size:9px;line-height:1.6;border:1px solid #f0dfa8}
+@media(max-width:1100px){.insight-grid{grid-template-columns:repeat(2,1fr)}.analysis-grid,.methodology-grid{grid-template-columns:1fr}}@media(max-width:760px){.analysis-head{flex-direction:column}.insight-grid{grid-template-columns:1fr}}
+
+/* User action guidance */
+.guidance-panel{border:1px solid var(--line);border-radius:18px;padding:18px;background:#fff;margin:13px 0}.guidance-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:15px}.guidance-head h3{margin:0 0 5px;font-size:18px;letter-spacing:-.035em}.guidance-head p{margin:0;color:var(--muted);font-size:10px;line-height:1.6}.guidance-badge{padding:7px 10px;border-radius:999px;background:var(--yellow);color:var(--ink);font-size:9px;font-weight:950;white-space:nowrap}.stock-conclusion{padding:16px;border-radius:16px;background:linear-gradient(135deg,#10251f,#24483f);color:#fff;margin-bottom:13px}.stock-conclusion small{display:block;color:rgba(255,255,255,.58);font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;margin-bottom:7px}.stock-conclusion h4{margin:0 0 7px;font-size:20px;letter-spacing:-.04em}.stock-conclusion p{margin:0;color:rgba(255,255,255,.76);font-size:11px;line-height:1.7}.guidance-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:13px}.guidance-card{border-radius:15px;padding:14px;min-height:126px;border:1px solid rgba(16,37,31,.06)}.guidance-card:nth-child(1){background:var(--blue)}.guidance-card:nth-child(2){background:var(--pink)}.guidance-card:nth-child(3){background:var(--mint)}.guidance-card:nth-child(4){background:var(--cream)}.guidance-card small{display:block;color:#47665d;font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.05em}.guidance-card strong{display:block;font-size:18px;line-height:1.15;margin:10px 0 6px;letter-spacing:-.035em}.guidance-card span{font-size:9px;line-height:1.5;color:#47665d}.action-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:13px}.action-box{border:1px solid var(--line);border-radius:16px;padding:15px;background:#fbfcfa}.action-box h4{margin:0 0 4px;font-size:14px}.action-box>p{margin:0 0 12px;color:var(--muted);font-size:9px;line-height:1.55}.action-list,.condition-list{display:grid;gap:8px}.action-item{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;padding:10px;border-radius:12px;background:#fff;border:1px solid var(--line)}.action-item b{width:28px;height:28px;border-radius:9px;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:10px}.action-item strong{display:block;font-size:10px;margin-bottom:3px}.action-item span{display:block;color:var(--muted);font-size:9px;line-height:1.5}.condition-item{display:grid;grid-template-columns:12px 1fr auto;gap:9px;align-items:center;padding:10px;border-radius:12px;background:#fff;border:1px solid var(--line);font-size:9px}.condition-item i{width:10px;height:10px;border-radius:50%;display:block}.condition-item strong{font-size:10px}.condition-item span{color:var(--muted);font-size:8px;text-align:right}.condition-item.ok i{background:#2f9d63;box-shadow:0 0 0 4px rgba(47,157,99,.12)}.condition-item.watch i{background:#e5a72f;box-shadow:0 0 0 4px rgba(229,167,47,.12)}.condition-item.risk i{background:#e45858;box-shadow:0 0 0 4px rgba(228,88,88,.12)}.workflow-title{margin:2px 0 11px;font-size:14px}.workflow-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}.workflow-step{padding:12px;border-radius:14px;background:#f7f9f6;border:1px solid var(--line);min-height:126px}.workflow-step b{width:29px;height:29px;border-radius:9px;background:var(--green);color:#fff;display:grid;place-items:center;font-size:10px;margin-bottom:10px}.workflow-step strong{display:block;font-size:10px;margin-bottom:5px}.workflow-step span{display:block;font-size:8.5px;color:var(--muted);line-height:1.5}.guidance-disclaimer{margin-top:12px;padding:11px 13px;border-radius:12px;background:#fff5db;color:#72510f;border:1px solid #f0dfa8;font-size:9px;line-height:1.6}input[type=text]{width:100%;padding:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:11px;color:#fff;font-size:11px;outline:none}input[type=text]::placeholder{color:rgba(255,255,255,.42)}input[type=text]:focus{border-color:var(--yellow)}
+@media(max-width:1100px){.guidance-cards{grid-template-columns:repeat(2,1fr)}.workflow-grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:760px){.guidance-head{flex-direction:column}.guidance-cards,.action-grid,.workflow-grid{grid-template-columns:1fr}.condition-item{grid-template-columns:12px 1fr}.condition-item span{grid-column:2;text-align:left}}
+</style></head><body>
 <div class="shell">
-
-  <!-- ===== Header ===== -->
-  <header>
-    <div class="container nav">
-      <a href="#top" class="logo">
-        <span class="mark"></span>
-        <span>BầyĐàn</span>
-      </a>
-      <nav class="links">
-        <a href="#overview">Tổng quan</a>
-        <a href="#features">Tính năng</a>
-        <a href="#dashboard">Mô hình</a>
-        <a href="#deep-analysis">Phân tích sâu</a>
-        <a href="#user-action">Nên làm gì?</a>
-        <a href="#alerts">Cảnh báo</a>
-      </nav>
-      <div>
-        <a class="btn light" href="#features">Tìm hiểu</a>
-        <a class="btn dark" href="#dashboard">Chạy phân tích</a>
-      </div>
-    </div>
-  </header>
-
-  <main id="top">
-
-    <!-- ===== Hero ===== -->
-    <section class="hero">
-<video class="hero-bg-video" autoplay muted loop playsinline>
-  <source src="https://raw.githubusercontent.com/k632414410088-byte/Bay-Dan-Chung-Khoan/main/financial%20background.mp4" type="video/mp4">
-</video>
-<div class="container hero-grid">
-        <div>
-          <div class="tag"><span class="dot"></span>Fintech quantitative MVP</div>
-          <h1>Phát hiện hành vi bầy đàn trước khi thị trường hoảng loạn.</h1>
-          <p>Ứng dụng Lý thuyết Trò chơi Tiến hóa để mô hình hóa nhà đầu tư theo xu hướng và đi ngược đám đông, từ đó tạo cảnh báo sớm về nguy cơ bán tháo.</p>
-          <div class="hero-actions">
-            <a class="btn dark" href="#dashboard">Phân tích ngay</a>
-            <a class="btn light" href="#overview">Xem cách hoạt động</a>
-          </div>
-        </div>
-
-        <div class="visual">
-          <div class="float a">📈 Trend share tăng nhanh</div>
-          <div class="float b">⚠️ Herding risk 72/100</div>
-
-          <div class="mock">
-            <div class="mock-top">
-              <span class="live"><i></i>Mô hình đang hoạt động</span>
-              <span class="chip">Dữ liệu cuối ngày</span>
-            </div>
-
-            <div class="screen">
-              <div>
-                <small>Điểm rủi ro bầy đàn</small>
-                <strong>72.4</strong>
-                <em>▲ Tăng 8.7 điểm</em>
-              </div>
-              <svg viewBox="0 0 240 120" preserveAspectRatio="none">
-                <path d="M0 99C28 92 35 67 63 76S95 47 122 57s37-31 66-19 31-23 52-17" fill="none" stroke="#f3f778" stroke-width="5" stroke-linecap="round"/>
-              </svg>
-            </div>
-
-            <div class="mini">
-              <div class="purple">
-                <small>Theo xu hướng</small>
-                <strong>68%</strong>
-              </div>
-              <div class="mint">
-                <small>Biến động</small>
-                <strong>24.1%</strong>
-              </div>
-              <div class="pink">
-                <small>Cảnh báo</small>
-                <strong>05</strong>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Stats ===== -->
-    <section class="stats">
-      <div class="container">
-        <h2>Các con số tự nói lên mức độ hữu ích của mô hình</h2>
-        <div class="stats-grid">
-          <div class="stat">
-            <b>2</b>
-            <span>chiến lược đầu tư được mô hình hóa</span>
-          </div>
-          <div class="stat">
-            <b>100</b>
-            <span>điểm tối đa của Herding Risk Score</span>
-          </div>
-          <div class="stat">
-            <b>4</b>
-            <span>nhóm biến hình thành điểm rủi ro</span>
-          </div>
-          <div class="stat">
-            <b>1</b>
-            <span>tệp HTML độc lập, chạy trực tiếp</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Overview / Phương pháp nghiên cứu ===== -->
-    <section class="section soft" id="overview">
-      <div class="container split">
-        <div class="art">
-          <div class="pop">
-            <h3 style="margin:0 0 7px">Tỷ lệ theo xu hướng</h3>
-            <b>68.3%</b>
-            <p class="copy" style="font-size:11px;margin:6px 0 0">
-              Ước lượng từ động lực tái tạo và payoff chiến lược.
-            </p>
-          </div>
-
-          <div class="phone">
-            <div>
-              <div class="line" style="width:45%"></div>
-              <div class="line" style="width:70%"></div>
-              <div class="block">
-                <b style="font-size:12px">Evolutionary dynamics</b>
-                <div class="bars">
-                  <i style="height:28%"></i>
-                  <i style="height:43%"></i>
-                  <i style="height:55%"></i>
-                  <i style="height:74%"></i>
-                  <i style="height:92%"></i>
-                </div>
-              </div>
-              <div class="line" style="width:85%;margin-top:20px"></div>
-              <div class="line" style="width:62%"></div>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <div class="kicker">Phương pháp nghiên cứu</div>
-          <h2 class="title">
-            Không chỉ nhìn vào giá, mô hình theo dõi cách chiến lược lan truyền.
-          </h2>
-          <p class="copy">
-            Khi một chiến lược mang lại lợi ích cao hơn, tỷ lệ nhà đầu tư sử dụng
-            chiến lược đó sẽ tăng. Replicator dynamics mô phỏng quá trình thích
-            nghi và kết hợp với lợi suất, biến động cùng khối lượng để nhận diện
-            rủi ro bầy đàn.
-          </p>
-          <div class="list">
-            <div><span class="num">1</span>Tính lợi suất logarithmic, momentum và biến động lăn.</div>
-            <div><span class="num">2</span>So sánh payoff của trend-following và contrarian.</div>
-            <div><span class="num">3</span>Ước lượng tỷ lệ chiến lược bằng động lực tái tạo.</div>
-            <div><span class="num">4</span>Tạo Herding Risk Score từ 0 đến 100.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Feature cards ===== -->
-    <section class="section" id="features">
-      <div class="container">
-        <div class="center">
-          <div class="kicker">Tính năng chính</div>
-          <h2 class="title">Công cụ cần thiết cho một bài code định lượng tài chính.</h2>
-          <p class="copy">Thiết kế fintech hiện đại, tập trung vào dữ liệu, khả năng giải thích và trình bày kết quả nghiên cứu.</p>
-        </div>
-
-        <div class="cards">
-          <article class="fcard purple">
-            <div class="ico">📊</div>
-            <div>
-              <h3>Phân tích dữ liệu</h3>
-              <p>Đọc CSV, làm sạch dữ liệu và tính các biến tài chính.</p>
-            </div>
-          </article>
-
-          <article class="fcard mint">
-            <div class="ico">🧬</div>
-            <div>
-              <h3>Trò chơi tiến hóa</h3>
-              <p>Mô phỏng sự chuyển đổi giữa hai chiến lược đầu tư.</p>
-            </div>
-          </article>
-
-          <article class="fcard pink">
-            <div class="ico">⚠️</div>
-            <div>
-              <h3>Cảnh báo bán tháo</h3>
-              <p>Đánh dấu phiên có rủi ro cao và áp lực bán mạnh.</p>
-            </div>
-          </article>
-
-          <article class="fcard blue">
-            <div class="ico">📈</div>
-            <div>
-              <h3>Dashboard trực quan</h3>
-              <p>Biểu đồ giá, chiến lược và điểm rủi ro tương tác.</p>
-            </div>
-          </article>
-
-          <article class="fcard cream">
-            <div class="ico">🧮</div>
-            <div>
-              <h3>Điều chỉnh tham số</h3>
-              <p>Thay đổi momentum, volatility, payoff và learning rate.</p>
-            </div>
-          </article>
-
-          <article class="fcard yellow">
-            <div class="ico">⬇️</div>
-            <div>
-              <h3>Xuất kết quả</h3>
-              <p>Tải dữ liệu mô hình dưới dạng CSV để phân tích tiếp.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Dashboard (phần đầu: tiêu đề + controls + metrics) ===== -->
-    <section class="section dashboard" id="dashboard">
-      <div class="container">
-        <div class="center" style="margin-bottom:0">
-          <div class="kicker">MVP tương tác</div>
-          <h2 class="title">Chạy mô hình trực tiếp trên trình duyệt.</h2>
-          <p class="copy">Không cần máy chủ hoặc cài Python. Tải CSV của bạn hoặc dùng dữ liệu mẫu.</p>
-        </div>
-
-        <div class="dash-shell">
-          <div class="dash-grid">
-
-            <aside class="controls">
-              <h3>Thiết lập mô hình</h3>
-              <p>Điều chỉnh tham số rồi chạy phân tích.</p>
-
-              <div class="control">
-                <label>Mã cổ phiếu / chỉ số</label>
-                <input id="tickerInput" type="text" value="VNINDEX" placeholder="Ví dụ: FPT, HPG, VNINDEX">
-              </div>
-
-              <div class="control">
-                <label>Tải dữ liệu CSV</label>
-                <input id="csvFile" type="file" accept=".csv">
-              </div>
-
-              <div class="control">
-                <label>Cửa sổ xu hướng</label>
-                <input id="momentumWindow" type="range" min="3" max="30" value="10">
-                <div class="range-row">
-                  <span>3</span>
-                  <strong id="momentumValue">10 phiên</strong>
-                  <span>30</span>
-                </div>
-              </div>
-
-              <div class="control">
-                <label>Cửa sổ biến động</label>
-                <input id="volatilityWindow" type="range" min="10" max="60" value="20">
-                <div class="range-row">
-                  <span>10</span>
-                  <strong id="volatilityValue">20 phiên</strong>
-                  <span>60</span>
-                </div>
-              </div>
-
-              <div class="control">
-                <label>Làm mượt payoff</label>
-                <input id="payoffWindow" type="range" min="3" max="30" value="10">
-                <div class="range-row">
-                  <span>3</span>
-                  <strong id="payoffValue">10 phiên</strong>
-                  <span>30</span>
-                </div>
-              </div>
-
-              <div class="control">
-                <label>Tốc độ thích nghi (η)</label>
-                <input id="learningRate" type="range" min="1" max="100" value="35">
-                <div class="range-row">
-                  <span>Chậm</span>
-                  <strong id="learningValue">0.35</strong>
-                  <span>Nhanh</span>
-                </div>
-              </div>
-
-              <button id="runButton">Chạy phân tích</button>
-              <button class="secondary" id="demoButton">Khôi phục dữ liệu mẫu</button>
-              <button class="secondary" id="downloadButton">Tải kết quả CSV</button>
-
-              <div class="note">
-                CSV cần có các cột tương đương Date/Close/Volume — chấp nhận tên tiếng Việt
-                (Ngày, Giá đóng cửa, Khối lượng) và tối thiểu 80 phiên (nên ≥ 4 lần window lớn
-                nhất để kết quả ổn định). Ngày hỗ trợ yyyy-mm-dd hoặc dd/mm/yyyy. Số hỗ trợ cả
-                định dạng có dấu chấm/phẩy ngăn cách hàng nghìn kiểu Việt Nam. Mô hình phục vụ
-                nghiên cứu, không phải khuyến nghị đầu tư.
-              </div>
-            </aside>
-
-            <div>
-              <div class="dash-head">
-                <div>
-                  <h3>Market behavior analytics</h3>
-                  <p>Evolutionary Game Theory & Herding Risk Detection</p>
-                </div>
-                <div class="source-badge" id="sourceBadge">Nguồn: Dữ liệu mẫu mô phỏng</div>
-              </div>
-
-              <div class="metrics">
-                <div class="metric">
-                  <div class="metric-label">Giá đóng cửa mới nhất</div>
-                  <div class="metric-value" id="latestClose">-</div>
-                  <div class="metric-sub" id="latestDate">-</div>
-                </div>
-                <div class="metric">
-                  <div class="metric-label">Lợi suất phiên</div>
-                  <div class="metric-value" id="latestReturn">-</div>
-                  <div class="metric-sub">Lợi suất logarithmic</div>
-                </div>
-                <div class="metric">
-                  <div class="metric-label">Tỷ lệ theo xu hướng</div>
-                  <div class="metric-value" id="latestTrend">-</div>
-                  <div class="metric-sub">Replicator dynamics</div>
-                </div>
-                <div class="metric">
-                  <div class="metric-label">Herding Risk Score</div>
-                  <div class="metric-value" id="latestRisk">-</div>
-                  <div class="metric-sub" id="latestLevel">-</div>
-                </div>
-              </div>
-
-              <div class="alert low" id="riskAlert">Đang khởi tạo mô hình...</div>
-              <div class="analysis-panel" id="deep-analysis">
+<header><div class="container nav"><a href="#top" class="logo"><span class="mark"></span><span>BầyĐàn</span></a><nav class="links"><a href="#overview">Tổng quan</a><a href="#features">Tính năng</a><a href="#dashboard">Mô hình</a><a href="#deep-analysis">Phân tích sâu</a><a href="#user-action">Nên làm gì?</a><a href="#alerts">Cảnh báo</a></nav><div><a class="btn light" href="#features">Tìm hiểu</a> <a class="btn dark" href="#dashboard">Chạy phân tích</a></div></div></header>
+<main id="top">
+<section class="hero"><div class="container hero-grid"><div><div class="tag"><span class="dot"></span>Fintech quantitative MVP</div><h1>Phát hiện hành vi bầy đàn trước khi thị trường hoảng loạn.</h1><p>Ứng dụng Lý thuyết Trò chơi Tiến hóa để mô hình hóa nhà đầu tư theo xu hướng và đi ngược đám đông, từ đó tạo cảnh báo sớm về nguy cơ bán tháo.</p><div class="hero-actions"><a class="btn dark" href="#dashboard">Phân tích ngay</a><a class="btn light" href="#overview">Xem cách hoạt động</a></div></div><div class="visual"><div class="float a">📈 Trend share tăng nhanh</div><div class="float b">⚠️ Herding risk 72/100</div><div class="mock"><div class="mock-top"><span class="live"><i></i>Mô hình đang hoạt động</span><span class="chip">Dữ liệu cuối ngày</span></div><div class="screen"><div><small>Điểm rủi ro bầy đàn</small><strong>72.4</strong><em>▲ Tăng 8.7 điểm</em></div><svg viewBox="0 0 240 120" preserveAspectRatio="none"><path d="M0 99C28 92 35 67 63 76S95 47 122 57s37-31 66-19 31-23 52-17" fill="none" stroke="#f3f778" stroke-width="5" stroke-linecap="round"/></svg></div><div class="mini"><div class="purple"><small>Theo xu hướng</small><strong>68%</strong></div><div class="mint"><small>Biến động</small><strong>24.1%</strong></div><div class="pink"><small>Cảnh báo</small><strong>05</strong></div></div></div></div></div></section>
+<section class="stats"><div class="container"><h2>Các con số tự nói lên mức độ hữu ích của mô hình</h2><div class="stats-grid"><div class="stat"><b>2</b><span>chiến lược đầu tư được mô hình hóa</span></div><div class="stat"><b>100</b><span>điểm tối đa của Herding Risk Score</span></div><div class="stat"><b>4</b><span>nhóm biến hình thành điểm rủi ro</span></div><div class="stat"><b>1</b><span>tệp HTML độc lập, chạy trực tiếp</span></div></div></div></section>
+<section class="section soft" id="overview"><div class="container split"><div class="art"><div class="pop"><h3 style="margin:0 0 7px">Tỷ lệ theo xu hướng</h3><b>68.3%</b><p class="copy" style="font-size:11px;margin:6px 0 0">Ước lượng từ động lực tái tạo và payoff chiến lược.</p></div><div class="phone"><div><div class="line" style="width:45%"></div><div class="line" style="width:70%"></div><div class="block"><b style="font-size:12px">Evolutionary dynamics</b><div class="bars"><i style="height:28%"></i><i style="height:43%"></i><i style="height:55%"></i><i style="height:74%"></i><i style="height:92%"></i></div></div><div class="line" style="width:85%;margin-top:20px"></div><div class="line" style="width:62%"></div></div></div></div><div><div class="kicker">Phương pháp nghiên cứu</div><h2 class="title">Không chỉ nhìn vào giá, mô hình theo dõi cách chiến lược lan truyền.</h2><p class="copy">Khi một chiến lược mang lại lợi ích cao hơn, tỷ lệ nhà đầu tư sử dụng chiến lược đó sẽ tăng. Replicator dynamics mô phỏng quá trình thích nghi và kết hợp với lợi suất, biến động cùng khối lượng để nhận diện rủi ro bầy đàn.</p><div class="list"><div><span class="num">1</span>Tính lợi suất logarithmic, momentum và biến động lăn.</div><div><span class="num">2</span>So sánh payoff của trend-following và contrarian.</div><div><span class="num">3</span>Ước lượng tỷ lệ chiến lược bằng động lực tái tạo.</div><div><span class="num">4</span>Tạo Herding Risk Score từ 0 đến 100.</div></div></div></div></section>
+<section class="section" id="features"><div class="container"><div class="center"><div class="kicker">Tính năng chính</div><h2 class="title">Công cụ cần thiết cho một bài code định lượng tài chính.</h2><p class="copy">Thiết kế fintech hiện đại, tập trung vào dữ liệu, khả năng giải thích và trình bày kết quả nghiên cứu.</p></div><div class="cards"><article class="fcard purple"><div class="ico">📊</div><div><h3>Phân tích dữ liệu</h3><p>Đọc CSV, làm sạch dữ liệu và tính các biến tài chính.</p></div></article><article class="fcard mint"><div class="ico">🧬</div><div><h3>Trò chơi tiến hóa</h3><p>Mô phỏng sự chuyển đổi giữa hai chiến lược đầu tư.</p></div></article><article class="fcard pink"><div class="ico">⚠️</div><div><h3>Cảnh báo bán tháo</h3><p>Đánh dấu phiên có rủi ro cao và áp lực bán mạnh.</p></div></article><article class="fcard blue"><div class="ico">📈</div><div><h3>Dashboard trực quan</h3><p>Biểu đồ giá, chiến lược và điểm rủi ro tương tác.</p></div></article><article class="fcard cream"><div class="ico">🧮</div><div><h3>Điều chỉnh tham số</h3><p>Thay đổi momentum, volatility, payoff và learning rate.</p></div></article><article class="fcard yellow"><div class="ico">⬇️</div><div><h3>Xuất kết quả</h3><p>Tải dữ liệu mô hình dưới dạng CSV để phân tích tiếp.</p></div></article></div></div></section>
+<section class="section dashboard" id="dashboard"><div class="container"><div class="center" style="margin-bottom:0"><div class="kicker">MVP tương tác</div><h2 class="title">Chạy mô hình trực tiếp trên trình duyệt.</h2><p class="copy">Không cần máy chủ hoặc cài Python. Tải CSV của bạn hoặc dùng dữ liệu mẫu.</p></div><div class="dash-shell"><div class="dash-grid"><aside class="controls"><h3>Thiết lập mô hình</h3><p>Điều chỉnh tham số rồi chạy phân tích.</p><div class="control"><label>Mã cổ phiếu / chỉ số</label><input id="tickerInput" type="text" value="VNINDEX" placeholder="Ví dụ: FPT, HPG, VCB"><button id="fetchAutoButton" style="margin-top:8px;background:var(--green);color:#fff">Lấy dữ liệu tự động</button></div><div class="control"><label>Hoặc tải dữ liệu CSV thủ công (dự phòng)</label><input id="csvFile" type="file" accept=".csv"></div><div class="control"><label>Cửa sổ xu hướng</label><input id="momentumWindow" type="range" min="3" max="30" value="10"><div class="range-row"><span>3</span><strong id="momentumValue">10 phiên</strong><span>30</span></div></div><div class="control"><label>Cửa sổ biến động</label><input id="volatilityWindow" type="range" min="10" max="60" value="20"><div class="range-row"><span>10</span><strong id="volatilityValue">20 phiên</strong><span>60</span></div></div><div class="control"><label>Làm mượt payoff</label><input id="payoffWindow" type="range" min="3" max="30" value="10"><div class="range-row"><span>3</span><strong id="payoffValue">10 phiên</strong><span>30</span></div></div><div class="control"><label>Tốc độ thích nghi</label><input id="learningRate" type="range" min="1" max="100" value="35"><div class="range-row"><span>Chậm</span><strong id="learningValue">35</strong><span>Nhanh</span></div></div><button id="runButton">Chạy phân tích</button><button class="secondary" id="demoButton">Khôi phục dữ liệu mẫu</button><button class="secondary" id="downloadButton">Tải kết quả CSV</button><div class="note">CSV cần có Date, Close, Volume và tối thiểu 80 phiên (nên ≥ 4 lần window lớn nhất để kết quả ổn định). Định dạng ngày hỗ trợ: yyyy-mm-dd hoặc dd/mm/yyyy. Mô hình phục vụ nghiên cứu, không phải khuyến nghị đầu tư.</div></aside><div><div class="dash-head"><div><h3>Market behavior analytics</h3><p>Evolutionary Game Theory & Herding Risk Detection</p></div><div class="source-badge" id="sourceBadge">Nguồn: Dữ liệu mẫu mô phỏng</div></div><div class="metrics"><div class="metric"><div class="metric-label">Giá đóng cửa mới nhất</div><div class="metric-value" id="latestClose">-</div><div class="metric-sub" id="latestDate">-</div></div><div class="metric"><div class="metric-label">Lợi suất phiên</div><div class="metric-value" id="latestReturn">-</div><div class="metric-sub">Lợi suất logarithmic</div></div><div class="metric"><div class="metric-label">Tỷ lệ theo xu hướng</div><div class="metric-value" id="latestTrend">-</div><div class="metric-sub">Replicator dynamics</div></div><div class="metric"><div class="metric-label">Herding Risk Score</div><div class="metric-value" id="latestRisk">-</div><div class="metric-sub" id="latestLevel">-</div></div></div><div class="alert low" id="riskAlert">Đang khởi tạo mô hình...</div>
+<div class="analysis-panel" id="deep-analysis">
   <div class="analysis-head">
     <div>
       <h3>Phân tích định lượng chuyên sâu</h3>
@@ -1927,7 +48,7 @@ input[type=text]:focus {
   <div class="analysis-grid">
     <div class="analysis-box">
       <h4>Phân rã Herding Risk Score</h4>
-      <p>Mỗi thanh biểu diễn số điểm thực tế mà thành phần đóng góp vào tổng điểm rủi ro. Lưu ý: bốn thành phần bên dưới đều bắt nguồn từ cùng một cú sốc lợi suất/biến động nên có tương quan cao với nhau (xem ghi chú "Giả định và giới hạn") — không nên đọc chúng như bốn bằng chứng hoàn toàn độc lập.</p>
+      <p>Mỗi thanh biểu diễn số điểm thực tế mà thành phần đóng góp vào tổng điểm rủi ro.</p>
 
       <div class="component-row">
         <div class="component-top"><b>Tập trung chiến lược theo xu hướng</b><span id="trendComponentValue">-</span></div>
@@ -1981,7 +102,7 @@ input[type=text]:focus {
         <tr><td>Tỷ lệ phiên rủi ro cao toàn mẫu</td><td id="highRiskShare">-</td></tr>
         <tr><td>Tương quan tuyệt đối lợi suất và rủi ro</td><td id="riskReturnCorrelation">-</td></tr>
       </tbody></table>
-      <div class="analysis-note">Hiệu lực trong mẫu chỉ là bằng chứng mô tả, được tính trên cùng bộ dữ liệu và tham số dùng để xây điểm rủi ro (in-sample) — không phải out-of-sample/backtest thực sự. Với dữ liệu mẫu mô phỏng, ba giai đoạn "khủng hoảng" được cấy sẵn đúng vào loại biến động mà mô hình được thiết kế để bắt, nên hit-rate đẹp trên dữ liệu mẫu gần như được đảm bảo trước và KHÔNG phải bằng chứng cho hiệu lực trên dữ liệu thị trường thật. Để kết luận chắc chắn cần kiểm định ngoài mẫu, walk-forward validation và so sánh với mô hình chuẩn.</div>
+      <div class="analysis-note">Hiệu lực trong mẫu chỉ là bằng chứng mô tả. Để kết luận chắc chắn cần kiểm định ngoài mẫu, walk-forward validation và so sánh với mô hình chuẩn.</div>
     </div>
   </div>
 
@@ -1996,20 +117,17 @@ input[type=text]:focus {
   <div class="methodology-grid">
     <div class="formula-box">
       <h4>Cấu trúc mô hình</h4>
-      <div class="formula">x(t+1) = x(t) + η × x(t) × [1 − x(t)] × [πtrend(t) − πcontrarian(t)]<br><br>πtrend: payoff khi đặt cược theo dấu momentum dài hạn (cửa sổ xu hướng)<br>πcontrarian: payoff khi đặt cược đảo chiều theo dấu lợi suất phiên liền trước (short-term reversal)<br><br>Herding Risk = 35% × Concentration + 30% × Sell Pressure + 20% × Volatility Stress + 15% × Volume Stress</div>
-      <p>x(t) là tỷ lệ nhà đầu tư theo xu hướng; η là tốc độ thích nghi (thanh trượt hiển thị 1–100 nhưng được chuẩn hóa về 0.01–1.00 khi tính toán để tránh bước nhảy quá lớn); π là payoff kỳ vọng của từng chiến lược, tính trên cửa sổ dữ liệu QUÁ KHỨ (không gồm phiên hiện tại) để tránh nhìn trước dữ liệu. Trend-following và contrarian dùng hai tín hiệu khác nhau về mặt thống kê (momentum dài hạn so với đảo chiều ngắn hạn), không còn là phủ định đại số của nhau. Các biến stress được chuẩn hóa bằng rolling Z-score tính trên cửa sổ quá khứ (không gồm điểm hiện tại) và chặn trong khoảng từ 0 đến 1.</p>
+      <div class="formula">x(t+1) = x(t) + η × x(t) × [1 − x(t)] × [πtrend(t) − πcontrarian(t)]<br><br>Herding Risk = 35% × Concentration + 30% × Sell Pressure + 20% × Volatility Stress + 15% × Volume Stress</div>
+      <p>x(t) là tỷ lệ nhà đầu tư theo xu hướng; η là tốc độ thích nghi; π là payoff kỳ vọng của từng chiến lược. Các biến stress được chuẩn hóa bằng rolling Z-score và chặn trong khoảng từ 0 đến 1.</p>
     </div>
     <div class="limitations">
       <h4>Giả định và giới hạn</h4>
       <ul>
-        <li>Thị trường được giản lược thành hai chiến lược: trend-following (momentum dài hạn) và contrarian (đảo chiều ngắn hạn theo lợi suất phiên trước).</li>
+        <li>Thị trường được giản lược thành hai chiến lược: trend-following và contrarian.</li>
         <li>Tỷ lệ chiến lược là biến ẩn suy luận từ giá, không phải dữ liệu tài khoản nhà đầu tư.</li>
-        <li>Bốn thành phần của Herding Risk Score đều bắt nguồn từ cùng một cú sốc lợi suất/biến động nên có tương quan cao với nhau (đa cộng tuyến); một phiên giảm mạnh đơn lẻ thường đẩy đồng thời cả 4 thành phần lên, nên không nên đọc chúng như 4 bằng chứng độc lập cùng xác nhận rủi ro.</li>
-        <li>Trọng số 35/30/20/15% và các ngưỡng (panic risk≥70, trend share≥0.65...) mang tính thiết kế MVP, được chọn thủ công chứ không đến từ tối ưu hoá (ROC curve, grid search, cross-validation), nên cần hiệu chỉnh thực nghiệm trước khi dùng ngoài mục đích minh hoạ.</li>
-        <li>Tín hiệu xu hướng dùng dấu của momentum (sign), nên chưa phân biệt được mức độ mạnh/yếu của xu hướng — một momentum +0.1% và +50% tạo cùng một tín hiệu; thành phần payoff dùng để cập nhật tỷ lệ chiến lược vẫn có phần khuếch đại theo biên độ vì payoff = tín hiệu × lợi suất thực tế.</li>
+        <li>Trọng số Herding Risk Score mang tính thiết kế MVP và cần hiệu chỉnh thực nghiệm.</li>
         <li>Dữ liệu cuối ngày không phản ánh đầy đủ hành vi trong phiên hoặc độ sâu sổ lệnh.</li>
-        <li>Mô hình chưa kiểm soát tin tức, yếu tố vĩ mô, hiệu ứng ngành và thay đổi chế độ thị trường — do đó KHÔNG thể phân biệt một cú bán tháo hợp lý (phản ứng đúng với tin xấu thật) với một cú bán tháo do tâm lý bầy đàn phi lý tính. Điểm số phản ánh "cường độ căng thẳng thị trường + mức độ crowding theo xu hướng", không phải bằng chứng hành vi phi lý tính theo đúng nghĩa học thuật của herding.</li>
-        <li>Herding Risk Score tại phiên hiện tại sử dụng lợi suất/khối lượng thực hiện trong chính phiên đó (qua Sell Pressure và Volume Stress), nên mang tính mô tả (diễn giải sau khi đóng cửa) hơn là tín hiệu dự báo có thể dùng trước giờ đóng cửa; riêng thành phần Trend Concentration đã được tính trên tỷ lệ chiến lược cập nhật từ payoff quá khứ nên không nhìn trước dữ liệu.</li>
+        <li>Mô hình chưa kiểm soát tin tức, yếu tố vĩ mô, hiệu ứng ngành và thay đổi chế độ thị trường.</li>
       </ul>
     </div>
   </div>
@@ -2063,88 +181,9 @@ input[type=text]:focus {
   <div class="guidance-disclaimer"><strong>Lưu ý:</strong> Phần hướng dẫn chỉ hỗ trợ quản trị rủi ro và diễn giải mô hình. Hệ thống không xác định giá trị hợp lý, không thay thế phân tích cơ bản và không đưa ra khuyến nghị mua hoặc bán.</div>
 </div>
 
-<!-- ===== Biểu đồ giá & tín hiệu bán tháo ===== -->
-              <div class="card chart-card chart-wide">
-                <h3>Diễn biến giá và tín hiệu bán tháo</h3>
-                <p>Tam giác đỏ là các phiên đạt điều kiện cảnh báo.</p>
-                <svg id="priceChart"></svg>
-                <div class="legend">
-                  <span style="--legend-color:#2f8f68">Giá đóng cửa</span>
-                  <span style="--legend-color:#e45858">Cảnh báo</span>
-                </div>
-              </div>
-
-              <!-- ===== Biểu đồ tỷ lệ chiến lược & Herding Risk Score ===== -->
-              <div class="grid-2">
-                <div class="card chart-card">
-                  <h3>Tỷ lệ chiến lược</h3>
-                  <p>Tỷ lệ nhà đầu tư mô phỏng theo xu hướng (phần còn lại là contrarian, vì hai tỷ lệ luôn cộng lại bằng 100%).</p>
-                  <svg id="strategyChart"></svg>
-                  <div class="legend">
-                    <span style="--legend-color:#7759b8">Theo xu hướng</span>
-                  </div>
-                </div>
-
-                <div class="card chart-card">
-                  <h3>Herding Risk Score</h3>
-                  <p>Thấp dưới 40, trung bình 40–69, cao từ 70.</p>
-                  <svg id="riskChart"></svg>
-                  <div class="legend">
-                    <span style="--legend-color:#e5a72f">Điểm rủi ro</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- ===== Bảng các phiên cảnh báo hoảng loạn bán tháo ===== -->
-              <div class="card" id="alerts">
-                <h3>Các phiên có tín hiệu hoảng loạn bán tháo</h3>
-                <p>Rủi ro từ 70, lợi suất âm và trend share từ 65%.</p>
-                <div class="table-wrap">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>Ngày</th>
-                        <th>Giá đóng cửa</th>
-                        <th>Lợi suất (%)</th>
-                        <th>Khối lượng</th>
-                        <th>Theo xu hướng (%)</th>
-                        <th>Điểm rủi ro</th>
-                        <th>Mức độ</th>
-                      </tr>
-                    </thead>
-                    <tbody id="panicTable"></tbody>
-                  </table>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ===== Footer ===== -->
-  <footer>
-    <div class="container foot">
-      <div>
-        <div class="logo">
-          <span class="mark"></span>
-          <span>BầyĐànChứngKhoán</span>
-        </div>
-        <p>MVP phục vụ học tập và nghiên cứu, không phải khuyến nghị đầu tư.</p>
-      </div>
-      <div class="badge">Evolutionary Game Theory</div>
-    </div>
-  </footer>
-
-</div>
-
+<div class="card chart-card chart-wide"><h3>Diễn biến giá và tín hiệu bán tháo</h3><p>Tam giác đỏ là các phiên đạt điều kiện cảnh báo.</p><svg id="priceChart"></svg><div class="legend"><span style="--legend-color:#2f8f68">Giá đóng cửa</span><span style="--legend-color:#e45858">Cảnh báo</span></div></div><div class="grid-2"><div class="card chart-card"><h3>Tỷ lệ chiến lược</h3><p>Theo xu hướng và đi ngược đám đông.</p><svg id="strategyChart"></svg><div class="legend"><span style="--legend-color:#7759b8">Theo xu hướng</span><span style="--legend-color:#2b9f91">Contrarian</span></div></div><div class="card chart-card"><h3>Herding Risk Score</h3><p>Thấp dưới 40, trung bình 40–69, cao từ 70.</p><svg id="riskChart"></svg><div class="legend"><span style="--legend-color:#e5a72f">Điểm rủi ro</span></div></div></div><div class="card" id="alerts"><h3>Các phiên có tín hiệu hoảng loạn bán tháo</h3><p>Rủi ro từ 70, lợi suất âm và trend share từ 65%.</p><div class="table-wrap"><table><thead><tr><th>Ngày</th><th>Giá đóng cửa</th><th>Lợi suất (%)</th><th>Khối lượng</th><th>Theo xu hướng (%)</th><th>Điểm rủi ro</th><th>Mức độ</th></tr></thead><tbody id="panicTable"></tbody></table></div></div></div></div></div></div></section>
+</main><footer><div class="container foot"><div><div class="logo"><span class="mark"></span><span>BầyĐànChứngKhoán</span></div><p>MVP phục vụ học tập và nghiên cứu, không phải khuyến nghị đầu tư.</p></div><div class="badge">Evolutionary Game Theory</div></div></footer></div>
 <script>
-
-/* ===== State toàn cục & helper định dạng số/ngày ===== */
-  
   const state = {
     rawData: [],
     result: [],
@@ -2168,25 +207,30 @@ input[type=text]:focus {
     }).format(value);
   }
 
-  // Parse ngày an toàn: JS new Date("05/03/2024") mặc định hiểu kiểu Mỹ
-  // (mm/dd/yyyy) trong khi dữ liệu VN thường là dd/mm/yyyy -> parse tường
-  // minh ISO và dd/mm/yyyy trước khi fallback về parser mặc định.
+  // FIX #1 (lỗ hổng đã phát hiện): new Date(string) mặc định của JS hiểu
+  // "05/03/2024" là tháng 5 ngày 3 (kiểu Mỹ mm/dd/yyyy), trong khi dữ liệu
+  // Việt Nam thường xuất theo dd/mm/yyyy -> gây sai thứ tự ngày mà KHÔNG
+  // báo lỗi gì (silent bug). Hàm dưới đây parse tường minh 2 định dạng
+  // phổ biến nhất (ISO yyyy-mm-dd và dd/mm/yyyy) trước khi fallback.
   function parseDateSafe(value) {
     if (value instanceof Date) return value;
     const str = String(value).trim();
 
+    // ISO: yyyy-mm-dd (có thể kèm giờ, ví dụ từ vnstock/pandas)
     const isoMatch = str.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/);
     if (isoMatch) {
       const [, y, m, d] = isoMatch;
       return new Date(Number(y), Number(m) - 1, Number(d));
     }
 
+    // dd/mm/yyyy hoặc d/m/yyyy (định dạng phổ biến khi export Excel VN)
     const dmyMatch = str.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
     if (dmyMatch) {
       const [, d, m, y] = dmyMatch;
       return new Date(Number(y), Number(m) - 1, Number(d));
     }
 
+    // Fallback: để JS tự đoán, nhưng đây là trường hợp không khuyến khích
     console.warn(`Không nhận diện được định dạng ngày "${str}", dùng parser mặc định của trình duyệt — kết quả có thể sai thứ tự.`);
     return new Date(str);
   }
@@ -2196,94 +240,6 @@ input[type=text]:focus {
     return d.toLocaleDateString("vi-VN");
   }
 
-  // FIX (lỗ hổng mới sửa): parser CSV kiểu split(",") ngây thơ sẽ tách sai
-  // nếu một ô có dấu phẩy nằm trong cặp dấu ngoặc kép (rất phổ biến khi
-  // xuất CSV từ Excel). Hàm dưới đây tôn trọng ngoặc kép và dấu "" escape.
-
-/* ===== Parse CSV: tách dòng an toàn, nhận diện định dạng số VN/US ===== */
-  
-  function splitCSVLine(line) {
-    const values = [];
-    let current = "";
-    let inQuotes = false;
-
-    for (let i = 0; i < line.length; i++) {
-      const char = line[i];
-
-      if (char === '"') {
-        if (inQuotes && line[i + 1] === '"') {
-          current += '"';
-          i++;
-        } else {
-          inQuotes = !inQuotes;
-        }
-      } else if (char === "," && !inQuotes) {
-        values.push(current);
-        current = "";
-      } else {
-        current += char;
-      }
-    }
-
-    values.push(current);
-    return values.map(v => v.trim());
-  }
-
-  // FIX (lỗ hổng mới sửa): Number("1.234.567") và Number("1.234,56") đều
-  // trả về NaN, khiến các dòng dữ liệu xuất từ Excel/công cụ VN (dùng dấu
-  // chấm ngăn cách hàng nghìn, dấu phẩy làm phần thập phân) bị loại bỏ âm
-  // thầm. Hàm dưới đây nhận diện định dạng US, EU/VN và số thuần trước khi
-  // ép kiểu số.
-  function parseFlexibleNumber(raw) {
-    if (raw === undefined || raw === null) return NaN;
-    let str = String(raw).trim();
-    if (!str) return NaN;
-
-    // Bỏ ký tự tiền tệ, khoảng trắng... chỉ giữ số, dấu chấm/phẩy, dấu trừ
-    str = str.replace(/[^\d.,-]/g, "");
-    if (!str) return NaN;
-
-    const hasDot = str.includes(".");
-    const hasComma = str.includes(",");
-
-    if (hasDot && hasComma) {
-      const lastDot = str.lastIndexOf(".");
-      const lastComma = str.lastIndexOf(",");
-      if (lastComma > lastDot) {
-        // Kiểu EU/VN: 1.234.567,89 -> dấu phẩy là phần thập phân
-        str = str.replace(/\./g, "").replace(",", ".");
-      } else {
-        // Kiểu US: 1,234,567.89 -> dấu chấm là phần thập phân
-        str = str.replace(/,/g, "");
-      }
-    } else if (hasComma && !hasDot) {
-      const parts = str.split(",");
-      if (parts.length > 2 || (parts.length === 2 && parts[1].length === 3)) {
-        // 1,234,567 hoặc 1,234 (nhóm hàng nghìn kiểu US)
-        str = str.replace(/,/g, "");
-      } else {
-        // 1234,56 -> dấu phẩy là phần thập phân (kiểu VN)
-        str = str.replace(",", ".");
-      }
-    } else if (hasDot && !hasComma) {
-      const parts = str.split(".");
-      if (parts.length > 2) {
-        // 1.234.567 (nhiều dấu chấm -> chắc chắn là nhóm hàng nghìn kiểu VN)
-        str = str.replace(/\./g, "");
-      } else if (parts.length === 2 && parts[1].length === 3 && parts[0].length > 0) {
-        // Trường hợp mơ hồ "1.234": dữ liệu VN thường xuất số nguyên có
-        // dấu chấm ngăn cách hàng nghìn nên ưu tiên hiểu là 1234, không
-        // phải số thập phân 1.234.
-        str = str.replace(".", "");
-      }
-      // còn lại (vd 1234.5, 1234.56) giữ nguyên vì là số thập phân hợp lệ
-    }
-
-    return Number(str);
-  }
-
-/* ===== Sinh dữ liệu mẫu mô phỏng (demo data) ===== */
-  
   function mulberry32(seed) {
     return function() {
       let t = seed += 0x6D2B79F5;
@@ -2346,99 +302,51 @@ input[type=text]:focus {
     return rows;
   }
 
-  // FIX (lỗ hổng mới sửa): trước đây chỉ chấp nhận đúng header tiếng Anh
-  // "Date/Close/Volume" và ném lỗi nếu không khớp tuyệt đối. Bảng dưới đây
-  // cho phép các alias tiếng Việt phổ biến (đã bỏ dấu, thường gặp khi
-  // xuất từ các nguồn dữ liệu chứng khoán VN).
-
-/* ===== Đọc & validate CSV người dùng tải lên (alias cột, lọc dòng lỗi) ===== */
-  
-  const COLUMN_ALIASES = {
-    Date: ["date", "ngay", "ngaygiaodich", "tradingdate", "ngaythang"],
-    Close: ["close", "giadongcua", "gia", "closeprice", "dongcua", "giadong"],
-    Volume: ["volume", "khoiluong", "kl", "klgd", "khoiluonggiaodich"]
-  };
-
-  function normalizeHeader(str) {
-    return String(str)
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/đ/gi, "d")
-      .toLowerCase()
-      .replace(/[^a-z0-9]/g, "");
-  }
-
   function parseCSV(text) {
     const lines = text.trim().split(/\r?\n/).filter(Boolean);
     if (lines.length < 2) throw new Error("CSV không có đủ dữ liệu.");
 
-    const rawHeaders = splitCSVLine(lines[0]);
-    const headerIndex = {};
+    const headers = lines[0].split(",").map(h => h.trim());
+    const required = ["Date", "Close", "Volume"];
 
-    rawHeaders.forEach((header, index) => {
-      const normalized = normalizeHeader(header);
-      for (const [canonical, aliases] of Object.entries(COLUMN_ALIASES)) {
-        if (!(canonical in headerIndex) && aliases.includes(normalized)) {
-          headerIndex[canonical] = index;
-        }
+    for (const col of required) {
+      if (!headers.includes(col)) {
+        throw new Error(`Thiếu cột bắt buộc: ${col}`);
       }
-    });
-
-    const missing = ["Date", "Close", "Volume"].filter(c => !(c in headerIndex));
-    if (missing.length) {
-      throw new Error(`Thiếu cột bắt buộc: ${missing.join(", ")}. Chấp nhận cả tên tiếng Việt (Ngày / Giá đóng cửa / Khối lượng).`);
     }
 
-    let droppedCount = 0;
-
     const rows = lines.slice(1).map(line => {
-      const values = splitCSVLine(line);
-      const dateRaw = values[headerIndex.Date];
-      const closeRaw = values[headerIndex.Close];
-      const volumeRaw = values[headerIndex.Volume];
+      const values = line.split(",").map(v => v.trim().replace(/^"|"$/g, ""));
+      const obj = {};
+      headers.forEach((header, index) => obj[header] = values[index]);
 
       return {
-        Date: dateRaw ? dateRaw.trim() : "",
-        Close: parseFlexibleNumber(closeRaw),
-        Volume: parseFlexibleNumber(volumeRaw)
+        Date: obj.Date,
+        Close: Number(obj.Close),
+        Volume: Number(obj.Volume)
       };
-    }).filter(row => {
-      const valid = row.Date &&
-        Number.isFinite(row.Close) &&
-        Number.isFinite(row.Volume) &&
-        row.Close > 0 &&
-        row.Volume >= 0;
-      if (!valid) droppedCount++;
-      return valid;
-    });
+    }).filter(row =>
+      row.Date &&
+      Number.isFinite(row.Close) &&
+      Number.isFinite(row.Volume) &&
+      row.Close > 0 &&
+      row.Volume >= 0
+    );
 
     rows.sort((a, b) => parseDateSafe(a.Date) - parseDateSafe(b.Date));
 
     if (rows.length < 80) {
-      throw new Error(`Dữ liệu hợp lệ chỉ còn ${rows.length} phiên (cần tối thiểu 80). ${droppedCount} dòng đã bị loại vì thiếu dữ liệu hoặc không parse được ngày/số — kiểm tra lại định dạng file.`);
-    }
-
-    if (droppedCount > 0 && droppedCount / (rows.length + droppedCount) > 0.1) {
-      console.warn(`Cảnh báo: ${droppedCount} dòng (>10%) bị loại khi đọc CSV do lỗi định dạng ngày hoặc số.`);
+      throw new Error("Dữ liệu cần ít nhất 80 phiên giao dịch.");
     }
 
     return rows;
   }
 
-  // FIX (đã sửa - lỗi #4 "z-score tự tham chiếu" trong báo cáo rà soát):
-  // trước đây cửa sổ [index-window+1, index] BAO GỒM chính điểm dữ liệu
-  // hiện tại, khiến một giá trị cực đoan tự kéo mean/std của chính nó lên
-  // và làm giảm độ lớn z-score thực tế so với cách tính chuẩn. Giờ đây
-  // rollingMean/rollingStd chỉ dùng dữ liệu QUÁ KHỨ [index-window, index-1],
-  // không bao gồm điểm hiện tại.
-
-/* ===== Lõi mô hình: Evolutionary Game Theory + Herding Risk Score ===== */
-  
   function rollingMean(values, window, index) {
-    if (index < window) return null;
+    if (index < window - 1) return null;
     let sum = 0;
     let count = 0;
-    for (let i = index - window; i <= index - 1; i++) {
+    for (let i = index - window + 1; i <= index; i++) {
       const value = values[i];
       if (Number.isFinite(value)) {
         sum += value;
@@ -2454,7 +362,7 @@ input[type=text]:focus {
 
     let sum = 0;
     let count = 0;
-    for (let i = index - window; i <= index - 1; i++) {
+    for (let i = index - window + 1; i <= index; i++) {
       const value = values[i];
       if (Number.isFinite(value)) {
         sum += Math.pow(value - mean, 2);
@@ -2484,12 +392,7 @@ input[type=text]:focus {
     const momentumWindow = Number($("momentumWindow").value);
     const volatilityWindow = Number($("volatilityWindow").value);
     const payoffWindow = Number($("payoffWindow").value);
-    // FIX (hạn chế đã sửa): trước đây dùng trực tiếp giá trị thanh trượt
-    // (1-100) làm hệ số η, khiến một bước cập nhật replicator dynamics có
-    // thể nhảy rất mạnh khi chênh lệch payoff lớn (vd η=100, Δπ=0.02 ->
-    // bước nhảy tới 0.5 chỉ trong 1 phiên). Chia 100 để đưa η về khoảng
-    // 0.01–1.00, một scale hợp lý hơn cho công thức replicator dùng log-return.
-    const learningRate = Number($("learningRate").value) / 100;
+    const learningRate = Number($("learningRate").value);
 
     const result = data.map(row => ({ ...row }));
 
@@ -2514,28 +417,11 @@ input[type=text]:focus {
       momentums.push(momentum);
 
       const previousMomentum = i > 0 ? momentums[i - 1] : 0;
-      // FIX (đã sửa - lỗi #7 "sign(momentum) bỏ qua biên độ"): trước đây
-      // trendSignal chỉ là dấu (+1/-1/0) của momentum, nên một momentum
-      // +0.1% và +50% tạo ra cùng một tín hiệu. Dùng tanh() để giữ tín
-      // hiệu liên tục, có phân biệt biên độ nhưng vẫn bị chặn trong
-      // khoảng [-1, 1] để không làm nổ payoff. Hệ số nhân 8 là một lựa
-      // chọn heuristic để momentum cỡ vài % đã tạo tín hiệu gần bão hoà.
-      const trendSignal = Math.tanh(previousMomentum * 8);
+      const trendSignal = Math.sign(previousMomentum);
       trendSignals.push(trendSignal);
 
-      // FIX (đã sửa - lỗi #2 "trò chơi tiến hóa suy biến thành 1 tín
-      // hiệu"): trước đây contrarianPayoff = -trendPayoff theo định nghĩa
-      // toán học (contrarianSignal = -trendSignal), khiến payoffDifference
-      // = 2 × trendExpected — không có thông tin độc lập nào từ "chiến
-      // lược thứ hai". Ở đây, contrarian dùng một tín hiệu khác về mặt
-      // thống kê: đảo chiều ngắn hạn (short-term reversal) dựa trên dấu
-      // lợi suất của phiên liền trước, thay vì phủ định của tín hiệu
-      // trend-following dài hạn.
-      const previousReturn = i > 0 ? returns[i - 1] : 0;
-      const contrarianSignal = -Math.sign(previousReturn);
-
       trendPayoffs.push(trendSignal * ret);
-      contrarianPayoffs.push(contrarianSignal * ret);
+      contrarianPayoffs.push(-trendSignal * ret);
 
       const std = rollingStd(returns, volatilityWindow, i);
       volatilities.push(Number.isFinite(std) ? std * Math.sqrt(252) : 0);
@@ -2615,12 +501,11 @@ input[type=text]:focus {
     return result;
   }
 
-  // Cảnh báo dữ liệu mỏng so với các cửa sổ (window) đang chọn: nếu
-  // volatilityWindow=60 mà dữ liệu chỉ có 80-100 phiên, phần lớn kết quả
-  // (Z-score, volatility...) dựa trên rất ít điểm dữ liệu hợp lệ.
-
-/* ===== Kiểm tra độ đủ dữ liệu so với cửa sổ tham số đang chọn ===== */
-  
+  // FIX #2 (lỗ hổng đã phát hiện): trước đây chỉ yêu cầu tối thiểu 80 phiên
+  // trong parseCSV, không kiểm tra so với các cửa sổ (window) đang chọn.
+  // Nếu volatilityWindow = 60 mà dữ liệu chỉ có 80-100 phiên, phần lớn kết
+  // quả (Z-score, volatility...) sẽ dựa trên rất ít điểm dữ liệu hợp lệ,
+  // dễ gây kết luận sai lệch mà không có cảnh báo nào cho người dùng.
   function checkDataSufficiency(data) {
     const momentumWindow = Number($("momentumWindow").value);
     const volatilityWindow = Number($("volatilityWindow").value);
@@ -2637,8 +522,6 @@ input[type=text]:focus {
     return { insufficient: false, message: "" };
   }
 
-/* ===== Điều phối chính: chạy mô hình rồi cập nhật toàn bộ giao diện ===== */
-  
   function renderDashboard() {
     try {
       const sufficiency = checkDataSufficiency(state.rawData);
@@ -2657,6 +540,8 @@ input[type=text]:focus {
       const alertBox = $("riskAlert");
 
       if (sufficiency.insufficient) {
+        // Cảnh báo dữ liệu mỏng được ưu tiên hiển thị vì ảnh hưởng đến
+        // độ tin cậy của MỌI con số bên dưới, không chỉ risk score.
         alertBox.className = "alert medium";
         alertBox.textContent = sufficiency.message;
       } else if (latest.RiskLevel === "Cao") {
@@ -2681,8 +566,6 @@ input[type=text]:focus {
     }
   }
 
-/* ===== Vẽ biểu đồ SVG (helper dựng trục, đường line) ===== */
-  
   function svgElement(tag, attrs = {}) {
     const node = document.createElementNS("http://www.w3.org/2000/svg", tag);
     Object.entries(attrs).forEach(([key, value]) => node.setAttribute(key, value));
@@ -2775,8 +658,6 @@ input[type=text]:focus {
     });
   }
 
-/* ===== Bảng các phiên cảnh báo bán tháo ===== */
-  
   function drawPriceChart(data) {
     const context = setupChart("priceChart");
     const values = data.map(row => row.Close);
@@ -2811,31 +692,24 @@ input[type=text]:focus {
   }
 
   function drawStrategyChart(data) {
-    // FIX: trước đây vẽ cả TrendShare và ContrarianShare, nhưng
-    // ContrarianShare = 1 - TrendShare nên hai đường luôn là ảnh gương của
-    // nhau, không mang thêm thông tin độc lập. Chỉ vẽ Trend Share, có thêm
-    // đường mốc 50% để dễ đọc bên nào đang chiếm ưu thế.
     const context = setupChart("strategyChart");
     drawAxes(context, 0, 100, value => `${Math.round(value)}%`);
     drawXAxisLabels(data, context);
 
-    const midY = context.margin.top + context.plotHeight * 0.5;
-    context.svg.appendChild(svgElement("line", {
-      x1: context.margin.left,
-      y1: midY,
-      x2: context.width - context.margin.right,
-      y2: midY,
-      stroke: "#cbd5df",
-      "stroke-width": 1,
-      "stroke-dasharray": "4 4"
-    }));
-
     const trend = data.map(row => row.TrendShare * 100);
+    const contrarian = data.map(row => row.ContrarianShare * 100);
 
     context.svg.appendChild(svgElement("path", {
       d: linePath(trend, context, 0, 100),
       fill: "none",
       stroke: "#8b5cf6",
+      "stroke-width": 2.2
+    }));
+
+    context.svg.appendChild(svgElement("path", {
+      d: linePath(contrarian, context, 0, 100),
+      fill: "none",
+      stroke: "#06b6d4",
       "stroke-width": 2.2
     }));
   }
@@ -2897,8 +771,7 @@ input[type=text]:focus {
     `).join("");
   }
 
-/* ===== Thống kê tổng hợp (return, drawdown, correlation...) ===== */
-  
+
   function mean(values) {
     const valid = values.filter(Number.isFinite);
     return valid.length ? valid.reduce((sum, value) => sum + value, 0) / valid.length : 0;
@@ -2938,8 +811,6 @@ input[type=text]:focus {
     return maxDrawdown;
   }
 
-/* ===== Dựng nội dung khối "Phân tích định lượng chuyên sâu" ===== */
-  
   function classifyMarketRegime(latest) {
     if (latest.HerdingRiskScore >= 70 && latest.Return < 0) {
       return { name: "Bán tháo bầy đàn", detail: "Rủi ro cao đi cùng lợi suất âm và sự tập trung chiến lược." };
@@ -2994,7 +865,7 @@ input[type=text]:focus {
     const payoffWinner = trendPayoff20 > contrarianPayoff20 ? "trend-following" : trendPayoff20 < contrarianPayoff20 ? "contrarian" : "hai chiến lược";
     const riskDirection = riskAcceleration >= 0 ? "cao hơn" : "thấp hơn";
 
-    $("executiveSummary").innerHTML = `Tại phiên <strong>${formatDate(latest.Date)}</strong>, mô hình phân loại thị trường ở trạng thái <strong>${regime.name}</strong>. Tỷ lệ trend-following đạt <strong>${formatNumber(latest.TrendShare * 100, 1)}%</strong>, trong khi Herding Risk Score là <strong>${formatNumber(latest.HerdingRiskScore, 1)}/100</strong>, ${riskDirection} trung bình 20 phiên <strong>${formatNumber(Math.abs(riskAcceleration), 1)} điểm</strong>. Thành phần đóng góp lớn nhất hiện tại là <strong>${strongestComponents[0][0]}</strong>. Trong 20 phiên gần nhất, chiến lược <strong>${payoffWinner}</strong> có payoff trung bình tốt hơn. Lưu ý: các thành phần rủi ro có tương quan cao với nhau và tín hiệu hiệu lực bên dưới được kiểm định trong-mẫu (in-sample), xem ghi chú giới hạn ở cuối trang.`;
+    $("executiveSummary").innerHTML = `Tại phiên <strong>${formatDate(latest.Date)}</strong>, mô hình phân loại thị trường ở trạng thái <strong>${regime.name}</strong>. Tỷ lệ trend-following đạt <strong>${formatNumber(latest.TrendShare * 100, 1)}%</strong>, trong khi Herding Risk Score là <strong>${formatNumber(latest.HerdingRiskScore, 1)}/100</strong>, ${riskDirection} trung bình 20 phiên <strong>${formatNumber(Math.abs(riskAcceleration), 1)} điểm</strong>. Thành phần đóng góp lớn nhất hiện tại là <strong>${strongestComponents[0][0]}</strong>. Trong 20 phiên gần nhất, chiến lược <strong>${payoffWinner}</strong> có payoff trung bình tốt hơn.`;
 
     $("marketRegime").textContent = regime.name;
     $("marketRegimeDetail").textContent = regime.detail;
@@ -3003,7 +874,7 @@ input[type=text]:focus {
     $("riskAcceleration").textContent = `${riskAcceleration >= 0 ? "+" : ""}${formatNumber(riskAcceleration, 1)} điểm`;
     $("riskAccelerationDetail").textContent = `So với mức trung bình ${formatNumber(averageRisk20, 1)}/100 trong 20 phiên.`;
     $("signalHitRate").textContent = validation.length ? `${formatNumber(hitRate * 100, 1)}%` : "Chưa đủ dữ liệu";
-    $("signalHitRateDetail").textContent = validation.length ? `${validation.filter(v => v < 0).length}/${validation.length} tín hiệu tiếp tục giảm sau 5 phiên (in-sample).` : "Chưa có tín hiệu đủ khoảng quan sát 5 phiên.";
+    $("signalHitRateDetail").textContent = validation.length ? `${validation.filter(v => v < 0).length}/${validation.length} tín hiệu tiếp tục giảm sau 5 phiên.` : "Chưa có tín hiệu đủ khoảng quan sát 5 phiên.";
 
     const components = [
       ["trendComponentValue", "trendComponentBar", latest.TrendContribution, 35],
@@ -3019,8 +890,8 @@ input[type=text]:focus {
     const interpretations = [
       ["01", "Động lực chiến lược", latest.TrendShare >= 0.60 ? "Tỷ lệ trend-following cao cho thấy hành vi bắt chước xu hướng đang lan rộng, làm tăng nguy cơ giao dịch cùng chiều." : latest.TrendShare <= 0.40 ? "Contrarian chiếm ưu thế, cho thấy nhiều nhà đầu tư kỳ vọng giá quay về giá trị trung bình." : "Hai chiến lược đang ở trạng thái tương đối cân bằng, vì vậy rủi ro đồng thuận cực đoan chưa rõ rệt."],
       ["02", "Động cơ chuyển đổi", trendPayoff20 > contrarianPayoff20 ? "Payoff trend-following cao hơn trong 20 phiên gần nhất, tạo động cơ để nhà đầu tư chuyển sang chiến lược theo xu hướng." : "Payoff contrarian cao hơn trong 20 phiên gần nhất, tạo động cơ cho hành vi bắt đáy hoặc chốt lời ngược xu hướng."],
-      ["03", "Nguồn hình thành rủi ro", `Yếu tố nổi trội nhất là ${strongestComponents[0][0]}, đóng góp ${formatNumber(strongestComponents[0][1], 1)} điểm vào tổng rủi ro. Lưu ý các thành phần này có tương quan cao với nhau nên không nên xem là các bằng chứng độc lập.`],
-      ["04", "Hàm ý nghiên cứu", latest.HerdingRiskScore >= 70 ? "Nên đối chiếu giai đoạn này với tin tức, thanh khoản và độ rộng thị trường để xác định đây là bầy đàn thực sự hay phản ứng hợp lý với một cú sốc thông tin — mô hình không tự phân biệt được hai trường hợp này." : "Chưa có tín hiệu bầy đàn cực đoan, nhưng cần theo dõi tốc độ tăng của trend share và điểm rủi ro thay vì chỉ nhìn mức hiện tại."]
+      ["03", "Nguồn hình thành rủi ro", `Yếu tố nổi trội nhất là ${strongestComponents[0][0]}, đóng góp ${formatNumber(strongestComponents[0][1], 1)} điểm vào tổng rủi ro.`],
+      ["04", "Hàm ý nghiên cứu", latest.HerdingRiskScore >= 70 ? "Nên đối chiếu giai đoạn này với tin tức, thanh khoản và độ rộng thị trường để xác định đây là bầy đàn thực sự hay cú sốc thông tin hợp lý." : "Chưa có tín hiệu bầy đàn cực đoan, nhưng cần theo dõi tốc độ tăng của trend share và điểm rủi ro thay vì chỉ nhìn mức hiện tại."]
     ];
     $("researchInterpretation").innerHTML = interpretations.map(item => `<div class="research-item"><b>${item[0]}</b><div><strong>${item[1]}</strong><span>${item[2]}</span></div></div>`).join("");
 
@@ -3044,7 +915,6 @@ input[type=text]:focus {
     $("topRiskTable").innerHTML = topRows.map(row => `<tr><td>${formatDate(row.Date)}</td><td>${formatNumber(row.HerdingRiskScore, 1)}</td><td>${formatNumber(row.Return * 100, 2)}</td><td>${formatNumber(row.TrendShare * 100, 1)}</td><td>${formatNumber(row.VolumeZ, 2)}</td><td>${formatNumber(row.VolatilityZ, 2)}</td><td>${row.PanicSignal ? '<span class="pill high">Bán tháo</span>' : row.RiskLevel}</td></tr>`).join("");
   }
 
-  /* ===== Dựng nội dung khối "Hướng dẫn hành động" cho người dùng ===== */
 
   function tickerName() {
     const value = $("tickerInput").value.trim().toUpperCase();
@@ -3115,7 +985,7 @@ input[type=text]:focus {
         ["Rà soát quy mô vị thế", "So sánh mức lỗ hiện tại với giới hạn chịu rủi ro đã đặt trước và tránh để một cổ phiếu chiếm tỷ trọng quá lớn."],
         ["Hạn chế đòn bẩy", "Không tăng margin trong giai đoạn điểm rủi ro cao; xem xét giảm mức vay nếu vượt kế hoạch quản trị rủi ro cá nhân."],
         ["Không bình quân giá xuống vội", "Chờ áp lực bán, biến động và khối lượng bất thường cùng suy yếu trước khi đánh giá lại."],
-        ["Kiểm tra nguyên nhân cơ bản", "Đối chiếu cảnh báo với tin tức doanh nghiệp, kết quả kinh doanh, ngành và thị trường chung — vì mô hình không phân biệt được bán tháo hợp lý và bán tháo bầy đàn."],
+        ["Kiểm tra nguyên nhân cơ bản", "Đối chiếu cảnh báo với tin tức doanh nghiệp, kết quả kinh doanh, ngành và thị trường chung."],
         ["Đặt điều kiện đánh giá lại", "Chỉ xem trạng thái cải thiện khi Herding Risk Score xuống dưới 70 và không tiếp tục tạo đáy ngắn hạn mới."]
       ];
     } else if (latest.RiskLevel === "Trung bình") {
@@ -3174,8 +1044,47 @@ input[type=text]:focus {
     ].join("");
   }
 
-/* ===== Xuất kết quả mô hình ra file CSV ===== */
-  
+  // === TỰ ĐỘNG LẤY DỮ LIỆU TỪ BACKEND (thay vì bắt upload CSV thủ công) ===
+  // Sau khi deploy backend.py (xem hướng dẫn trong file đó), dán link deploy
+  // vào đây, ví dụ: "https://ten-du-an-backend.onrender.com"
+  const BACKEND_URL = "http://localhost:8000"; // <-- ĐỔI thành link backend thật khi deploy
+
+  async function fetchFromBackend() {
+    const ticker = $("tickerInput").value.trim().toUpperCase();
+    if (!ticker) {
+      alert("Nhập mã cổ phiếu trước, ví dụ: VCB, FPT, HPG.");
+      return;
+    }
+
+    const button = $("fetchAutoButton");
+    const originalText = button.textContent;
+    button.textContent = "Đang tải...";
+    button.disabled = true;
+
+    try {
+      const response = await fetch(`${BACKEND_URL}/api/stock/${ticker}`);
+      if (!response.ok) {
+        const errorBody = await response.json().catch(() => ({}));
+        throw new Error(errorBody.detail || `Lỗi server (${response.status})`);
+      }
+
+      const payload = await response.json();
+      state.rawData = payload.data;
+      state.sourceName = `vnstock — ${payload.ticker} (${payload.count} phiên, tự động)`;
+      $("csvFile").value = "";
+      renderDashboard();
+    } catch (error) {
+      alert(
+        `Không lấy được dữ liệu tự động: ${error.message}\n\n` +
+        `Kiểm tra: backend đã chạy/deploy chưa? Mã cổ phiếu có đúng không?\n` +
+        `Trong lúc chờ, có thể dùng "Tải dữ liệu CSV thủ công" bên dưới thay thế.`
+      );
+    } finally {
+      button.textContent = originalText;
+      button.disabled = false;
+    }
+  }
+
   function downloadCSV() {
     if (!state.result.length) return;
 
@@ -3221,13 +1130,11 @@ input[type=text]:focus {
     URL.revokeObjectURL(url);
   }
 
-/* ===== Gắn sự kiện UI (slider, nút bấm, upload file) & khởi chạy lần đầu ===== */
-  
   function updateSliderLabels() {
     $("momentumValue").textContent = `${$("momentumWindow").value} phiên`;
     $("volatilityValue").textContent = `${$("volatilityWindow").value} phiên`;
     $("payoffValue").textContent = `${$("payoffWindow").value} phiên`;
-    $("learningValue").textContent = (Number($("learningRate").value) / 100).toFixed(2);
+    $("learningValue").textContent = $("learningRate").value;
   }
 
   ["momentumWindow", "volatilityWindow", "payoffWindow", "learningRate"].forEach(id => {
@@ -3235,6 +1142,8 @@ input[type=text]:focus {
   });
 
   $("runButton").addEventListener("click", renderDashboard);
+
+  $("fetchAutoButton").addEventListener("click", fetchFromBackend);
 
   $("tickerInput").addEventListener("input", () => { if (state.result.length) renderUserGuidance(state.result); });
 
