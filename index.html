@@ -2878,13 +2878,6 @@ input[type=text]:focus {
     drawAxes(context, yMin, yMax, value => formatNumber(value, 0));
     drawXAxisLabels(data, context);
 
-    context.svg.appendChild(svgElement("path", {
-      d: linePath(values, context, yMin, yMax),
-      fill: "none",
-      stroke: "#3b82f6",
-      "stroke-width": 2.2
-    }));
-
     data.forEach((row, index) => {
       if (!row.PanicSignal) return;
 
