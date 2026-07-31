@@ -26,7 +26,8 @@ footer{background:var(--ink);color:#fff;padding:40px 0}.foot{display:flex;justif
 <section class="stats"><div class="container"><h2>Các con số tự nói lên mức độ hữu ích của mô hình</h2><div class="stats-grid"><div class="stat"><b>2</b><span>chiến lược đầu tư được mô hình hóa</span></div><div class="stat"><b>100</b><span>điểm tối đa của Herding Risk Score</span></div><div class="stat"><b>4</b><span>nhóm biến hình thành điểm rủi ro</span></div><div class="stat"><b>1</b><span>tệp HTML độc lập, chạy trực tiếp</span></div></div></div></section>
 <section class="section soft" id="overview"><div class="container split"><div class="art"><div class="pop"><h3 style="margin:0 0 7px">Tỷ lệ theo xu hướng</h3><b>68.3%</b><p class="copy" style="font-size:11px;margin:6px 0 0">Ước lượng từ động lực tái tạo và payoff chiến lược.</p></div><div class="phone"><div><div class="line" style="width:45%"></div><div class="line" style="width:70%"></div><div class="block"><b style="font-size:12px">Evolutionary dynamics</b><div class="bars"><i style="height:28%"></i><i style="height:43%"></i><i style="height:55%"></i><i style="height:74%"></i><i style="height:92%"></i></div></div><div class="line" style="width:85%;margin-top:20px"></div><div class="line" style="width:62%"></div></div></div></div><div><div class="kicker">Phương pháp nghiên cứu</div><h2 class="title">Không chỉ nhìn vào giá, mô hình theo dõi cách chiến lược lan truyền.</h2><p class="copy">Khi một chiến lược mang lại lợi ích cao hơn, tỷ lệ nhà đầu tư sử dụng chiến lược đó sẽ tăng. Replicator dynamics mô phỏng quá trình thích nghi và kết hợp với lợi suất, biến động cùng khối lượng để nhận diện rủi ro bầy đàn.</p><div class="list"><div><span class="num">1</span>Tính lợi suất logarithmic, momentum và biến động lăn.</div><div><span class="num">2</span>So sánh payoff của trend-following và contrarian.</div><div><span class="num">3</span>Ước lượng tỷ lệ chiến lược bằng động lực tái tạo.</div><div><span class="num">4</span>Tạo Herding Risk Score từ 0 đến 100.</div></div></div></div></section>
 <section class="section" id="features"><div class="container"><div class="center"><div class="kicker">Tính năng chính</div><h2 class="title">Công cụ cần thiết cho một bài code định lượng tài chính.</h2><p class="copy">Thiết kế fintech hiện đại, tập trung vào dữ liệu, khả năng giải thích và trình bày kết quả nghiên cứu.</p></div><div class="cards"><article class="fcard purple"><div class="ico">📊</div><div><h3>Phân tích dữ liệu</h3><p>Đọc CSV, làm sạch dữ liệu và tính các biến tài chính.</p></div></article><article class="fcard mint"><div class="ico">🧬</div><div><h3>Trò chơi tiến hóa</h3><p>Mô phỏng sự chuyển đổi giữa hai chiến lược đầu tư.</p></div></article><article class="fcard pink"><div class="ico">⚠️</div><div><h3>Cảnh báo bán tháo</h3><p>Đánh dấu phiên có rủi ro cao và áp lực bán mạnh.</p></div></article><article class="fcard blue"><div class="ico">📈</div><div><h3>Dashboard trực quan</h3><p>Biểu đồ giá, chiến lược và điểm rủi ro tương tác.</p></div></article><article class="fcard cream"><div class="ico">🧮</div><div><h3>Điều chỉnh tham số</h3><p>Thay đổi momentum, volatility, payoff và learning rate.</p></div></article><article class="fcard yellow"><div class="ico">⬇️</div><div><h3>Xuất kết quả</h3><p>Tải dữ liệu mô hình dưới dạng CSV để phân tích tiếp.</p></div></article></div></div></section>
-<section class="section dashboard" id="dashboard"><div class="container"><div class="center" style="margin-bottom:0"><div class="kicker">MVP tương tác</div><h2 class="title">Chạy mô hình trực tiếp trên trình duyệt.</h2><p class="copy">Không cần máy chủ hoặc cài Python. Tải CSV của bạn hoặc dùng dữ liệu mẫu.</p></div><div class="dash-shell"><div class="dash-grid"><aside class="controls"><h3>Thiết lập mô hình</h3><p>Điều chỉnh tham số rồi chạy phân tích.</p><div class="control"><label>Mã cổ phiếu / chỉ số</label><input id="tickerInput" type="text" value="VNINDEX" placeholder="Ví dụ: FPT, HPG, VCB"><button id="fetchAutoButton" style="margin-top:8px;background:var(--green);color:#fff">Lấy dữ liệu tự động</button></div><div class="control"><label>Hoặc tải dữ liệu CSV thủ công (dự phòng)</label><input id="csvFile" type="file" accept=".csv"></div><div class="control"><label>Cửa sổ xu hướng</label><input id="momentumWindow" type="range" min="3" max="30" value="10"><div class="range-row"><span>3</span><strong id="momentumValue">10 phiên</strong><span>30</span></div></div><div class="control"><label>Cửa sổ biến động</label><input id="volatilityWindow" type="range" min="10" max="60" value="20"><div class="range-row"><span>10</span><strong id="volatilityValue">20 phiên</strong><span>60</span></div></div><div class="control"><label>Làm mượt payoff</label><input id="payoffWindow" type="range" min="3" max="30" value="10"><div class="range-row"><span>3</span><strong id="payoffValue">10 phiên</strong><span>30</span></div></div><div class="control"><label>Tốc độ thích nghi</label><input id="learningRate" type="range" min="1" max="100" value="35"><div class="range-row"><span>Chậm</span><strong id="learningValue">35</strong><span>Nhanh</span></div></div><button id="runButton">Chạy phân tích</button><button class="secondary" id="demoButton">Khôi phục dữ liệu mẫu</button><button class="secondary" id="downloadButton">Tải kết quả CSV</button><div class="note">CSV cần có Date, Close, Volume và tối thiểu 80 phiên (nên ≥ 4 lần window lớn nhất để kết quả ổn định). Định dạng ngày hỗ trợ: yyyy-mm-dd hoặc dd/mm/yyyy. Mô hình phục vụ nghiên cứu, không phải khuyến nghị đầu tư.</div></aside><div><div class="dash-head"><div><h3>Market behavior analytics</h3><p>Evolutionary Game Theory & Herding Risk Detection</p></div><div class="source-badge" id="sourceBadge">Nguồn: Dữ liệu mẫu mô phỏng</div></div><div class="metrics"><div class="metric"><div class="metric-label">Giá đóng cửa mới nhất</div><div class="metric-value" id="latestClose">-</div><div class="metric-sub" id="latestDate">-</div></div><div class="metric"><div class="metric-label">Lợi suất phiên</div><div class="metric-value" id="latestReturn">-</div><div class="metric-sub">Lợi suất logarithmic</div></div><div class="metric"><div class="metric-label">Tỷ lệ theo xu hướng</div><div class="metric-value" id="latestTrend">-</div><div class="metric-sub">Replicator dynamics</div></div><div class="metric"><div class="metric-label">Herding Risk Score</div><div class="metric-value" id="latestRisk">-</div><div class="metric-sub" id="latestLevel">-</div></div></div><div class="alert low" id="riskAlert">Đang khởi tạo mô hình...</div>
+<section class="section dashboard" id="dashboard"><div class="container"><div class="center" style="margin-bottom:0"><div class="kicker">MVP tương tác</div><h2 class="title">Chạy mô hình trực tiếp trên trình duyệt.</h2><p class="copy">Không cần máy chủ hoặc cài Python. Tải CSV của bạn hoặc dùng dữ liệu mẫu.</p></div><div class="dash-shell"><div class="dash-grid"><aside class="controls"><h3>Thiết lập mô hình</h3><p>Điều chỉnh tham số rồi chạy phân tích.</p><div class="control"><label>Mã cổ phiếu / chỉ số</label><input id="tickerInput" type="text" value="VNINDEX" placeholder="Ví dụ: FPT, HPG, VCB"><button id="fetchAutoButton" style="margin-top:8px;background:var(--green);color:#fff">Lấy dữ liệu tự động</button></div><div class="control"><label>Hoặc tải dữ liệu CSV thủ công (dự phòng)</label><input id="csvFile" type="file" accept=".csv"></div><div class="control"><label>Cửa sổ xu hướng</label><input id="momentumWindow" type="range" min="3" max="30" value="10"><div class="range-row"><span>3</span><strong id="momentumValue">10 phiên</strong><span>30</span></div></div><div class="control"><label>Cửa sổ biến động</label><input id="volatilityWindow" type="range" min="10" max="60" value="20"><div class="range-row"><span>10</span><strong id="volatilityValue">20 phiên</strong><span>60</span></div></div><div class="control"><label>Làm mượt payoff</label><input id="payoffWindow" type="range" min="3" max="30" value="10"><div class="range-row"><span>3</span><strong id="payoffValue">10 phiên</strong><span>30</span></div></div><div class="control"><label>Tốc độ thích nghi</label><input id="learningRate" type="range" min="1" max="100" value="35"><div class="range-row"><span>Chậm</span><strong id="learningValue">35</strong><span>Nhanh</span></div></div><button id="runButton">Chạy phân tích</button><button class="secondary" id="demoButton">Khôi phục dữ liệu mẫu</button><button class="secondary" id="downloadButton">Tải kết quả CSV</button><div class="note">CSV cần có Date, Close, Volume và tối thiểu 80 phiên (nên ≥ 4 lần window lớn nhất để kết quả ổn định). Định dạng ngày hỗ trợ: yyyy-mm-dd hoặc dd/mm/yyyy. Mô hình phục vụ nghiên cứu, không phải khuyến nghị đầu tư.</div></aside><div><div class="dash-head"><div><h3>Market behavior analytics</h3><p>Evolutionary Game Theory & Herding Risk Detection</p></div><div class="source-badge" id="sourceBadge">Nguồn: Dữ liệu mẫu mô phỏng</div></div><div class="metrics"><div class="metric"><div class="metric-label">Giá đóng cửa mới nhất</div><div class="metric-value" id="latestClose">-</div><div class="metric-sub" id="latestDate">-</div></div><div class="metric"><div class="metric-label">Lợi suất phiên</div><div class="metric-value" id="latestReturn">-</div><div class="metric-sub">Lợi suất logarithmic</div></div><div class="metric"><div class="metric-label">Tỷ lệ theo xu hướng</div><div class="metric-value" id="latestTrend">-</div><div class="metric-sub">Replicator dynamics</div></div><div class="metric"><div class="metric-label">Trend Intensity Score (1 mã)</div><div class="metric-value" id="latestRisk">-</div><div class="metric-sub" id="latestLevel">-</div></div></div><div class="alert low" id="riskAlert">Đang khởi tạo mô hình...</div>
+<div class="analysis-note" style="margin:0 0 13px">Chỉ số này đo <strong>cường độ trend-following của riêng mã đang chọn</strong>, không phải herding thị trường theo đúng nghĩa học thuật (herding cần so sánh nhiều mã cùng lúc — xem mục "Herding thị trường thật" bên dưới trang).</div>
 <div class="analysis-panel" id="deep-analysis">
   <div class="analysis-head">
     <div>
@@ -131,6 +132,47 @@ footer{background:var(--ink);color:#fff;padding:40px 0}.foot{display:flex;justif
       </ul>
     </div>
   </div>
+</div>
+
+<div class="guidance-panel" id="cross-sectional-herding">
+  <div class="guidance-head">
+    <div>
+      <h3>Herding thị trường thật (Cross-Sectional CSAD)</h3>
+      <p>Đo herding đúng chuẩn học thuật kinh điển (Chang, Cheng &amp; Khorana 2000) — so sánh độ phân tán lợi suất giữa NHIỀU mã cùng lúc, khác với "Trend Intensity Score" ở trên (chỉ đo 1 mã).</p>
+    </div>
+    <div class="guidance-badge">CSAD regression</div>
+  </div>
+
+  <div class="control" style="margin-bottom:13px">
+    <label>Danh sách mã (phân tách bởi dấu phẩy, tối thiểu 5 mã cùng ngành)</label>
+    <input id="csadTickers" type="text" value="VCB,BID,CTG,ACB,MBB,TCB,STB,VPB,HDB,TPB" style="color:var(--ink);background:#fff;border:1px solid var(--line)">
+    <button id="csadRunButton" style="margin-top:8px;background:var(--ink);color:#fff;border:0;border-radius:12px;padding:12px;font-weight:900;cursor:pointer;width:100%">Chạy kiểm định herding thị trường</button>
+  </div>
+
+  <div class="analysis-summary" id="csadSummary">Chưa chạy kiểm định. Cần backend đang hoạt động (xem hướng dẫn deploy trong backend.py).</div>
+
+  <div class="guidance-cards">
+    <article class="guidance-card"><small>Số phiên có herding (γ2 âm, có ý nghĩa)</small><strong id="csadHerdingDays">-</strong><span id="csadHerdingShare">-</span></article>
+    <article class="guidance-card"><small>Số mã dùng được</small><strong id="csadTickerCount">-</strong><span id="csadTickerList">-</span></article>
+    <article class="guidance-card"><small>Cửa sổ hồi quy trượt</small><strong id="csadWindow">-</strong><span>Rolling OLS, ngưỡng t-stat &lt; -1.96 (mức ý nghĩa 5%)</span></article>
+    <article class="guidance-card"><small>Phương pháp</small><strong style="font-size:12px">Chang-Cheng-Khorana (2000)</strong><span>CSAD_t = α + γ1|Rm| + γ2·Rm²</span></article>
+  </div>
+
+  <div class="card chart-card" style="margin-top:13px">
+    <h3>Hệ số γ2 theo thời gian (rolling)</h3>
+    <p>γ2 &lt; 0 và nằm dưới đường ngưỡng đỏ (t-stat &lt; -1.96) = có bằng chứng herding tại thời điểm đó.</p>
+    <svg id="csadChart"></svg>
+  </div>
+
+  <div class="card" style="margin-top:13px">
+    <h3>10 phiên có bằng chứng herding mạnh nhất</h3>
+    <p>Xếp theo t-stat âm nhất — nên đối chiếu với tin tức/sự kiện thị trường giai đoạn đó.</p>
+    <div class="table-wrap">
+      <table><thead><tr><th>Ngày</th><th>γ2</th><th>t-stat</th><th>CSAD</th><th>Lợi suất thị trường (%)</th></tr></thead><tbody id="csadTable"></tbody></table>
+    </div>
+  </div>
+
+  <div class="guidance-disclaimer"><strong>Lưu ý:</strong> Đây là kiểm định thống kê trên dữ liệu lịch sử, không phải dự báo. Herding tại 1 giai đoạn quá khứ không đảm bảo lặp lại. Kết quả phụ thuộc vào nhóm mã được chọn — nên chọn các mã cùng ngành để kết quả có ý nghĩa.</div>
 </div>
 
 <div class="guidance-panel" id="user-action">
@@ -420,8 +462,17 @@ footer{background:var(--ink);color:#fff;padding:40px 0}.foot{display:flex;justif
       const trendSignal = Math.sign(previousMomentum);
       trendSignals.push(trendSignal);
 
-      trendPayoffs.push(trendSignal * ret);
-      contrarianPayoffs.push(-trendSignal * ret);
+      // FIX HỌC THUẬT #2: bản cũ dùng payoff = tín hiệu × lợi suất THÔ.
+      // Vấn đề: 1% lợi nhuận trong giai đoạn biến động thấp có ý nghĩa
+      // khác hẳn 1% trong giai đoạn biến động cao (rủi ro khác nhau).
+      // Chuẩn hoá payoff theo độ biến động gần nhất (risk-adjusted,
+      // giống tinh thần Sharpe ratio) để việc so sánh trend-following
+      // vs contrarian công bằng giữa các giai đoạn thị trường khác nhau.
+      const recentDailyVol = rollingStd(returns, volatilityWindow, i) || 0.0001;
+      const riskAdjustedRet = ret / Math.max(recentDailyVol, 0.0001);
+
+      trendPayoffs.push(trendSignal * riskAdjustedRet);
+      contrarianPayoffs.push(-trendSignal * riskAdjustedRet);
 
       const std = rollingStd(returns, volatilityWindow, i);
       volatilities.push(Number.isFinite(std) ? std * Math.sqrt(252) : 0);
@@ -435,10 +486,18 @@ footer{background:var(--ink);color:#fff;padding:40px 0}.foot{display:flex;justif
       const contrarianExpected = rollingMean(contrarianPayoffs, payoffWindow, i) ?? 0;
       const payoffDifference = trendExpected - contrarianExpected;
 
+      // FIX HỌC THUẬT #3: learningRate slider để 1-100 cho người dùng dễ
+      // hiểu (như %), nhưng chia lại /100 khi đưa vào công thức replicator
+      // dynamics — vì payoff giờ đã risk-adjusted (đơn vị ~độ lệch chuẩn,
+      // lớn hơn lợi suất thô nhiều lần), nếu giữ nguyên hệ số 1-100 như cũ
+      // thì trendShare sẽ dao động cực mạnh mỗi phiên, không còn phản ánh
+      // đúng ý nghĩa "thích nghi dần dần" của replicator dynamics.
+      const eta = learningRate / 100;
+
       if (i > 0) {
         trendShare = clip(
           trendShare +
-          learningRate *
+          eta *
           trendShare *
           (1 - trendShare) *
           payoffDifference,
@@ -451,7 +510,12 @@ footer{background:var(--ink);color:#fff;padding:40px 0}.foot{display:flex;justif
       const volumeZ = zScore(logVolumes, volatilityWindow, i);
       const volatilityZ = zScore(volatilities, volatilityWindow, i);
 
-      const trendConcentration = clip((trendShare - 0.50) / (0.95 - 0.50), 0, 1);
+      // FIX HỌC THUẬT #1: công thức cũ chỉ tính điểm khi trendShare cao
+      // (nhiều người theo trend), bỏ qua trường hợp trendShare RẤT THẤP
+      // (gần như tất cả đều theo contrarian) — về lý thuyết đây cũng là
+      // 1 dạng đồng thuận cực đoan (herding theo hướng ngược lại). Đổi
+      // sang trị tuyệt đối |trendShare - 0.5| để đối xứng 2 chiều.
+      const trendConcentration = clip(Math.abs(trendShare - 0.50) / (0.95 - 0.50), 0, 1);
       const sellPressure = clip(Math.max(-returnZ, 0) / 3, 0, 1);
       const volatilityStress = clip(Math.max(volatilityZ, 0) / 3, 0, 1);
       const volumeStress = clip(Math.max(volumeZ, 0) / 3, 0, 1);
@@ -1085,6 +1149,100 @@ footer{background:var(--ink);color:#fff;padding:40px 0}.foot{display:flex;justif
     }
   }
 
+  async function fetchCrossSectionalHerding() {
+    const tickersInput = $("csadTickers").value.trim();
+    const button = $("csadRunButton");
+    const originalText = button.textContent;
+    button.textContent = "Đang chạy hồi quy...";
+    button.disabled = true;
+    $("csadSummary").textContent = "Đang lấy dữ liệu nhiều mã và chạy hồi quy trượt — có thể mất 10-30 giây...";
+
+    try {
+      const response = await fetch(`${BACKEND_URL}/api/herding/cross-sectional?tickers=${encodeURIComponent(tickersInput)}`);
+      if (!response.ok) {
+        const errorBody = await response.json().catch(() => ({}));
+        throw new Error(errorBody.detail || `Lỗi server (${response.status})`);
+      }
+
+      const payload = await response.json();
+      renderCrossSectionalHerding(payload);
+    } catch (error) {
+      $("csadSummary").textContent = `Không chạy được kiểm định: ${error.message}. Kiểm tra backend đã deploy/chạy chưa.`;
+    } finally {
+      button.textContent = originalText;
+      button.disabled = false;
+    }
+  }
+
+  function renderCrossSectionalHerding(payload) {
+    const data = payload.data;
+    if (!data || !data.length) {
+      $("csadSummary").textContent = "Không có đủ dữ liệu để chạy hồi quy.";
+      return;
+    }
+
+    $("csadSummary").innerHTML = `Chạy hồi quy trượt (window ${payload.window} phiên) trên <strong>${payload.tickers_used.length}</strong> mã, <strong>${payload.count}</strong> phiên kết quả. Phát hiện <strong>${payload.herding_days}</strong> phiên có bằng chứng herding có ý nghĩa thống kê (γ2 âm, t-stat &lt; -1.96), chiếm <strong>${formatNumber(payload.herding_share * 100, 1)}%</strong> tổng số phiên kiểm định.`;
+
+    $("csadHerdingDays").textContent = payload.herding_days;
+    $("csadHerdingShare").textContent = `${formatNumber(payload.herding_share * 100, 1)}% tổng số phiên`;
+    $("csadTickerCount").textContent = payload.tickers_used.length;
+    $("csadTickerList").textContent = payload.tickers_used.join(", ");
+    $("csadWindow").textContent = `${payload.window} phiên`;
+
+    // Vẽ biểu đồ gamma2 theo thời gian, dùng lại hạ tầng chart SVG có sẵn
+    const context = setupChart("csadChart");
+    const gamma2Values = data.map(r => r.gamma2);
+    const minG = Math.min(...gamma2Values, 0);
+    const maxG = Math.max(...gamma2Values, 0);
+    const padding = (maxG - minG) * 0.15 || 0.001;
+    const yMin = minG - padding;
+    const yMax = maxG + padding;
+
+    drawAxes(context, yMin, yMax, v => v.toFixed(4));
+
+    const indexes = [0, Math.floor((data.length - 1) / 2), data.length - 1];
+    indexes.forEach(index => {
+      const x = context.margin.left + context.plotWidth * index / Math.max(data.length - 1, 1);
+      const text = svgElement("text", {
+        x, y: context.height - 14, fill: "#94a3b8", "font-size": 11,
+        "text-anchor": index === 0 ? "start" : index === data.length - 1 ? "end" : "middle"
+      });
+      text.textContent = data[index].date;
+      context.svg.appendChild(text);
+    });
+
+    // Đường 0 tham chiếu
+    const zeroY = context.margin.top + context.plotHeight * (1 - (0 - yMin) / (yMax - yMin));
+    context.svg.appendChild(svgElement("line", {
+      x1: context.margin.left, y1: zeroY, x2: context.width - context.margin.right, y2: zeroY,
+      stroke: "#94a3b8", "stroke-width": 1, "stroke-dasharray": "4,4"
+    }));
+
+    context.svg.appendChild(svgElement("path", {
+      d: linePath(gamma2Values, context, yMin, yMax),
+      fill: "none", stroke: "#7759b8", "stroke-width": 2
+    }));
+
+    data.forEach((row, index) => {
+      if (!row.isHerding) return;
+      const x = context.margin.left + context.plotWidth * index / Math.max(data.length - 1, 1);
+      const y = context.margin.top + context.plotHeight * (1 - (row.gamma2 - yMin) / (yMax - yMin));
+      context.svg.appendChild(svgElement("circle", { cx: x, cy: y, r: 3, fill: "#e45858" }));
+    });
+
+    // Bảng 10 phiên herding mạnh nhất (t-stat âm nhất)
+    const topHerding = data.slice().sort((a, b) => a.tStat - b.tStat).slice(0, 10);
+    $("csadTable").innerHTML = topHerding.map(r => `
+      <tr>
+        <td>${r.date}</td>
+        <td>${formatNumber(r.gamma2, 5)}</td>
+        <td>${formatNumber(r.tStat, 2)}</td>
+        <td>${formatNumber(r.csad, 5)}</td>
+        <td>${formatNumber(r.marketReturn * 100, 2)}</td>
+      </tr>
+    `).join("");
+  }
+
   function downloadCSV() {
     if (!state.result.length) return;
 
@@ -1144,6 +1302,8 @@ footer{background:var(--ink);color:#fff;padding:40px 0}.foot{display:flex;justif
   $("runButton").addEventListener("click", renderDashboard);
 
   $("fetchAutoButton").addEventListener("click", fetchFromBackend);
+
+  $("csadRunButton").addEventListener("click", fetchCrossSectionalHerding);
 
   $("tickerInput").addEventListener("input", () => { if (state.result.length) renderUserGuidance(state.result); });
 
