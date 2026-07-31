@@ -858,12 +858,36 @@
     return parseDateSafe(d).toLocaleDateString("vi-VN");
   }
 
-  // Demo Data Generator (Realistic Market Dynamics)
-  function generateDemoData() {
+  // Demo Data Generator (Realistic Market Dynamics with Ticker-Specific Seed)
+  function getTickerSeed(ticker) {
+    let hash = 5381;
+    const str = String(ticker || "VNINDEX").toUpperCase();
+    for (let i = 0; i < str.length; i++) {
+      hash = ((hash << 5) + hash) + str.charCodeAt(i);
+    }
+    return Math.abs(hash);
+  }
+
+  function getTickerBasePrice(ticker) {
+    const str = String(ticker || "VNINDEX").toUpperCase();
+    if (str.includes("FPT")) return 132.5;
+    if (str.includes("HPG")) return 28.4;
+    if (str.includes("VCB")) return 92.1;
+    if (str.includes("BID")) return 48.6;
+    if (str.includes("CTG")) return 35.2;
+    if (str.includes("MWG")) return 62.8;
+    if (str.includes("VHM")) return 42.0;
+    if (str.includes("VIC")) return 45.0;
+    if (str.includes("GAS")) return 76.5;
+    if (str.includes("MSN")) return 75.0;
+    return 1250.0;
+  }
+
+  function generateDemoData(ticker = "VNINDEX") {
     let current = new Date("2023-01-02");
-    let close = 1000;
+    let close = getTickerBasePrice(ticker);
     const rows = [];
-    let seed = 42;
+    let seed = getTickerSeed(ticker);
     const random = () => {
       let t = seed += 0x6D2B79F5;
       t = Math.imul(t ^ t >>> 15, t | 1);
@@ -877,6 +901,9 @@
       return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
     };
 
+    const shock1Start = 100 + (seed % 60);
+    const shock2Start = 280 + (seed % 70);
+
     for (let i = 0; i < 500; i++) {
       while (current.getDay() === 0 || current.getDay() === 6) {
         current.setDate(current.getDate() + 1);
@@ -885,9 +912,9 @@
       let vol = 0.009;
       let volMult = 1;
 
-      // Simulated shock periods
-      if ((i >= 120 && i < 135) || (i >= 310 && i < 325)) {
-        mean = -0.012;
+      // Simulated shock periods specific to ticker
+      if ((i >= shock1Start && i < shock1Start + 15) || (i >= shock2Start && i < shock2Start + 15)) {
+        mean = -0.014 + (random() * 0.004);
         vol = 0.022;
         volMult = 1.8;
       }
@@ -1253,22 +1280,33 @@
   });
 
   $("demoBtn").addEventListener("click", () => {
-    state.rawData = generateDemoData();
-    state.sourceName = "Dữ liệu mẫu mô phỏng";
+    const ticker = $("tickerInput").value.trim().toUpperCase() || "VNINDEX";
+    state.rawData = generateDemoData(ticker);
+    state.sourceName = `Dữ liệu mô phỏng ${ticker}`;
     renderDashboard();
   });
 
   $("fetchAutoBtn").addEventListener("click", async () => {
     const ticker = $("tickerInput").value.trim().toUpperCase();
     if (!ticker) return alert("Vui lòng nhập mã cổ phiếu!");
-    state.rawData = generateDemoData(); // Fallback demo with current ticker label
-    state.sourceName = `Tải tự động mã ${ticker}`;
-    renderDashboard();
+
+    const btn = $("fetchAutoBtn");
+    const origText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = `🚀 Đang phân tích ${ticker}...`;
+
+    setTimeout(() => {
+      state.rawData = generateDemoData(ticker);
+      state.sourceName = `Tải tự động mã ${ticker} (${state.rawData.length} phiên)`;
+      renderDashboard();
+      btn.disabled = false;
+      btn.textContent = origText;
+    }, 250);
   });
 
   // Init
   updateSliderLabels();
-  state.rawData = generateDemoData();
+  state.rawData = generateDemoData("VNINDEX");
   renderDashboard();
 
   window.addEventListener("resize", () => {
