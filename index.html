@@ -2287,11 +2287,11 @@ input[type=text]:focus {
                     Tỷ lệ chiến lược
                   </h3>
                   <p>
-                    Theo xu hướng và đi ngược đám đông.
+                    Tỷ lệ theo xu hướng (trend-following share).
                   </p>
                   <svg id="strategyChart"></svg>
                   <div class="legend">
-                    <span style="--legend-color:#7759b8">Theo xu hướng</span><span style="--legend-color:#2b9f91">Contrarian</span>
+                    <span style="--legend-color:#7759b8">Theo xu hướng</span>
                   </div>
                 </div>
                 <div class="card chart-card">
@@ -2780,6 +2780,59 @@ input[type=text]:focus {
     return node;
   }
 
+  // Biểu đồ γ2 (csadChart) trống vì nó chỉ được vẽ bên trong
+  // renderCrossSectionalHerding(), hàm này CHỈ chạy sau khi fetch tới
+  // backend (BACKEND_URL) thành công — khác với các biểu đồ 1 mã ở trên
+  // (tự chạy renderDashboard() ngay khi tải trang). Hàm dưới đây vẽ một
+  // thông báo rõ ràng vào chính ô SVG thay vì để trống hoàn toàn, cả lúc
+  // mới tải trang lẫn khi bấm nút mà backend lỗi/chưa deploy.
+  function drawChartPlaceholder(svgId, message, isError = false) {
+    const svg = $(svgId);
+    if (!svg) return;
+    svg.innerHTML = "";
+
+    const width = Math.max(svg.clientWidth || 700, 320);
+    const height = 290;
+    svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+
+    const icon = svgElement("text", {
+      x: width / 2,
+      y: height / 2 - 14,
+      fill: isError ? "#e45858" : "#94a3b8",
+      "font-size": 22,
+      "text-anchor": "middle"
+    });
+    icon.textContent = isError ? "⚠️" : "📡";
+    svg.appendChild(icon);
+
+    const maxCharsPerLine = 46;
+    const words = message.split(" ");
+    const lines = [];
+    let currentLine = "";
+    words.forEach(word => {
+      const candidate = currentLine ? `${currentLine} ${word}` : word;
+      if (candidate.length > maxCharsPerLine) {
+        lines.push(currentLine);
+        currentLine = word;
+      } else {
+        currentLine = candidate;
+      }
+    });
+    if (currentLine) lines.push(currentLine);
+
+    lines.forEach((line, index) => {
+      const text = svgElement("text", {
+        x: width / 2,
+        y: height / 2 + 12 + index * 16,
+        fill: "#6d7d74",
+        "font-size": 11,
+        "text-anchor": "middle"
+      });
+      text.textContent = line;
+      svg.appendChild(text);
+    });
+  }
+
   function setupChart(svgId) {
     const svg = $(svgId);
     svg.innerHTML = "";
@@ -2905,19 +2958,11 @@ input[type=text]:focus {
     drawXAxisLabels(data, context);
 
     const trend = data.map(row => row.TrendShare * 100);
-    const contrarian = data.map(row => row.ContrarianShare * 100);
 
     context.svg.appendChild(svgElement("path", {
       d: linePath(trend, context, 0, 100),
       fill: "none",
       stroke: "#8b5cf6",
-      "stroke-width": 2.2
-    }));
-
-    context.svg.appendChild(svgElement("path", {
-      d: linePath(contrarian, context, 0, 100),
-      fill: "none",
-      stroke: "#06b6d4",
       "stroke-width": 2.2
     }));
   }
@@ -3255,7 +3300,7 @@ input[type=text]:focus {
   // === TỰ ĐỘNG LẤY DỮ LIỆU TỪ BACKEND (thay vì bắt upload CSV thủ công) ===
   // Sau khi deploy backend.py (xem hướng dẫn trong file đó), dán link deploy
   // vào đây, ví dụ: "https://ten-du-an-backend.onrender.com"
-  const BACKEND_URL = "http://localhost:8000"; // <-- ĐỔI thành link backend thật khi deploy
+  const BACKEND_URL = "https://bay-dan-chung-khoan-backend.onrender.com"; // <-- ĐỔI thành link backend thật khi deploy
 
   async function fetchFromBackend() {
     const ticker = $("tickerInput").value.trim().toUpperCase();
@@ -3312,6 +3357,11 @@ input[type=text]:focus {
       renderCrossSectionalHerding(payload);
     } catch (error) {
       $("csadSummary").textContent = `Không chạy được kiểm định: ${error.message}. Kiểm tra backend đã deploy/chạy chưa.`;
+      drawChartPlaceholder(
+        "csadChart",
+        `Không lấy được dữ liệu từ backend (${BACKEND_URL}). Kiểm tra backend đã chạy/deploy đúng địa chỉ, và CORS đã cho phép domain này chưa.`,
+        true
+      );
     } finally {
       button.textContent = originalText;
       button.disabled = false;
@@ -3488,6 +3538,10 @@ input[type=text]:focus {
   });
 
   updateSliderLabels();
+  drawChartPlaceholder(
+    "csadChart",
+    `Chưa có dữ liệu. Nhấn "Chạy kiểm định herding thị trường" ở trên — cần backend (${BACKEND_URL}) đang chạy và đã cấu hình CORS.`
+  );
   state.rawData = generateDemoData();
   renderDashboard();
 </script>
