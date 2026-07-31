@@ -1,230 +1,2374 @@
 <!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BầyĐànChứngKhoán | Fintech MVP</title><style>
-:root{--ink:#10251f;--green:#2f8f68;--mint:#baf0e7;--purple:#eadcff;--pink:#ffc8e8;--blue:#cfe7ff;--yellow:#f3f778;--cream:#f4efe8;--page:#edf1ec;--line:#dfe5df;--muted:#6d7d74;--red:#e45858;--white:#fff}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--page);color:var(--ink)}a{text-decoration:none;color:inherit}button,input{font:inherit}.shell{width:min(1440px,calc(100% - 36px));margin:18px auto;background:#fff;border:1px solid var(--line);border-radius:30px;overflow:hidden;box-shadow:0 26px 80px rgba(16,37,31,.12)}.container{width:min(1180px,calc(100% - 46px));margin:auto}
-header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}.logo{display:flex;align-items:center;gap:11px;font-size:20px;font-weight:950;letter-spacing:-.04em}.mark{width:40px;height:40px;border-radius:12px;background:var(--ink);position:relative;overflow:hidden}.mark:before,.mark:after{content:"";position:absolute;width:8px;border-radius:7px;bottom:6px;transform:rotate(42deg)}.mark:before{height:24px;left:12px;background:var(--yellow)}.mark:after{height:32px;right:11px;bottom:2px;background:#fff}.links{display:flex;gap:28px;font-size:13px;font-weight:800;color:#35584f}.links a:hover{color:var(--green)}.btn{border:0;border-radius:999px;min-height:44px;padding:0 19px;display:inline-flex;align-items:center;justify-content:center;font-weight:900;cursor:pointer;transition:.2s}.btn:hover{transform:translateY(-2px)}.btn.dark{background:var(--ink);color:#fff}.btn.light{background:#fff;border:1px solid var(--line);color:var(--ink)}
-.hero{min-height:600px;color:#fff;background:linear-gradient(90deg,rgba(16,47,39,.9),rgba(16,47,39,.16)),radial-gradient(circle at 82% 20%,rgba(243,247,120,.5),transparent 22%),linear-gradient(135deg,#568673,#79ad85 55%,#d4c886)}.hero-grid{min-height:600px;display:grid;grid-template-columns:1.02fr .98fr;gap:52px;align-items:center}.tag{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.12);padding:7px 11px;border-radius:999px;font-size:11px;font-weight:950;letter-spacing:.08em;text-transform:uppercase}.dot{width:8px;height:8px;background:var(--yellow);border-radius:50%;box-shadow:0 0 0 6px rgba(243,247,120,.16)}h1{font-size:clamp(46px,6vw,78px);line-height:.98;letter-spacing:-.065em;margin:20px 0 0;max-width:730px} .hero p{max-width:640px;color:rgba(255,255,255,.84);font-size:16px;line-height:1.7;margin:24px 0 0}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:31px}.hero .light{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.26)}.visual{position:relative;min-height:520px;display:grid;place-items:center}.mock{width:min(500px,100%);padding:17px;border-radius:27px;background:rgba(255,255,255,.96);box-shadow:0 35px 90px rgba(8,36,28,.28);transform:rotate(1.4deg)}.mock-top{display:flex;justify-content:space-between;align-items:center;padding:4px 4px 16px;font-size:13px;font-weight:900}.live{display:flex;gap:8px;align-items:center}.live i{width:10px;height:10px;border-radius:50%;background:#36a767;box-shadow:0 0 0 6px rgba(54,167,103,.12)}.chip{padding:7px 10px;border-radius:999px;background:#dff5e8;color:#2f8f68;font-size:10px}.screen{background:var(--ink);color:#fff;border-radius:21px;padding:22px;display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:end}.screen small{color:rgba(255,255,255,.55);font-weight:800}.screen strong{display:block;font-size:42px;letter-spacing:-.05em;margin:8px 0 4px}.screen em{color:#c9f5d8;font-style:normal;font-size:12px;font-weight:900}.screen svg{height:120px;width:100%}.mini{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:13px}.mini div{padding:13px;border-radius:15px;min-height:86px}.mini small{display:block;font-size:9px;font-weight:900;text-transform:uppercase}.mini strong{display:block;font-size:22px;margin-top:10px}.float{position:absolute;padding:11px 14px;border-radius:15px;background:#fff;color:var(--ink);box-shadow:0 16px 40px rgba(12,42,34,.17);font-size:11px;font-weight:900}.float.a{left:-10px;top:105px;transform:rotate(-7deg)}.float.b{right:-15px;bottom:90px;background:var(--yellow);transform:rotate(5deg)}
-.stats{background:var(--ink);color:#fff;padding:50px 0}.stats h2{text-align:center;font-size:23px;margin:0 0 30px}.stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}.stat{text-align:center;padding:8px 24px;border-right:1px solid rgba(255,255,255,.13)}.stat:last-child{border:0}.stat b{display:block;font-size:40px;letter-spacing:-.05em}.stat span{font-size:11px;color:rgba(255,255,255,.55)}
-.section{padding:82px 0}.soft{background:#f6f8f5}.kicker{color:var(--green);font-size:11px;font-weight:950;letter-spacing:.11em;text-transform:uppercase;margin-bottom:13px}.title{font-size:clamp(34px,4vw,52px);line-height:1.04;letter-spacing:-.055em;margin:0;font-weight:950}.copy{color:var(--muted);font-size:15px;line-height:1.75}.split{display:grid;grid-template-columns:.9fr 1.1fr;gap:68px;align-items:center}.art{min-height:420px;border-radius:27px;background:radial-gradient(circle at 36% 27%,rgba(243,247,120,.65),transparent 22%),linear-gradient(145deg,#d7e8dc,#efdcc8 58%,#b9d9d0);position:relative;overflow:hidden}.phone{width:228px;height:350px;position:absolute;right:48px;bottom:-26px;border-radius:32px;background:var(--ink);padding:11px;transform:rotate(8deg);box-shadow:0 28px 60px rgba(16,37,31,.22)}.phone>div{height:100%;border-radius:24px;background:#f8faf7;padding:18px}.line{height:11px;border-radius:9px;background:#dce4de;margin-bottom:11px}.block{height:110px;border-radius:17px;background:#dff5e8;margin-top:18px;padding:15px}.bars{height:58px;display:flex;gap:6px;align-items:flex-end}.bars i{flex:1;background:var(--green);border-radius:5px 5px 0 0}.pop{position:absolute;left:35px;top:58px;width:220px;padding:20px;border-radius:20px;background:rgba(255,255,255,.95);box-shadow:0 22px 50px rgba(16,37,31,.16)}.pop b{display:block;font-size:36px;color:var(--green);letter-spacing:-.05em}.list{display:grid;gap:12px;margin-top:25px}.list div{display:flex;gap:11px;font-size:14px;font-weight:750}.num{width:27px;height:27px;border-radius:9px;background:#dff5e8;color:var(--green);display:grid;place-items:center;font-weight:950;flex:0 0 27px}
-.center{text-align:center;max-width:760px;margin:0 auto 42px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.fcard{min-height:218px;border-radius:21px;padding:23px;display:flex;flex-direction:column;justify-content:space-between;transition:.2s;border:1px solid rgba(16,37,31,.06)}.fcard:hover{transform:translateY(-5px);box-shadow:0 18px 50px rgba(16,37,31,.09)}.fcard .ico{width:52px;height:52px;border-radius:16px;background:rgba(255,255,255,.65);display:grid;place-items:center;font-size:23px}.fcard h3{font-size:19px;margin:25px 0 7px;letter-spacing:-.03em}.fcard p{font-size:12px;line-height:1.6;color:#35584f;margin:0}.purple{background:var(--purple)}.mint{background:var(--mint)}.pink{background:var(--pink)}.blue{background:var(--blue)}.cream{background:var(--cream)}.yellow{background:var(--yellow)}
-.dashboard{background:#edf2ec}.dash-shell{margin-top:42px;background:#fff;border:1px solid var(--line);border-radius:27px;padding:20px;box-shadow:0 22px 60px rgba(16,37,31,.09)}.dash-grid{display:grid;grid-template-columns:285px 1fr;gap:17px;align-items:start}.controls{background:var(--ink);color:#fff;border-radius:21px;padding:21px;position:sticky;top:98px}.controls h3{margin:0 0 4px}.controls>p{color:rgba(255,255,255,.55);font-size:11px;margin:0 0 18px}.control{margin-bottom:16px}.control label{display:block;font-size:11px;font-weight:900;margin-bottom:7px}.range-row{display:flex;justify-content:space-between;color:rgba(255,255,255,.55);font-size:10px;margin-top:4px}.range-row strong{color:#d8f5e1}input[type=range]{width:100%;accent-color:var(--yellow)}input[type=file]{width:100%;padding:10px;background:rgba(255,255,255,.07);border:1px dashed rgba(255,255,255,.2);border-radius:11px;color:rgba(255,255,255,.65);font-size:10px}.controls button{width:100%;border:0;border-radius:12px;padding:12px;font-weight:900;cursor:pointer;margin-top:8px}.controls button:not(.secondary){background:var(--green);color:#fff}.controls .secondary{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#fff}.note{margin-top:17px;padding-top:15px;border-top:1px solid rgba(255,255,255,.12);font-size:10px;color:rgba(255,255,255,.5);line-height:1.6}.dash-head{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:14px}.dash-head h3{margin:0 0 3px;font-size:23px}.dash-head p{margin:0;color:var(--muted);font-size:11px}.source-badge{padding:8px 11px;border-radius:999px;background:#dff5e8;color:var(--green);font-size:10px;font-weight:900}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-bottom:13px}.metric{border:1px solid var(--line);border-radius:16px;padding:15px;background:#fbfcfa}.metric-label{color:var(--muted);font-size:10px;font-weight:800;margin-bottom:8px}.metric-value{font-size:23px;font-weight:950;letter-spacing:-.04em}.metric-sub{color:var(--muted);font-size:9px;margin-top:6px}.alert{border-radius:14px;padding:12px 14px;margin-bottom:13px;font-size:11px;font-weight:750}.alert.low{background:#e6f7ed;color:#1e6841}.alert.medium{background:#fff5db;color:#79530d}.alert.high{background:#ffebeb;color:#8b2929}.card{border:1px solid var(--line);border-radius:17px;padding:15px;background:#fff;box-shadow:none}.card h3{font-size:14px;margin:0 0 4px}.card>p{font-size:9px;color:var(--muted)}.chart-wide{margin-bottom:13px}.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:13px}.chart-card{min-height:360px}svg{width:100%;height:290px;background:#f8faf7;border-radius:12px}.legend{display:flex;gap:13px;flex-wrap:wrap;margin-top:8px;font-size:9px;color:var(--muted)}.legend span:before{content:"";width:8px;height:8px;display:inline-block;margin-right:5px;border-radius:3px;background:var(--legend-color)}.table-wrap{overflow:auto;max-height:350px;border-radius:11px}table{width:100%;border-collapse:collapse;font-size:10px;min-width:760px}th,td{padding:10px 9px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}th:first-child,td:first-child{text-align:left}th{position:sticky;top:0;background:#f7f9f6;color:var(--muted)}.pill{padding:4px 7px;border-radius:999px;font-size:8px;font-weight:900}.pill.high{background:#ffdfdf;color:#8b2929}
-footer{background:var(--ink);color:#fff;padding:40px 0}.foot{display:flex;justify-content:space-between;align-items:center;gap:20px}.foot p{color:rgba(255,255,255,.55);font-size:11px}.badge{background:var(--yellow);color:var(--ink);padding:9px 13px;border-radius:999px;font-size:10px;font-weight:950}
-@media(max-width:1050px){.links{display:none}.hero-grid{grid-template-columns:1fr}.hero{padding:60px 0}.stats-grid{grid-template-columns:repeat(2,1fr);gap:22px 0}.stat:nth-child(2){border:0}.split{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,1fr)}.dash-grid{grid-template-columns:1fr}.controls{position:static}.metrics{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:720px){.shell{width:100%;margin:0;border-radius:0}.container{width:calc(100% - 28px)}.nav .light{display:none}.hero h1{font-size:48px}.visual{min-height:430px}.float{display:none}.mock{transform:none}.stats-grid,.cards,.metrics,.grid-2{grid-template-columns:1fr}.stat{border-right:0;border-bottom:1px solid rgba(255,255,255,.13)}.split{gap:38px}.section{padding:62px 0}.phone{right:15px}.pop{left:15px}.dash-head,.foot{flex-direction:column;align-items:flex-start}.source-badge{white-space:normal}}
-
+:root {
+  --ink:#10251f;
+  --green:#2f8f68;
+  --mint:#baf0e7;
+  --purple:#eadcff;
+  --pink:#ffc8e8;
+  --blue:#cfe7ff;
+  --yellow:#f3f778;
+  --cream:#f4efe8;
+  --page:#edf1ec;
+  --line:#dfe5df;
+  --muted:#6d7d74;
+  --red:#e45858;
+  --white:#fff;
+}
+* {
+  box-sizing:border-box;
+}
+html {
+  scroll-behavior:smooth;
+}
+body {
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:var(--page);
+  color:var(--ink);
+}
+a {
+  text-decoration:none;
+  color:inherit;
+}
+button,input {
+  font:inherit;
+}
+.shell {
+  width:min(1440px,calc(100% - 36px));
+  margin:18px auto;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:30px;
+  overflow:hidden;
+  box-shadow:0 26px 80px rgba(16,37,31,.12);
+}
+.container {
+  width:min(1180px,calc(100% - 46px));
+  margin:auto;
+}
+header {
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);
+}
+.nav {
+  height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+}
+.logo {
+  display:flex;
+  align-items:center;
+  gap:11px;
+  font-size:20px;
+  font-weight:950;
+  letter-spacing:-.04em;
+}
+.mark {
+  width:40px;
+  height:40px;
+  border-radius:12px;
+  background:var(--ink);
+  position:relative;
+  overflow:hidden;
+}
+.mark:before,.mark:after {
+  content:"";
+  position:absolute;
+  width:8px;
+  border-radius:7px;
+  bottom:6px;
+  transform:rotate(42deg);
+}
+.mark:before {
+  height:24px;
+  left:12px;
+  background:var(--yellow);
+}
+.mark:after {
+  height:32px;
+  right:11px;
+  bottom:2px;
+  background:#fff;
+}
+.links {
+  display:flex;
+  gap:28px;
+  font-size:13px;
+  font-weight:800;
+  color:#35584f;
+}
+.links a:hover {
+  color:var(--green);
+}
+.btn {
+  border:0;
+  border-radius:999px;
+  min-height:44px;
+  padding:0 19px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  cursor:pointer;
+  transition:.2s;
+}
+.btn:hover {
+  transform:translateY(-2px);
+}
+.btn.dark {
+  background:var(--ink);
+  color:#fff;
+}
+.btn.light {
+  background:#fff;
+  border:1px solid var(--line);
+  color:var(--ink);
+}
+.hero {
+  min-height:600px;
+  color:#fff;
+  background:linear-gradient(90deg,rgba(16,47,39,.9),rgba(16,47,39,.16)),radial-gradient(circle at 82% 20%,rgba(243,247,120,.5),transparent 22%),linear-gradient(135deg,#568673,#79ad85 55%,#d4c886);
+}
+.hero-grid {
+  min-height:600px;
+  display:grid;
+  grid-template-columns:1.02fr .98fr;
+  gap:52px;
+  align-items:center;
+}
+.tag {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  border:1px solid rgba(255,255,255,.25);
+  background:rgba(255,255,255,.12);
+  padding:7px 11px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:950;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.dot {
+  width:8px;
+  height:8px;
+  background:var(--yellow);
+  border-radius:50%;
+  box-shadow:0 0 0 6px rgba(243,247,120,.16);
+}
+h1 {
+  font-size:clamp(46px,6vw,78px);
+  line-height:.98;
+  letter-spacing:-.065em;
+  margin:20px 0 0;
+  max-width:730px;
+}
+.hero p {
+  max-width:640px;
+  color:rgba(255,255,255,.84);
+  font-size:16px;
+  line-height:1.7;
+  margin:24px 0 0;
+}
+.hero-actions {
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:31px;
+}
+.hero .light {
+  background:rgba(255,255,255,.12);
+  color:#fff;
+  border-color:rgba(255,255,255,.26);
+}
+.visual {
+  position:relative;
+  min-height:520px;
+  display:grid;
+  place-items:center;
+}
+.mock {
+  width:min(500px,100%);
+  padding:17px;
+  border-radius:27px;
+  background:rgba(255,255,255,.96);
+  box-shadow:0 35px 90px rgba(8,36,28,.28);
+  transform:rotate(1.4deg);
+}
+.mock-top {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:4px 4px 16px;
+  font-size:13px;
+  font-weight:900;
+}
+.live {
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+.live i {
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#36a767;
+  box-shadow:0 0 0 6px rgba(54,167,103,.12);
+}
+.chip {
+  padding:7px 10px;
+  border-radius:999px;
+  background:#dff5e8;
+  color:#2f8f68;
+  font-size:10px;
+}
+.screen {
+  background:var(--ink);
+  color:#fff;
+  border-radius:21px;
+  padding:22px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+  align-items:end;
+}
+.screen small {
+  color:rgba(255,255,255,.55);
+  font-weight:800;
+}
+.screen strong {
+  display:block;
+  font-size:42px;
+  letter-spacing:-.05em;
+  margin:8px 0 4px;
+}
+.screen em {
+  color:#c9f5d8;
+  font-style:normal;
+  font-size:12px;
+  font-weight:900;
+}
+.screen svg {
+  height:120px;
+  width:100%;
+}
+.mini {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:13px;
+}
+.mini div {
+  padding:13px;
+  border-radius:15px;
+  min-height:86px;
+}
+.mini small {
+  display:block;
+  font-size:9px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+.mini strong {
+  display:block;
+  font-size:22px;
+  margin-top:10px;
+}
+.float {
+  position:absolute;
+  padding:11px 14px;
+  border-radius:15px;
+  background:#fff;
+  color:var(--ink);
+  box-shadow:0 16px 40px rgba(12,42,34,.17);
+  font-size:11px;
+  font-weight:900;
+}
+.float.a {
+  left:-10px;
+  top:105px;
+  transform:rotate(-7deg);
+}
+.float.b {
+  right:-15px;
+  bottom:90px;
+  background:var(--yellow);
+  transform:rotate(5deg);
+}
+.stats {
+  background:var(--ink);
+  color:#fff;
+  padding:50px 0;
+}
+.stats h2 {
+  text-align:center;
+  font-size:23px;
+  margin:0 0 30px;
+}
+.stats-grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+}
+.stat {
+  text-align:center;
+  padding:8px 24px;
+  border-right:1px solid rgba(255,255,255,.13);
+}
+.stat:last-child {
+  border:0;
+}
+.stat b {
+  display:block;
+  font-size:40px;
+  letter-spacing:-.05em;
+}
+.stat span {
+  font-size:11px;
+  color:rgba(255,255,255,.55);
+}
+.section {
+  padding:82px 0;
+}
+.soft {
+  background:#f6f8f5;
+}
+.kicker {
+  color:var(--green);
+  font-size:11px;
+  font-weight:950;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+  margin-bottom:13px;
+}
+.title {
+  font-size:clamp(34px,4vw,52px);
+  line-height:1.04;
+  letter-spacing:-.055em;
+  margin:0;
+  font-weight:950;
+}
+.copy {
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.75;
+}
+.split {
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:68px;
+  align-items:center;
+}
+.art {
+  min-height:420px;
+  border-radius:27px;
+  background:radial-gradient(circle at 36% 27%,rgba(243,247,120,.65),transparent 22%),linear-gradient(145deg,#d7e8dc,#efdcc8 58%,#b9d9d0);
+  position:relative;
+  overflow:hidden;
+}
+.phone {
+  width:228px;
+  height:350px;
+  position:absolute;
+  right:48px;
+  bottom:-26px;
+  border-radius:32px;
+  background:var(--ink);
+  padding:11px;
+  transform:rotate(8deg);
+  box-shadow:0 28px 60px rgba(16,37,31,.22);
+}
+.phone>div {
+  height:100%;
+  border-radius:24px;
+  background:#f8faf7;
+  padding:18px;
+}
+.line {
+  height:11px;
+  border-radius:9px;
+  background:#dce4de;
+  margin-bottom:11px;
+}
+.block {
+  height:110px;
+  border-radius:17px;
+  background:#dff5e8;
+  margin-top:18px;
+  padding:15px;
+}
+.bars {
+  height:58px;
+  display:flex;
+  gap:6px;
+  align-items:flex-end;
+}
+.bars i {
+  flex:1;
+  background:var(--green);
+  border-radius:5px 5px 0 0;
+}
+.pop {
+  position:absolute;
+  left:35px;
+  top:58px;
+  width:220px;
+  padding:20px;
+  border-radius:20px;
+  background:rgba(255,255,255,.95);
+  box-shadow:0 22px 50px rgba(16,37,31,.16);
+}
+.pop b {
+  display:block;
+  font-size:36px;
+  color:var(--green);
+  letter-spacing:-.05em;
+}
+.list {
+  display:grid;
+  gap:12px;
+  margin-top:25px;
+}
+.list div {
+  display:flex;
+  gap:11px;
+  font-size:14px;
+  font-weight:750;
+}
+.num {
+  width:27px;
+  height:27px;
+  border-radius:9px;
+  background:#dff5e8;
+  color:var(--green);
+  display:grid;
+  place-items:center;
+  font-weight:950;
+  flex:0 0 27px;
+}
+.center {
+  text-align:center;
+  max-width:760px;
+  margin:0 auto 42px;
+}
+.cards {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+.fcard {
+  min-height:218px;
+  border-radius:21px;
+  padding:23px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  transition:.2s;
+  border:1px solid rgba(16,37,31,.06);
+}
+.fcard:hover {
+  transform:translateY(-5px);
+  box-shadow:0 18px 50px rgba(16,37,31,.09);
+}
+.fcard .ico {
+  width:52px;
+  height:52px;
+  border-radius:16px;
+  background:rgba(255,255,255,.65);
+  display:grid;
+  place-items:center;
+  font-size:23px;
+}
+.fcard h3 {
+  font-size:19px;
+  margin:25px 0 7px;
+  letter-spacing:-.03em;
+}
+.fcard p {
+  font-size:12px;
+  line-height:1.6;
+  color:#35584f;
+  margin:0;
+}
+.purple {
+  background:var(--purple);
+}
+.mint {
+  background:var(--mint);
+}
+.pink {
+  background:var(--pink);
+}
+.blue {
+  background:var(--blue);
+}
+.cream {
+  background:var(--cream);
+}
+.yellow {
+  background:var(--yellow);
+}
+.dashboard {
+  background:#edf2ec;
+}
+.dash-shell {
+  margin-top:42px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:27px;
+  padding:20px;
+  box-shadow:0 22px 60px rgba(16,37,31,.09);
+}
+.dash-grid {
+  display:grid;
+  grid-template-columns:285px 1fr;
+  gap:17px;
+  align-items:start;
+}
+.controls {
+  background:var(--ink);
+  color:#fff;
+  border-radius:21px;
+  padding:21px;
+  position:sticky;
+  top:98px;
+}
+.controls h3 {
+  margin:0 0 4px;
+}
+.controls>p {
+  color:rgba(255,255,255,.55);
+  font-size:11px;
+  margin:0 0 18px;
+}
+.control {
+  margin-bottom:16px;
+}
+.control label {
+  display:block;
+  font-size:11px;
+  font-weight:900;
+  margin-bottom:7px;
+}
+.range-row {
+  display:flex;
+  justify-content:space-between;
+  color:rgba(255,255,255,.55);
+  font-size:10px;
+  margin-top:4px;
+}
+.range-row strong {
+  color:#d8f5e1;
+}
+input[type=range] {
+  width:100%;
+  accent-color:var(--yellow);
+}
+input[type=file] {
+  width:100%;
+  padding:10px;
+  background:rgba(255,255,255,.07);
+  border:1px dashed rgba(255,255,255,.2);
+  border-radius:11px;
+  color:rgba(255,255,255,.65);
+  font-size:10px;
+}
+.controls button {
+  width:100%;
+  border:0;
+  border-radius:12px;
+  padding:12px;
+  font-weight:900;
+  cursor:pointer;
+  margin-top:8px;
+}
+.controls button:not(.secondary) {
+  background:var(--green);
+  color:#fff;
+}
+.controls .secondary {
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  color:#fff;
+}
+.note {
+  margin-top:17px;
+  padding-top:15px;
+  border-top:1px solid rgba(255,255,255,.12);
+  font-size:10px;
+  color:rgba(255,255,255,.5);
+  line-height:1.6;
+}
+.dash-head {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin-bottom:14px;
+}
+.dash-head h3 {
+  margin:0 0 3px;
+  font-size:23px;
+}
+.dash-head p {
+  margin:0;
+  color:var(--muted);
+  font-size:11px;
+}
+.source-badge {
+  padding:8px 11px;
+  border-radius:999px;
+  background:#dff5e8;
+  color:var(--green);
+  font-size:10px;
+  font-weight:900;
+}
+.metrics {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:11px;
+  margin-bottom:13px;
+}
+.metric {
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:15px;
+  background:#fbfcfa;
+}
+.metric-label {
+  color:var(--muted);
+  font-size:10px;
+  font-weight:800;
+  margin-bottom:8px;
+}
+.metric-value {
+  font-size:23px;
+  font-weight:950;
+  letter-spacing:-.04em;
+}
+.metric-sub {
+  color:var(--muted);
+  font-size:9px;
+  margin-top:6px;
+}
+.alert {
+  border-radius:14px;
+  padding:12px 14px;
+  margin-bottom:13px;
+  font-size:11px;
+  font-weight:750;
+}
+.alert.low {
+  background:#e6f7ed;
+  color:#1e6841;
+}
+.alert.medium {
+  background:#fff5db;
+  color:#79530d;
+}
+.alert.high {
+  background:#ffebeb;
+  color:#8b2929;
+}
+.card {
+  border:1px solid var(--line);
+  border-radius:17px;
+  padding:15px;
+  background:#fff;
+  box-shadow:none;
+}
+.card h3 {
+  font-size:14px;
+  margin:0 0 4px;
+}
+.card>p {
+  font-size:9px;
+  color:var(--muted);
+}
+.chart-wide {
+  margin-bottom:13px;
+}
+.grid-2 {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:13px;
+  margin-bottom:13px;
+}
+.chart-card {
+  min-height:360px;
+}
+svg {
+  width:100%;
+  height:290px;
+  background:#f8faf7;
+  border-radius:12px;
+}
+.legend {
+  display:flex;
+  gap:13px;
+  flex-wrap:wrap;
+  margin-top:8px;
+  font-size:9px;
+  color:var(--muted);
+}
+.legend span:before {
+  content:"";
+  width:8px;
+  height:8px;
+  display:inline-block;
+  margin-right:5px;
+  border-radius:3px;
+  background:var(--legend-color);
+}
+.table-wrap {
+  overflow:auto;
+  max-height:350px;
+  border-radius:11px;
+}
+table {
+  width:100%;
+  border-collapse:collapse;
+  font-size:10px;
+  min-width:760px;
+}
+th,td {
+  padding:10px 9px;
+  border-bottom:1px solid var(--line);
+  text-align:right;
+  white-space:nowrap;
+}
+th:first-child,td:first-child {
+  text-align:left;
+}
+th {
+  position:sticky;
+  top:0;
+  background:#f7f9f6;
+  color:var(--muted);
+}
+.pill {
+  padding:4px 7px;
+  border-radius:999px;
+  font-size:8px;
+  font-weight:900;
+}
+.pill.high {
+  background:#ffdfdf;
+  color:#8b2929;
+}
+footer {
+  background:var(--ink);
+  color:#fff;
+  padding:40px 0;
+}
+.foot {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+.foot p {
+  color:rgba(255,255,255,.55);
+  font-size:11px;
+}
+.badge {
+  background:var(--yellow);
+  color:var(--ink);
+  padding:9px 13px;
+  border-radius:999px;
+  font-size:10px;
+  font-weight:950;
+}
+@media(max-width:1050px) {
+  .links {
+    display:none;
+  }
+  .hero-grid {
+    grid-template-columns:1fr;
+  }
+  .hero {
+    padding:60px 0;
+  }
+  .stats-grid {
+    grid-template-columns:repeat(2,1fr);
+    gap:22px 0;
+  }
+  .stat:nth-child(2) {
+    border:0;
+  }
+  .split {
+    grid-template-columns:1fr;
+  }
+  .cards {
+    grid-template-columns:repeat(2,1fr);
+  }
+  .dash-grid {
+    grid-template-columns:1fr;
+  }
+  .controls {
+    position:static;
+  }
+  .metrics {
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+@media(max-width:720px) {
+  .shell {
+    width:100%;
+    margin:0;
+    border-radius:0;
+  }
+  .container {
+    width:calc(100% - 28px);
+  }
+  .nav .light {
+    display:none;
+  }
+  .hero h1 {
+    font-size:48px;
+  }
+  .visual {
+    min-height:430px;
+  }
+  .float {
+    display:none;
+  }
+  .mock {
+    transform:none;
+  }
+  .stats-grid,.cards,.metrics,.grid-2 {
+    grid-template-columns:1fr;
+  }
+  .stat {
+    border-right:0;
+    border-bottom:1px solid rgba(255,255,255,.13);
+  }
+  .split {
+    gap:38px;
+  }
+  .section {
+    padding:62px 0;
+  }
+  .phone {
+    right:15px;
+  }
+  .pop {
+    left:15px;
+  }
+  .dash-head,.foot {
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .source-badge {
+    white-space:normal;
+  }
+}
 /* Detailed analysis */
-.analysis-panel{border:1px solid var(--line);border-radius:18px;padding:18px;background:linear-gradient(145deg,#fbfdfb,#f2f7f3);margin-bottom:13px}.analysis-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:15px}.analysis-head h3{margin:0 0 5px;font-size:18px;letter-spacing:-.035em}.analysis-head p{margin:0;color:var(--muted);font-size:10px;line-height:1.6}.analysis-tag{padding:7px 10px;border-radius:999px;background:var(--ink);color:#fff;font-size:9px;font-weight:900;white-space:nowrap}.analysis-summary{padding:15px 16px;border-radius:15px;background:#fff;border:1px solid var(--line);font-size:12px;line-height:1.75;color:#31574d;margin-bottom:13px}.analysis-summary strong{color:var(--ink)}.insight-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:13px}.insight-card{padding:14px;border-radius:15px;border:1px solid rgba(16,37,31,.06);min-height:116px}.insight-card:nth-child(1){background:var(--purple)}.insight-card:nth-child(2){background:var(--mint)}.insight-card:nth-child(3){background:var(--blue)}.insight-card:nth-child(4){background:var(--yellow)}.insight-card small{display:block;color:#47665d;font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.05em}.insight-card strong{display:block;font-size:21px;line-height:1.1;margin:10px 0 6px;letter-spacing:-.04em}.insight-card span{display:block;color:#47665d;font-size:9px;line-height:1.45}.analysis-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:13px}.analysis-box{border:1px solid var(--line);border-radius:16px;padding:15px;background:#fff}.analysis-box h4{font-size:14px;margin:0 0 4px}.analysis-box>p{font-size:9px;color:var(--muted);line-height:1.55;margin:0 0 13px}.component-row{margin-bottom:13px}.component-row:last-child{margin-bottom:0}.component-top{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:10px;font-weight:850;margin-bottom:6px}.component-top span{color:var(--muted);font-size:9px}.component-track{height:9px;border-radius:999px;background:#edf1ed;overflow:hidden}.component-track i{display:block;height:100%;border-radius:999px;transition:width .35s ease}.component-row:nth-of-type(1) i{background:#7759b8}.component-row:nth-of-type(2) i{background:#e45858}.component-row:nth-of-type(3) i{background:#2b9f91}.component-row:nth-of-type(4) i{background:#e5a72f}.research-list{display:grid;gap:9px}.research-item{display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:start;padding:10px;border-radius:12px;background:#f7f9f6}.research-item b{width:30px;height:30px;border-radius:9px;background:var(--green);color:#fff;display:grid;place-items:center;font-size:11px}.research-item strong{display:block;font-size:10px;margin-bottom:3px}.research-item span{display:block;color:var(--muted);font-size:9px;line-height:1.5}.metric-table{width:100%;min-width:0;font-size:10px}.metric-table td{padding:9px 7px}.metric-table td:first-child{text-align:left;color:var(--muted)}.metric-table td:last-child{text-align:right;font-weight:900;color:var(--ink)}.top-risk-wrap{max-height:270px;overflow:auto;border-radius:12px}.top-risk-table{min-width:640px}.methodology-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:13px;margin-top:13px}.formula-box{background:var(--ink);color:#fff;border-radius:16px;padding:16px}.formula-box h4{margin:0 0 10px;font-size:14px}.formula{padding:11px;border-radius:11px;background:rgba(255,255,255,.08);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;line-height:1.7;overflow:auto}.formula-box p{color:rgba(255,255,255,.58);font-size:9px;line-height:1.6;margin:11px 0 0}.limitations{border:1px solid var(--line);border-radius:16px;padding:16px;background:#fff}.limitations h4{margin:0 0 9px;font-size:14px}.limitations ul{padding-left:17px;margin:0;color:var(--muted);font-size:9px;line-height:1.7}.analysis-note{margin-top:12px;padding:11px 13px;border-radius:12px;background:#fff5db;color:#72510f;font-size:9px;line-height:1.6;border:1px solid #f0dfa8}
-@media(max-width:1100px){.insight-grid{grid-template-columns:repeat(2,1fr)}.analysis-grid,.methodology-grid{grid-template-columns:1fr}}@media(max-width:760px){.analysis-head{flex-direction:column}.insight-grid{grid-template-columns:1fr}}
-
+.analysis-panel {
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:18px;
+  background:linear-gradient(145deg,#fbfdfb,#f2f7f3);
+  margin-bottom:13px;
+}
+.analysis-head {
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  align-items:flex-start;
+  margin-bottom:15px;
+}
+.analysis-head h3 {
+  margin:0 0 5px;
+  font-size:18px;
+  letter-spacing:-.035em;
+}
+.analysis-head p {
+  margin:0;
+  color:var(--muted);
+  font-size:10px;
+  line-height:1.6;
+}
+.analysis-tag {
+  padding:7px 10px;
+  border-radius:999px;
+  background:var(--ink);
+  color:#fff;
+  font-size:9px;
+  font-weight:900;
+  white-space:nowrap;
+}
+.analysis-summary {
+  padding:15px 16px;
+  border-radius:15px;
+  background:#fff;
+  border:1px solid var(--line);
+  font-size:12px;
+  line-height:1.75;
+  color:#31574d;
+  margin-bottom:13px;
+}
+.analysis-summary strong {
+  color:var(--ink);
+}
+.insight-grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-bottom:13px;
+}
+.insight-card {
+  padding:14px;
+  border-radius:15px;
+  border:1px solid rgba(16,37,31,.06);
+  min-height:116px;
+}
+.insight-card:nth-child(1) {
+  background:var(--purple);
+}
+.insight-card:nth-child(2) {
+  background:var(--mint);
+}
+.insight-card:nth-child(3) {
+  background:var(--blue);
+}
+.insight-card:nth-child(4) {
+  background:var(--yellow);
+}
+.insight-card small {
+  display:block;
+  color:#47665d;
+  font-size:9px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
+.insight-card strong {
+  display:block;
+  font-size:21px;
+  line-height:1.1;
+  margin:10px 0 6px;
+  letter-spacing:-.04em;
+}
+.insight-card span {
+  display:block;
+  color:#47665d;
+  font-size:9px;
+  line-height:1.45;
+}
+.analysis-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:13px;
+  margin-bottom:13px;
+}
+.analysis-box {
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:15px;
+  background:#fff;
+}
+.analysis-box h4 {
+  font-size:14px;
+  margin:0 0 4px;
+}
+.analysis-box>p {
+  font-size:9px;
+  color:var(--muted);
+  line-height:1.55;
+  margin:0 0 13px;
+}
+.component-row {
+  margin-bottom:13px;
+}
+.component-row:last-child {
+  margin-bottom:0;
+}
+.component-top {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  font-size:10px;
+  font-weight:850;
+  margin-bottom:6px;
+}
+.component-top span {
+  color:var(--muted);
+  font-size:9px;
+}
+.component-track {
+  height:9px;
+  border-radius:999px;
+  background:#edf1ed;
+  overflow:hidden;
+}
+.component-track i {
+  display:block;
+  height:100%;
+  border-radius:999px;
+  transition:width .35s ease;
+}
+.component-row:nth-of-type(1) i {
+  background:#7759b8;
+}
+.component-row:nth-of-type(2) i {
+  background:#e45858;
+}
+.component-row:nth-of-type(3) i {
+  background:#2b9f91;
+}
+.component-row:nth-of-type(4) i {
+  background:#e5a72f;
+}
+.research-list {
+  display:grid;
+  gap:9px;
+}
+.research-item {
+  display:grid;
+  grid-template-columns:30px 1fr;
+  gap:10px;
+  align-items:start;
+  padding:10px;
+  border-radius:12px;
+  background:#f7f9f6;
+}
+.research-item b {
+  width:30px;
+  height:30px;
+  border-radius:9px;
+  background:var(--green);
+  color:#fff;
+  display:grid;
+  place-items:center;
+  font-size:11px;
+}
+.research-item strong {
+  display:block;
+  font-size:10px;
+  margin-bottom:3px;
+}
+.research-item span {
+  display:block;
+  color:var(--muted);
+  font-size:9px;
+  line-height:1.5;
+}
+.metric-table {
+  width:100%;
+  min-width:0;
+  font-size:10px;
+}
+.metric-table td {
+  padding:9px 7px;
+}
+.metric-table td:first-child {
+  text-align:left;
+  color:var(--muted);
+}
+.metric-table td:last-child {
+  text-align:right;
+  font-weight:900;
+  color:var(--ink);
+}
+.top-risk-wrap {
+  max-height:270px;
+  overflow:auto;
+  border-radius:12px;
+}
+.top-risk-table {
+  min-width:640px;
+}
+.methodology-grid {
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:13px;
+  margin-top:13px;
+}
+.formula-box {
+  background:var(--ink);
+  color:#fff;
+  border-radius:16px;
+  padding:16px;
+}
+.formula-box h4 {
+  margin:0 0 10px;
+  font-size:14px;
+}
+.formula {
+  padding:11px;
+  border-radius:11px;
+  background:rgba(255,255,255,.08);
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:10px;
+  line-height:1.7;
+  overflow:auto;
+}
+.formula-box p {
+  color:rgba(255,255,255,.58);
+  font-size:9px;
+  line-height:1.6;
+  margin:11px 0 0;
+}
+.limitations {
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:16px;
+  background:#fff;
+}
+.limitations h4 {
+  margin:0 0 9px;
+  font-size:14px;
+}
+.limitations ul {
+  padding-left:17px;
+  margin:0;
+  color:var(--muted);
+  font-size:9px;
+  line-height:1.7;
+}
+.analysis-note {
+  margin-top:12px;
+  padding:11px 13px;
+  border-radius:12px;
+  background:#fff5db;
+  color:#72510f;
+  font-size:9px;
+  line-height:1.6;
+  border:1px solid #f0dfa8;
+}
+@media(max-width:1100px) {
+  .insight-grid {
+    grid-template-columns:repeat(2,1fr);
+  }
+  .analysis-grid,.methodology-grid {
+    grid-template-columns:1fr;
+  }
+}
+@media(max-width:760px) {
+  .analysis-head {
+    flex-direction:column;
+  }
+  .insight-grid {
+    grid-template-columns:1fr;
+  }
+}
 /* User action guidance */
-.guidance-panel{border:1px solid var(--line);border-radius:18px;padding:18px;background:#fff;margin:13px 0}.guidance-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:15px}.guidance-head h3{margin:0 0 5px;font-size:18px;letter-spacing:-.035em}.guidance-head p{margin:0;color:var(--muted);font-size:10px;line-height:1.6}.guidance-badge{padding:7px 10px;border-radius:999px;background:var(--yellow);color:var(--ink);font-size:9px;font-weight:950;white-space:nowrap}.stock-conclusion{padding:16px;border-radius:16px;background:linear-gradient(135deg,#10251f,#24483f);color:#fff;margin-bottom:13px}.stock-conclusion small{display:block;color:rgba(255,255,255,.58);font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;margin-bottom:7px}.stock-conclusion h4{margin:0 0 7px;font-size:20px;letter-spacing:-.04em}.stock-conclusion p{margin:0;color:rgba(255,255,255,.76);font-size:11px;line-height:1.7}.guidance-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:13px}.guidance-card{border-radius:15px;padding:14px;min-height:126px;border:1px solid rgba(16,37,31,.06)}.guidance-card:nth-child(1){background:var(--blue)}.guidance-card:nth-child(2){background:var(--pink)}.guidance-card:nth-child(3){background:var(--mint)}.guidance-card:nth-child(4){background:var(--cream)}.guidance-card small{display:block;color:#47665d;font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.05em}.guidance-card strong{display:block;font-size:18px;line-height:1.15;margin:10px 0 6px;letter-spacing:-.035em}.guidance-card span{font-size:9px;line-height:1.5;color:#47665d}.action-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:13px}.action-box{border:1px solid var(--line);border-radius:16px;padding:15px;background:#fbfcfa}.action-box h4{margin:0 0 4px;font-size:14px}.action-box>p{margin:0 0 12px;color:var(--muted);font-size:9px;line-height:1.55}.action-list,.condition-list{display:grid;gap:8px}.action-item{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;padding:10px;border-radius:12px;background:#fff;border:1px solid var(--line)}.action-item b{width:28px;height:28px;border-radius:9px;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:10px}.action-item strong{display:block;font-size:10px;margin-bottom:3px}.action-item span{display:block;color:var(--muted);font-size:9px;line-height:1.5}.condition-item{display:grid;grid-template-columns:12px 1fr auto;gap:9px;align-items:center;padding:10px;border-radius:12px;background:#fff;border:1px solid var(--line);font-size:9px}.condition-item i{width:10px;height:10px;border-radius:50%;display:block}.condition-item strong{font-size:10px}.condition-item span{color:var(--muted);font-size:8px;text-align:right}.condition-item.ok i{background:#2f9d63;box-shadow:0 0 0 4px rgba(47,157,99,.12)}.condition-item.watch i{background:#e5a72f;box-shadow:0 0 0 4px rgba(229,167,47,.12)}.condition-item.risk i{background:#e45858;box-shadow:0 0 0 4px rgba(228,88,88,.12)}.workflow-title{margin:2px 0 11px;font-size:14px}.workflow-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}.workflow-step{padding:12px;border-radius:14px;background:#f7f9f6;border:1px solid var(--line);min-height:126px}.workflow-step b{width:29px;height:29px;border-radius:9px;background:var(--green);color:#fff;display:grid;place-items:center;font-size:10px;margin-bottom:10px}.workflow-step strong{display:block;font-size:10px;margin-bottom:5px}.workflow-step span{display:block;font-size:8.5px;color:var(--muted);line-height:1.5}.guidance-disclaimer{margin-top:12px;padding:11px 13px;border-radius:12px;background:#fff5db;color:#72510f;border:1px solid #f0dfa8;font-size:9px;line-height:1.6}input[type=text]{width:100%;padding:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:11px;color:#fff;font-size:11px;outline:none}input[type=text]::placeholder{color:rgba(255,255,255,.42)}input[type=text]:focus{border-color:var(--yellow)}
-@media(max-width:1100px){.guidance-cards{grid-template-columns:repeat(2,1fr)}.workflow-grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:760px){.guidance-head{flex-direction:column}.guidance-cards,.action-grid,.workflow-grid{grid-template-columns:1fr}.condition-item{grid-template-columns:12px 1fr}.condition-item span{grid-column:2;text-align:left}}
+.guidance-panel {
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:18px;
+  background:#fff;
+  margin:13px 0;
+}
+.guidance-head {
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  align-items:flex-start;
+  margin-bottom:15px;
+}
+.guidance-head h3 {
+  margin:0 0 5px;
+  font-size:18px;
+  letter-spacing:-.035em;
+}
+.guidance-head p {
+  margin:0;
+  color:var(--muted);
+  font-size:10px;
+  line-height:1.6;
+}
+.guidance-badge {
+  padding:7px 10px;
+  border-radius:999px;
+  background:var(--yellow);
+  color:var(--ink);
+  font-size:9px;
+  font-weight:950;
+  white-space:nowrap;
+}
+.stock-conclusion {
+  padding:16px;
+  border-radius:16px;
+  background:linear-gradient(135deg,#10251f,#24483f);
+  color:#fff;
+  margin-bottom:13px;
+}
+.stock-conclusion small {
+  display:block;
+  color:rgba(255,255,255,.58);
+  font-size:9px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  margin-bottom:7px;
+}
+.stock-conclusion h4 {
+  margin:0 0 7px;
+  font-size:20px;
+  letter-spacing:-.04em;
+}
+.stock-conclusion p {
+  margin:0;
+  color:rgba(255,255,255,.76);
+  font-size:11px;
+  line-height:1.7;
+}
+.guidance-cards {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-bottom:13px;
+}
+.guidance-card {
+  border-radius:15px;
+  padding:14px;
+  min-height:126px;
+  border:1px solid rgba(16,37,31,.06);
+}
+.guidance-card:nth-child(1) {
+  background:var(--blue);
+}
+.guidance-card:nth-child(2) {
+  background:var(--pink);
+}
+.guidance-card:nth-child(3) {
+  background:var(--mint);
+}
+.guidance-card:nth-child(4) {
+  background:var(--cream);
+}
+.guidance-card small {
+  display:block;
+  color:#47665d;
+  font-size:9px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
+.guidance-card strong {
+  display:block;
+  font-size:18px;
+  line-height:1.15;
+  margin:10px 0 6px;
+  letter-spacing:-.035em;
+}
+.guidance-card span {
+  font-size:9px;
+  line-height:1.5;
+  color:#47665d;
+}
+.action-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:13px;
+  margin-bottom:13px;
+}
+.action-box {
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:15px;
+  background:#fbfcfa;
+}
+.action-box h4 {
+  margin:0 0 4px;
+  font-size:14px;
+}
+.action-box>p {
+  margin:0 0 12px;
+  color:var(--muted);
+  font-size:9px;
+  line-height:1.55;
+}
+.action-list,.condition-list {
+  display:grid;
+  gap:8px;
+}
+.action-item {
+  display:grid;
+  grid-template-columns:28px 1fr;
+  gap:10px;
+  align-items:start;
+  padding:10px;
+  border-radius:12px;
+  background:#fff;
+  border:1px solid var(--line);
+}
+.action-item b {
+  width:28px;
+  height:28px;
+  border-radius:9px;
+  background:var(--ink);
+  color:#fff;
+  display:grid;
+  place-items:center;
+  font-size:10px;
+}
+.action-item strong {
+  display:block;
+  font-size:10px;
+  margin-bottom:3px;
+}
+.action-item span {
+  display:block;
+  color:var(--muted);
+  font-size:9px;
+  line-height:1.5;
+}
+.condition-item {
+  display:grid;
+  grid-template-columns:12px 1fr auto;
+  gap:9px;
+  align-items:center;
+  padding:10px;
+  border-radius:12px;
+  background:#fff;
+  border:1px solid var(--line);
+  font-size:9px;
+}
+.condition-item i {
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  display:block;
+}
+.condition-item strong {
+  font-size:10px;
+}
+.condition-item span {
+  color:var(--muted);
+  font-size:8px;
+  text-align:right;
+}
+.condition-item.ok i {
+  background:#2f9d63;
+  box-shadow:0 0 0 4px rgba(47,157,99,.12);
+}
+.condition-item.watch i {
+  background:#e5a72f;
+  box-shadow:0 0 0 4px rgba(229,167,47,.12);
+}
+.condition-item.risk i {
+  background:#e45858;
+  box-shadow:0 0 0 4px rgba(228,88,88,.12);
+}
+.workflow-title {
+  margin:2px 0 11px;
+  font-size:14px;
+}
+.workflow-grid {
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:9px;
+}
+.workflow-step {
+  padding:12px;
+  border-radius:14px;
+  background:#f7f9f6;
+  border:1px solid var(--line);
+  min-height:126px;
+}
+.workflow-step b {
+  width:29px;
+  height:29px;
+  border-radius:9px;
+  background:var(--green);
+  color:#fff;
+  display:grid;
+  place-items:center;
+  font-size:10px;
+  margin-bottom:10px;
+}
+.workflow-step strong {
+  display:block;
+  font-size:10px;
+  margin-bottom:5px;
+}
+.workflow-step span {
+  display:block;
+  font-size:8.5px;
+  color:var(--muted);
+  line-height:1.5;
+}
+.guidance-disclaimer {
+  margin-top:12px;
+  padding:11px 13px;
+  border-radius:12px;
+  background:#fff5db;
+  color:#72510f;
+  border:1px solid #f0dfa8;
+  font-size:9px;
+  line-height:1.6;
+}
+input[type=text] {
+  width:100%;
+  padding:10px;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:11px;
+  color:#fff;
+  font-size:11px;
+  outline:none;
+}
+input[type=text]::placeholder {
+  color:rgba(255,255,255,.42);
+}
+input[type=text]:focus {
+  border-color:var(--yellow);
+}
+@media(max-width:1100px) {
+  .guidance-cards {
+    grid-template-columns:repeat(2,1fr);
+  }
+  .workflow-grid {
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+@media(max-width:760px) {
+  .guidance-head {
+    flex-direction:column;
+  }
+  .guidance-cards,.action-grid,.workflow-grid {
+    grid-template-columns:1fr;
+  }
+  .condition-item {
+    grid-template-columns:12px 1fr;
+  }
+  .condition-item span {
+    grid-column:2;
+    text-align:left;
+  }
+}
 </style></head><body>
 <div class="shell">
-<header><div class="container nav"><a href="#top" class="logo"><span class="mark"></span><span>BầyĐàn</span></a><nav class="links"><a href="#overview">Tổng quan</a><a href="#features">Tính năng</a><a href="#dashboard">Mô hình</a><a href="#deep-analysis">Phân tích sâu</a><a href="#user-action">Nên làm gì?</a><a href="#alerts">Cảnh báo</a></nav><div><a class="btn light" href="#features">Tìm hiểu</a> <a class="btn dark" href="#dashboard">Chạy phân tích</a></div></div></header>
-<main id="top">
-<section class="hero"><div class="container hero-grid"><div><div class="tag"><span class="dot"></span>Fintech quantitative MVP</div><h1>Phát hiện hành vi bầy đàn trước khi thị trường hoảng loạn.</h1><p>Ứng dụng Lý thuyết Trò chơi Tiến hóa để mô hình hóa nhà đầu tư theo xu hướng và đi ngược đám đông, từ đó tạo cảnh báo sớm về nguy cơ bán tháo.</p><div class="hero-actions"><a class="btn dark" href="#dashboard">Phân tích ngay</a><a class="btn light" href="#overview">Xem cách hoạt động</a></div></div><div class="visual"><div class="float a">📈 Trend share tăng nhanh</div><div class="float b">⚠️ Herding risk 72/100</div><div class="mock"><div class="mock-top"><span class="live"><i></i>Mô hình đang hoạt động</span><span class="chip">Dữ liệu cuối ngày</span></div><div class="screen"><div><small>Điểm rủi ro bầy đàn</small><strong>72.4</strong><em>▲ Tăng 8.7 điểm</em></div><svg viewBox="0 0 240 120" preserveAspectRatio="none"><path d="M0 99C28 92 35 67 63 76S95 47 122 57s37-31 66-19 31-23 52-17" fill="none" stroke="#f3f778" stroke-width="5" stroke-linecap="round"/></svg></div><div class="mini"><div class="purple"><small>Theo xu hướng</small><strong>68%</strong></div><div class="mint"><small>Biến động</small><strong>24.1%</strong></div><div class="pink"><small>Cảnh báo</small><strong>05</strong></div></div></div></div></div></section>
-<section class="stats"><div class="container"><h2>Các con số tự nói lên mức độ hữu ích của mô hình</h2><div class="stats-grid"><div class="stat"><b>2</b><span>chiến lược đầu tư được mô hình hóa</span></div><div class="stat"><b>100</b><span>điểm tối đa của Herding Risk Score</span></div><div class="stat"><b>4</b><span>nhóm biến hình thành điểm rủi ro</span></div><div class="stat"><b>1</b><span>tệp HTML độc lập, chạy trực tiếp</span></div></div></div></section>
-<section class="section soft" id="overview"><div class="container split"><div class="art"><div class="pop"><h3 style="margin:0 0 7px">Tỷ lệ theo xu hướng</h3><b>68.3%</b><p class="copy" style="font-size:11px;margin:6px 0 0">Ước lượng từ động lực tái tạo và payoff chiến lược.</p></div><div class="phone"><div><div class="line" style="width:45%"></div><div class="line" style="width:70%"></div><div class="block"><b style="font-size:12px">Evolutionary dynamics</b><div class="bars"><i style="height:28%"></i><i style="height:43%"></i><i style="height:55%"></i><i style="height:74%"></i><i style="height:92%"></i></div></div><div class="line" style="width:85%;margin-top:20px"></div><div class="line" style="width:62%"></div></div></div></div><div><div class="kicker">Phương pháp nghiên cứu</div><h2 class="title">Không chỉ nhìn vào giá, mô hình theo dõi cách chiến lược lan truyền.</h2><p class="copy">Khi một chiến lược mang lại lợi ích cao hơn, tỷ lệ nhà đầu tư sử dụng chiến lược đó sẽ tăng. Replicator dynamics mô phỏng quá trình thích nghi và kết hợp với lợi suất, biến động cùng khối lượng để nhận diện rủi ro bầy đàn.</p><div class="list"><div><span class="num">1</span>Tính lợi suất logarithmic, momentum và biến động lăn.</div><div><span class="num">2</span>So sánh payoff của trend-following và contrarian.</div><div><span class="num">3</span>Ước lượng tỷ lệ chiến lược bằng động lực tái tạo.</div><div><span class="num">4</span>Tạo Herding Risk Score từ 0 đến 100.</div></div></div></div></section>
-<section class="section" id="features"><div class="container"><div class="center"><div class="kicker">Tính năng chính</div><h2 class="title">Công cụ cần thiết cho một bài code định lượng tài chính.</h2><p class="copy">Thiết kế fintech hiện đại, tập trung vào dữ liệu, khả năng giải thích và trình bày kết quả nghiên cứu.</p></div><div class="cards"><article class="fcard purple"><div class="ico">📊</div><div><h3>Phân tích dữ liệu</h3><p>Đọc CSV, làm sạch dữ liệu và tính các biến tài chính.</p></div></article><article class="fcard mint"><div class="ico">🧬</div><div><h3>Trò chơi tiến hóa</h3><p>Mô phỏng sự chuyển đổi giữa hai chiến lược đầu tư.</p></div></article><article class="fcard pink"><div class="ico">⚠️</div><div><h3>Cảnh báo bán tháo</h3><p>Đánh dấu phiên có rủi ro cao và áp lực bán mạnh.</p></div></article><article class="fcard blue"><div class="ico">📈</div><div><h3>Dashboard trực quan</h3><p>Biểu đồ giá, chiến lược và điểm rủi ro tương tác.</p></div></article><article class="fcard cream"><div class="ico">🧮</div><div><h3>Điều chỉnh tham số</h3><p>Thay đổi momentum, volatility, payoff và learning rate.</p></div></article><article class="fcard yellow"><div class="ico">⬇️</div><div><h3>Xuất kết quả</h3><p>Tải dữ liệu mô hình dưới dạng CSV để phân tích tiếp.</p></div></article></div></div></section>
-<section class="section dashboard" id="dashboard"><div class="container"><div class="center" style="margin-bottom:0"><div class="kicker">MVP tương tác</div><h2 class="title">Chạy mô hình trực tiếp trên trình duyệt.</h2><p class="copy">Không cần máy chủ hoặc cài Python. Tải CSV của bạn hoặc dùng dữ liệu mẫu.</p></div><div class="dash-shell"><div class="dash-grid"><aside class="controls"><h3>Thiết lập mô hình</h3><p>Điều chỉnh tham số rồi chạy phân tích.</p><div class="control"><label>Mã cổ phiếu / chỉ số</label><input id="tickerInput" type="text" value="VNINDEX" placeholder="Ví dụ: FPT, HPG, VCB"><button id="fetchAutoButton" style="margin-top:8px;background:var(--green);color:#fff">Lấy dữ liệu tự động</button></div><div class="control"><label>Hoặc tải dữ liệu CSV thủ công (dự phòng)</label><input id="csvFile" type="file" accept=".csv"></div><div class="control"><label>Cửa sổ xu hướng</label><input id="momentumWindow" type="range" min="3" max="30" value="10"><div class="range-row"><span>3</span><strong id="momentumValue">10 phiên</strong><span>30</span></div></div><div class="control"><label>Cửa sổ biến động</label><input id="volatilityWindow" type="range" min="10" max="60" value="20"><div class="range-row"><span>10</span><strong id="volatilityValue">20 phiên</strong><span>60</span></div></div><div class="control"><label>Làm mượt payoff</label><input id="payoffWindow" type="range" min="3" max="30" value="10"><div class="range-row"><span>3</span><strong id="payoffValue">10 phiên</strong><span>30</span></div></div><div class="control"><label>Tốc độ thích nghi</label><input id="learningRate" type="range" min="1" max="100" value="35"><div class="range-row"><span>Chậm</span><strong id="learningValue">35</strong><span>Nhanh</span></div></div><button id="runButton">Chạy phân tích</button><button class="secondary" id="demoButton">Khôi phục dữ liệu mẫu</button><button class="secondary" id="downloadButton">Tải kết quả CSV</button><div class="note">CSV cần có Date, Close, Volume và tối thiểu 80 phiên (nên ≥ 4 lần window lớn nhất để kết quả ổn định). Định dạng ngày hỗ trợ: yyyy-mm-dd hoặc dd/mm/yyyy. Mô hình phục vụ nghiên cứu, không phải khuyến nghị đầu tư.</div></aside><div><div class="dash-head"><div><h3>Market behavior analytics</h3><p>Evolutionary Game Theory & Herding Risk Detection</p></div><div class="source-badge" id="sourceBadge">Nguồn: Dữ liệu mẫu mô phỏng</div></div><div class="metrics"><div class="metric"><div class="metric-label">Giá đóng cửa mới nhất</div><div class="metric-value" id="latestClose">-</div><div class="metric-sub" id="latestDate">-</div></div><div class="metric"><div class="metric-label">Lợi suất phiên</div><div class="metric-value" id="latestReturn">-</div><div class="metric-sub">Lợi suất logarithmic</div></div><div class="metric"><div class="metric-label">Tỷ lệ theo xu hướng</div><div class="metric-value" id="latestTrend">-</div><div class="metric-sub">Replicator dynamics</div></div><div class="metric"><div class="metric-label">Trend Intensity Score (1 mã)</div><div class="metric-value" id="latestRisk">-</div><div class="metric-sub" id="latestLevel">-</div></div></div><div class="alert low" id="riskAlert">Đang khởi tạo mô hình...</div>
-<div class="analysis-note" style="margin:0 0 13px">Chỉ số này đo <strong>cường độ trend-following của riêng mã đang chọn</strong>, không phải herding thị trường theo đúng nghĩa học thuật (herding cần so sánh nhiều mã cùng lúc — xem mục "Herding thị trường thật" bên dưới trang).</div>
-<div class="analysis-panel" id="deep-analysis">
-  <div class="analysis-head">
-    <div>
-      <h3>Phân tích định lượng chuyên sâu</h3>
-      <p>Nội dung bên dưới được tạo tự động từ dữ liệu và các tham số đang chọn.</p>
-    </div>
-    <div class="analysis-tag">Dynamic research report</div>
-  </div>
-
-  <div class="analysis-summary" id="executiveSummary">Đang tổng hợp kết quả phân tích...</div>
-
-  <div class="insight-grid">
-    <article class="insight-card"><small>Trạng thái thị trường</small><strong id="marketRegime">-</strong><span id="marketRegimeDetail">-</span></article>
-    <article class="insight-card"><small>Chiến lược chi phối</small><strong id="strategyDominance">-</strong><span id="strategyDominanceDetail">-</span></article>
-    <article class="insight-card"><small>Gia tốc rủi ro</small><strong id="riskAcceleration">-</strong><span id="riskAccelerationDetail">-</span></article>
-    <article class="insight-card"><small>Hiệu lực tín hiệu 5 phiên</small><strong id="signalHitRate">-</strong><span id="signalHitRateDetail">-</span></article>
-  </div>
-
-  <div class="analysis-grid">
-    <div class="analysis-box">
-      <h4>Phân rã Herding Risk Score</h4>
-      <p>Mỗi thanh biểu diễn số điểm thực tế mà thành phần đóng góp vào tổng điểm rủi ro.</p>
-
-      <div class="component-row">
-        <div class="component-top"><b>Tập trung chiến lược theo xu hướng</b><span id="trendComponentValue">-</span></div>
-        <div class="component-track"><i id="trendComponentBar" style="width:0%"></i></div>
-      </div>
-      <div class="component-row">
-        <div class="component-top"><b>Áp lực bán theo lợi suất bất thường</b><span id="sellComponentValue">-</span></div>
-        <div class="component-track"><i id="sellComponentBar" style="width:0%"></i></div>
-      </div>
-      <div class="component-row">
-        <div class="component-top"><b>Căng thẳng biến động</b><span id="volatilityComponentValue">-</span></div>
-        <div class="component-track"><i id="volatilityComponentBar" style="width:0%"></i></div>
-      </div>
-      <div class="component-row">
-        <div class="component-top"><b>Khối lượng giao dịch bất thường</b><span id="volumeComponentValue">-</span></div>
-        <div class="component-track"><i id="volumeComponentBar" style="width:0%"></i></div>
+  <header>
+    <div class="container nav">
+      <a href="#top" class="logo"><span class="mark"></span><span>BầyĐàn</span></a>
+      <nav class="links">
+        <a href="#overview">Tổng quan</a><a href="#features">Tính năng</a><a href="#dashboard">Mô hình</a><a href="#deep-analysis">Phân tích sâu</a><a href="#user-action">Nên làm gì?</a><a href="#alerts">Cảnh báo</a>
+      </nav>
+      <div>
+        <a class="btn light" href="#features">Tìm hiểu</a> <a class="btn dark" href="#dashboard">Chạy phân tích</a>
       </div>
     </div>
-
-    <div class="analysis-box">
-      <h4>Diễn giải học thuật</h4>
-      <p>Các kết luận dùng để trình bày trong báo cáo hoặc thuyết trình nghiên cứu.</p>
-      <div class="research-list" id="researchInterpretation"></div>
-    </div>
-  </div>
-
-  <div class="analysis-grid">
-    <div class="analysis-box">
-      <h4>Thống kê thị trường và chiến lược</h4>
-      <p>Chỉ tiêu mô tả mức sinh lời, biến động, drawdown và payoff trong cửa sổ gần nhất.</p>
-      <table class="metric-table"><tbody>
-        <tr><td>Lợi suất 20 phiên</td><td id="return20">-</td></tr>
-        <tr><td>Lợi suất 60 phiên</td><td id="return60">-</td></tr>
-        <tr><td>Biến động năm hóa hiện tại</td><td id="annualVolatility">-</td></tr>
-        <tr><td>Max drawdown toàn mẫu</td><td id="maxDrawdown">-</td></tr>
-        <tr><td>Payoff trend-following 20 phiên</td><td id="trendPayoff20">-</td></tr>
-        <tr><td>Payoff contrarian 20 phiên</td><td id="contrarianPayoff20">-</td></tr>
-        <tr><td>Số cảnh báo bán tháo</td><td id="panicCount">-</td></tr>
-        <tr><td>Điểm rủi ro cao nhất</td><td id="peakRisk">-</td></tr>
-      </tbody></table>
-    </div>
-
-    <div class="analysis-box">
-      <h4>Đánh giá hiệu lực cảnh báo</h4>
-      <p>Kiểm tra lợi suất 5 phiên sau mỗi tín hiệu để đánh giá khả năng nhận diện giai đoạn giảm tiếp.</p>
-      <table class="metric-table"><tbody>
-        <tr><td>Số tín hiệu đủ dữ liệu kiểm định</td><td id="validatedSignals">-</td></tr>
-        <tr><td>Tỷ lệ tiếp tục giảm sau 5 phiên</td><td id="validatedHitRate">-</td></tr>
-        <tr><td>Lợi suất 5 phiên trung bình sau cảnh báo</td><td id="averageForwardReturn">-</td></tr>
-        <tr><td>Rủi ro trung bình 20 phiên</td><td id="averageRisk20">-</td></tr>
-        <tr><td>Tỷ lệ phiên rủi ro cao toàn mẫu</td><td id="highRiskShare">-</td></tr>
-        <tr><td>Tương quan tuyệt đối lợi suất và rủi ro</td><td id="riskReturnCorrelation">-</td></tr>
-      </tbody></table>
-      <div class="analysis-note">Hiệu lực trong mẫu chỉ là bằng chứng mô tả. Để kết luận chắc chắn cần kiểm định ngoài mẫu, walk-forward validation và so sánh với mô hình chuẩn.</div>
-    </div>
-  </div>
-
-  <div class="analysis-box">
-    <h4>Năm phiên có rủi ro bầy đàn cao nhất</h4>
-    <p>Các giai đoạn cực trị giúp đối chiếu với tin tức, biến động chỉ số và hành vi thanh khoản trong nghiên cứu thực nghiệm.</p>
-    <div class="top-risk-wrap">
-      <table class="top-risk-table"><thead><tr><th>Ngày</th><th>Điểm rủi ro</th><th>Lợi suất (%)</th><th>Trend share (%)</th><th>Volume Z-score</th><th>Volatility Z-score</th><th>Tín hiệu</th></tr></thead><tbody id="topRiskTable"></tbody></table>
-    </div>
-  </div>
-
-  <div class="methodology-grid">
-    <div class="formula-box">
-      <h4>Cấu trúc mô hình</h4>
-      <div class="formula">x(t+1) = x(t) + η × x(t) × [1 − x(t)] × [πtrend(t) − πcontrarian(t)]<br><br>Herding Risk = 35% × Concentration + 30% × Sell Pressure + 20% × Volatility Stress + 15% × Volume Stress</div>
-      <p>x(t) là tỷ lệ nhà đầu tư theo xu hướng; η là tốc độ thích nghi; π là payoff kỳ vọng của từng chiến lược. Các biến stress được chuẩn hóa bằng rolling Z-score và chặn trong khoảng từ 0 đến 1.</p>
-    </div>
-    <div class="limitations">
-      <h4>Giả định và giới hạn</h4>
-      <ul>
-        <li>Thị trường được giản lược thành hai chiến lược: trend-following và contrarian.</li>
-        <li>Tỷ lệ chiến lược là biến ẩn suy luận từ giá, không phải dữ liệu tài khoản nhà đầu tư.</li>
-        <li>Trọng số Herding Risk Score mang tính thiết kế MVP và cần hiệu chỉnh thực nghiệm.</li>
-        <li>Dữ liệu cuối ngày không phản ánh đầy đủ hành vi trong phiên hoặc độ sâu sổ lệnh.</li>
-        <li>Mô hình chưa kiểm soát tin tức, yếu tố vĩ mô, hiệu ứng ngành và thay đổi chế độ thị trường.</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="guidance-panel" id="cross-sectional-herding">
-  <div class="guidance-head">
-    <div>
-      <h3>Herding thị trường thật (Cross-Sectional CSAD)</h3>
-      <p>Đo herding đúng chuẩn học thuật kinh điển (Chang, Cheng &amp; Khorana 2000) — so sánh độ phân tán lợi suất giữa NHIỀU mã cùng lúc, khác với "Trend Intensity Score" ở trên (chỉ đo 1 mã).</p>
-    </div>
-    <div class="guidance-badge">CSAD regression</div>
-  </div>
-
-  <div class="control" style="margin-bottom:13px">
-    <label>Danh sách mã (phân tách bởi dấu phẩy, tối thiểu 5 mã cùng ngành)</label>
+  </header>
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="tag">
+            <span class="dot"></span>Fintech quantitative MVP
+          </div>
+          <h1>
+            Phát hiện hành vi bầy đàn trước khi thị trường hoảng loạn.
+          </h1>
+          <p>
+            Ứng dụng Lý thuyết Trò chơi Tiến hóa để mô hình hóa nhà đầu tư theo xu hướng và đi ngược đám đông, từ đó tạo cảnh báo sớm về nguy cơ bán tháo.
+          </p>
+          <div class="hero-actions">
+            <a class="btn dark" href="#dashboard">Phân tích ngay</a><a class="btn light" href="#overview">Xem cách hoạt động</a>
+          </div>
+        </div>
+        <div class="visual">
+          <div class="float a">
+            📈 Trend share tăng nhanh
+          </div>
+          <div class="float b">
+            ⚠️ Herding risk 72/100
+          </div>
+          <div class="mock">
+            <div class="mock-top">
+              <span class="live"><i></i>Mô hình đang hoạt động</span><span class="chip">Dữ liệu cuối ngày</span>
+            </div>
+            <div class="screen">
+              <div>
+                <small>Điểm rủi ro bầy đàn</small><strong>72.4</strong><em>▲ Tăng 8.7 điểm</em>
+              </div>
+              <svg viewBox="0 0 240 120" preserveAspectRatio="none"><path d="M0 99C28 92 35 67 63 76S95 47 122 57s37-31 66-19 31-23 52-17" fill="none" stroke="#f3f778" stroke-width="5" stroke-linecap="round"/></svg>
+            </div>
+            <div class="mini">
+              <div class="purple">
+                <small>Theo xu hướng</small><strong>68%</strong>
+              </div>
+              <div class="mint">
+                <small>Biến động</small><strong>24.1%</strong>
+              </div>
+              <div class="pink">
+                <small>Cảnh báo</small><strong>05</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="stats">
+      <div class="container">
+        <h2>
+          Các con số tự nói lên mức độ hữu ích của mô hình
+        </h2>
+        <div class="stats-grid">
+          <div class="stat">
+            <b>2</b><span>chiến lược đầu tư được mô hình hóa</span>
+          </div>
+          <div class="stat">
+            <b>100</b><span>điểm tối đa của Herding Risk Score</span>
+          </div>
+          <div class="stat">
+            <b>4</b><span>nhóm biến hình thành điểm rủi ro</span>
+          </div>
+          <div class="stat">
+            <b>1</b><span>tệp HTML độc lập, chạy trực tiếp</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section soft" id="overview">
+      <div class="container split">
+        <div class="art">
+          <div class="pop">
+            <h3 style="margin:0 0 7px">
+              Tỷ lệ theo xu hướng
+            </h3>
+            <b>68.3%</b>
+            <p class="copy" style="font-size:11px;margin:6px 0 0">
+              Ước lượng từ động lực tái tạo và payoff chiến lược.
+            </p>
+          </div>
+          <div class="phone">
+            <div>
+              <div class="line" style="width:45%">
+              </div>
+              <div class="line" style="width:70%">
+              </div>
+              <div class="block">
+                <b style="font-size:12px">Evolutionary dynamics</b>
+                <div class="bars">
+                  <i style="height:28%"></i><i style="height:43%"></i><i style="height:55%"></i><i style="height:74%"></i><i style="height:92%"></i>
+                </div>
+              </div>
+              <div class="line" style="width:85%;margin-top:20px">
+              </div>
+              <div class="line" style="width:62%">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="kicker">
+            Phương pháp nghiên cứu
+          </div>
+          <h2 class="title">
+            Không chỉ nhìn vào giá, mô hình theo dõi cách chiến lược lan truyền.
+          </h2>
+          <p class="copy">
+            Khi một chiến lược mang lại lợi ích cao hơn, tỷ lệ nhà đầu tư sử dụng chiến lược đó sẽ tăng. Replicator dynamics mô phỏng quá trình thích nghi và kết hợp với lợi suất, biến động cùng khối lượng để nhận diện rủi ro bầy đàn.
+          </p>
+          <div class="list">
+            <div>
+              <span class="num">1</span>Tính lợi suất logarithmic, momentum và biến động lăn.
+            </div>
+            <div>
+              <span class="num">2</span>So sánh payoff của trend-following và contrarian.
+            </div>
+            <div>
+              <span class="num">3</span>Ước lượng tỷ lệ chiến lược bằng động lực tái tạo.
+            </div>
+            <div>
+              <span class="num">4</span>Tạo Herding Risk Score từ 0 đến 100.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="features">
+      <div class="container">
+        <div class="center">
+          <div class="kicker">
+            Tính năng chính
+          </div>
+          <h2 class="title">
+            Công cụ cần thiết cho một bài code định lượng tài chính.
+          </h2>
+          <p class="copy">
+            Thiết kế fintech hiện đại, tập trung vào dữ liệu, khả năng giải thích và trình bày kết quả nghiên cứu.
+          </p>
+        </div>
+        <div class="cards">
+          <article class="fcard purple">
+            <div class="ico">
+              📊
+            </div>
+            <div>
+              <h3>
+                Phân tích dữ liệu
+              </h3>
+              <p>
+                Đọc CSV, làm sạch dữ liệu và tính các biến tài chính.
+              </p>
+            </div>
+          </article>
+          <article class="fcard mint">
+            <div class="ico">
+              🧬
+            </div>
+            <div>
+              <h3>
+                Trò chơi tiến hóa
+              </h3>
+              <p>
+                Mô phỏng sự chuyển đổi giữa hai chiến lược đầu tư.
+              </p>
+            </div>
+          </article>
+          <article class="fcard pink">
+            <div class="ico">
+              ⚠️
+            </div>
+            <div>
+              <h3>
+                Cảnh báo bán tháo
+              </h3>
+              <p>
+                Đánh dấu phiên có rủi ro cao và áp lực bán mạnh.
+              </p>
+            </div>
+          </article>
+          <article class="fcard blue">
+            <div class="ico">
+              📈
+            </div>
+            <div>
+              <h3>
+                Dashboard trực quan
+              </h3>
+              <p>
+                Biểu đồ giá, chiến lược và điểm rủi ro tương tác.
+              </p>
+            </div>
+          </article>
+          <article class="fcard cream">
+            <div class="ico">
+              🧮
+            </div>
+            <div>
+              <h3>
+                Điều chỉnh tham số
+              </h3>
+              <p>
+                Thay đổi momentum, volatility, payoff và learning rate.
+              </p>
+            </div>
+          </article>
+          <article class="fcard yellow">
+            <div class="ico">
+              ⬇️
+            </div>
+            <div>
+              <h3>
+                Xuất kết quả
+              </h3>
+              <p>
+                Tải dữ liệu mô hình dưới dạng CSV để phân tích tiếp.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="section dashboard" id="dashboard">
+      <div class="container">
+        <div class="center" style="margin-bottom:0">
+          <div class="kicker">
+            MVP tương tác
+          </div>
+          <h2 class="title">
+            Chạy mô hình trực tiếp trên trình duyệt.
+          </h2>
+          <p class="copy">
+            Không cần máy chủ hoặc cài Python. Tải CSV của bạn hoặc dùng dữ liệu mẫu.
+          </p>
+        </div>
+        <div class="dash-shell">
+          <div class="dash-grid">
+            <aside class="controls">
+              <h3>
+                Thiết lập mô hình
+              </h3>
+              <p>
+                Điều chỉnh tham số rồi chạy phân tích.
+              </p>
+              <div class="control">
+                <label>Mã cổ phiếu / chỉ số</label><input id="tickerInput" type="text" value="VNINDEX" placeholder="Ví dụ: FPT, HPG, VCB"><button id="fetchAutoButton" style="margin-top:8px;background:var(--green);color:#fff">Lấy dữ liệu tự động</button>
+              </div>
+              <div class="control">
+                <label>Hoặc tải dữ liệu CSV thủ công (dự phòng)</label><input id="csvFile" type="file" accept=".csv">
+              </div>
+              <div class="control">
+                <label>Cửa sổ xu hướng</label><input id="momentumWindow" type="range" min="3" max="30" value="10">
+                <div class="range-row">
+                  <span>3</span><strong id="momentumValue">10 phiên</strong><span>30</span>
+                </div>
+              </div>
+              <div class="control">
+                <label>Cửa sổ biến động</label><input id="volatilityWindow" type="range" min="10" max="60" value="20">
+                <div class="range-row">
+                  <span>10</span><strong id="volatilityValue">20 phiên</strong><span>60</span>
+                </div>
+              </div>
+              <div class="control">
+                <label>Làm mượt payoff</label><input id="payoffWindow" type="range" min="3" max="30" value="10">
+                <div class="range-row">
+                  <span>3</span><strong id="payoffValue">10 phiên</strong><span>30</span>
+                </div>
+              </div>
+              <div class="control">
+                <label>Tốc độ thích nghi</label><input id="learningRate" type="range" min="1" max="100" value="35">
+                <div class="range-row">
+                  <span>Chậm</span><strong id="learningValue">35</strong><span>Nhanh</span>
+                </div>
+              </div>
+              <button id="runButton">Chạy phân tích</button><button class="secondary" id="demoButton">Khôi phục dữ liệu mẫu</button><button class="secondary" id="downloadButton">Tải kết quả CSV</button>
+              <div class="note">
+                CSV cần có Date, Close, Volume và tối thiểu 80 phiên (nên ≥ 4 lần window lớn nhất để kết quả ổn định). Định dạng ngày hỗ trợ: yyyy-mm-dd hoặc dd/mm/yyyy. Mô hình phục vụ nghiên cứu, không phải khuyến nghị đầu tư.
+              </div>
+            </aside>
+            <div>
+              <div class="dash-head">
+                <div>
+                  <h3>
+                    Market behavior analytics
+                  </h3>
+                  <p>
+                    Evolutionary Game Theory & Herding Risk Detection
+                  </p>
+                </div>
+                <div class="source-badge" id="sourceBadge">
+                  Nguồn: Dữ liệu mẫu mô phỏng
+                </div>
+              </div>
+              <div class="metrics">
+                <div class="metric">
+                  <div class="metric-label">
+                    Giá đóng cửa mới nhất
+                  </div>
+                  <div class="metric-value" id="latestClose">
+                    -
+                  </div>
+                  <div class="metric-sub" id="latestDate">
+                    -
+                  </div>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">
+                    Lợi suất phiên
+                  </div>
+                  <div class="metric-value" id="latestReturn">
+                    -
+                  </div>
+                  <div class="metric-sub">
+                    Lợi suất logarithmic
+                  </div>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">
+                    Tỷ lệ theo xu hướng
+                  </div>
+                  <div class="metric-value" id="latestTrend">
+                    -
+                  </div>
+                  <div class="metric-sub">
+                    Replicator dynamics
+                  </div>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">
+                    Trend Intensity Score (1 mã)
+                  </div>
+                  <div class="metric-value" id="latestRisk">
+                    -
+                  </div>
+                  <div class="metric-sub" id="latestLevel">
+                    -
+                  </div>
+                </div>
+              </div>
+              <div class="alert low" id="riskAlert">
+                Đang khởi tạo mô hình...
+              </div>
+              <div class="analysis-note" style="margin:0 0 13px">
+                Chỉ số này đo <strong>cường độ trend-following của riêng mã đang chọn</strong>, không phải herding thị trường theo đúng nghĩa học thuật (herding cần so sánh nhiều mã cùng lúc — xem mục "Herding thị trường thật" bên dưới trang).
+              </div>
+              <div class="analysis-panel" id="deep-analysis">
+                <div class="analysis-head">
+                  <div>
+                    <h3>
+                      Phân tích định lượng chuyên sâu
+                    </h3>
+                    <p>
+                      Nội dung bên dưới được tạo tự động từ dữ liệu và các tham số đang chọn.
+                    </p>
+                  </div>
+                  <div class="analysis-tag">
+                    Dynamic research report
+                  </div>
+                </div>
+                <div class="analysis-summary" id="executiveSummary">
+                  Đang tổng hợp kết quả phân tích...
+                </div>
+                <div class="insight-grid">
+                  <article class="insight-card">
+                    <small>Trạng thái thị trường</small><strong id="marketRegime">-</strong><span id="marketRegimeDetail">-</span>
+                  </article>
+                  <article class="insight-card">
+                    <small>Chiến lược chi phối</small><strong id="strategyDominance">-</strong><span id="strategyDominanceDetail">-</span>
+                  </article>
+                  <article class="insight-card">
+                    <small>Gia tốc rủi ro</small><strong id="riskAcceleration">-</strong><span id="riskAccelerationDetail">-</span>
+                  </article>
+                  <article class="insight-card">
+                    <small>Hiệu lực tín hiệu 5 phiên</small><strong id="signalHitRate">-</strong><span id="signalHitRateDetail">-</span>
+                  </article>
+                </div>
+                <div class="analysis-grid">
+                  <div class="analysis-box">
+                    <h4>
+                      Phân rã Herding Risk Score
+                    </h4>
+                    <p>
+                      Mỗi thanh biểu diễn số điểm thực tế mà thành phần đóng góp vào tổng điểm rủi ro.
+                    </p>
+                    <div class="component-row">
+                      <div class="component-top">
+                        <b>Tập trung chiến lược theo xu hướng</b><span id="trendComponentValue">-</span>
+                      </div>
+                      <div class="component-track">
+                        <i id="trendComponentBar" style="width:0%"></i>
+                      </div>
+                    </div>
+                    <div class="component-row">
+                      <div class="component-top">
+                        <b>Áp lực bán theo lợi suất bất thường</b><span id="sellComponentValue">-</span>
+                      </div>
+                      <div class="component-track">
+                        <i id="sellComponentBar" style="width:0%"></i>
+                      </div>
+                    </div>
+                    <div class="component-row">
+                      <div class="component-top">
+                        <b>Căng thẳng biến động</b><span id="volatilityComponentValue">-</span>
+                      </div>
+                      <div class="component-track">
+                        <i id="volatilityComponentBar" style="width:0%"></i>
+                      </div>
+                    </div>
+                    <div class="component-row">
+                      <div class="component-top">
+                        <b>Khối lượng giao dịch bất thường</b><span id="volumeComponentValue">-</span>
+                      </div>
+                      <div class="component-track">
+                        <i id="volumeComponentBar" style="width:0%"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="analysis-box">
+                    <h4>
+                      Diễn giải học thuật
+                    </h4>
+                    <p>
+                      Các kết luận dùng để trình bày trong báo cáo hoặc thuyết trình nghiên cứu.
+                    </p>
+                    <div class="research-list" id="researchInterpretation">
+                    </div>
+                  </div>
+                </div>
+                <div class="analysis-grid">
+                  <div class="analysis-box">
+                    <h4>
+                      Thống kê thị trường và chiến lược
+                    </h4>
+                    <p>
+                      Chỉ tiêu mô tả mức sinh lời, biến động, drawdown và payoff trong cửa sổ gần nhất.
+                    </p>
+                    <table class="metric-table">
+                      <tbody>
+                        <tr>
+                          <td>
+                            Lợi suất 20 phiên
+                          </td>
+                          <td id="return20">
+                            -
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Lợi suất 60 phiên
+                          </td>
+                          <td id="return60">
+                            -
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Biến động năm hóa hiện tại
+                          </td>
+                          <td id="annualVolatility">
+                            -
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Max drawdown toàn mẫu
+                          </td>
+                          <td id="maxDrawdown">
+                            -
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Payoff trend-following 20 phiên
+                          </td>
+                          <td id="trendPayoff20">
+                            -
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Payoff contrarian 20 phiên
+                          </td>
+                          <td id="contrarianPayoff20">
+                            -
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Số cảnh báo bán tháo
+                          </td>
+                          <td id="panicCount">
+                            -
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Điểm rủi ro cao nhất
+                          </td>
+                          <td id="peakRisk">
+                            -
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="analysis-box">
+                    <h4>
+                      Đánh giá hiệu lực cảnh báo
+                    </h4>
+                    <p>
+                      Kiểm tra lợi suất 5 phiên sau mỗi tín hiệu để đánh giá khả năng nhận diện giai đoạn giảm tiếp.
+                    </p>
+                    <table class="metric-table">
+                      <tbody>
+                        <tr>
+                          <td>
+                            Số tín hiệu đủ dữ liệu kiểm định
+                          </td>
+                          <td id="validatedSignals">
+                            -
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Tỷ lệ tiếp tục giảm sau 5 phiên
+                          </td>
+                          <td id="validatedHitRate">
+                            -
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Lợi suất 5 phiên trung bình sau cảnh báo
+                          </td>
+                          <td id="averageForwardReturn">
+                            -
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Rủi ro trung bình 20 phiên
+                          </td>
+                          <td id="averageRisk20">
+                            -
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Tỷ lệ phiên rủi ro cao toàn mẫu
+                          </td>
+                          <td id="highRiskShare">
+                            -
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Tương quan tuyệt đối lợi suất và rủi ro
+                          </td>
+                          <td id="riskReturnCorrelation">
+                            -
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div class="analysis-note">
+                      Hiệu lực trong mẫu chỉ là bằng chứng mô tả. Để kết luận chắc chắn cần kiểm định ngoài mẫu, walk-forward validation và so sánh với mô hình chuẩn.
+                    </div>
+                  </div>
+                </div>
+                <div class="analysis-box">
+                  <h4>
+                    Năm phiên có rủi ro bầy đàn cao nhất
+                  </h4>
+                  <p>
+                    Các giai đoạn cực trị giúp đối chiếu với tin tức, biến động chỉ số và hành vi thanh khoản trong nghiên cứu thực nghiệm.
+                  </p>
+                  <div class="top-risk-wrap">
+                    <table class="top-risk-table">
+                      <thead>
+                        <tr>
+                          <th>
+                            Ngày
+                          </th>
+                          <th>
+                            Điểm rủi ro
+                          </th>
+                          <th>
+                            Lợi suất (%)
+                          </th>
+                          <th>
+                            Trend share (%)
+                          </th>
+                          <th>
+                            Volume Z-score
+                          </th>
+                          <th>
+                            Volatility Z-score
+                          </th>
+                          <th>
+                            Tín hiệu
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody id="topRiskTable">
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="methodology-grid">
+                  <div class="formula-box">
+                    <h4>
+                      Cấu trúc mô hình
+                    </h4>
+                    <div class="formula">
+                      x(t+1) = x(t) + η × x(t) × [1 − x(t)] × [πtrend(t) − πcontrarian(t)]<br><br>Herding Risk = 35% × Concentration + 30% × Sell Pressure + 20% × Volatility Stress + 15% × Volume Stress
+                    </div>
+                    <p>
+                      x(t) là tỷ lệ nhà đầu tư theo xu hướng; η là tốc độ thích nghi; π là payoff kỳ vọng của từng chiến lược. Các biến stress được chuẩn hóa bằng rolling Z-score và chặn trong khoảng từ 0 đến 1.
+                    </p>
+                  </div>
+                  <div class="limitations">
+                    <h4>
+                      Giả định và giới hạn
+                    </h4>
+                    <ul>
+                      <li>
+                        Thị trường được giản lược thành hai chiến lược: trend-following và contrarian.
+                      </li>
+                      <li>
+                        Tỷ lệ chiến lược là biến ẩn suy luận từ giá, không phải dữ liệu tài khoản nhà đầu tư.
+                      </li>
+                      <li>
+                        Trọng số Herding Risk Score mang tính thiết kế MVP và cần hiệu chỉnh thực nghiệm.
+                      </li>
+                      <li>
+                        Dữ liệu cuối ngày không phản ánh đầy đủ hành vi trong phiên hoặc độ sâu sổ lệnh.
+                      </li>
+                      <li>
+                        Mô hình chưa kiểm soát tin tức, yếu tố vĩ mô, hiệu ứng ngành và thay đổi chế độ thị trường.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="guidance-panel" id="cross-sectional-herding">
+                <div class="guidance-head">
+                  <div>
+                    <h3>
+                      Herding thị trường thật (Cross-Sectional CSAD)
+                    </h3>
+                    <p>
+                      Đo herding đúng chuẩn học thuật kinh điển (Chang, Cheng &amp; Khorana 2000) — so sánh độ phân tán lợi suất giữa NHIỀU mã cùng lúc, khác với "Trend Intensity Score" ở trên (chỉ đo 1 mã).
+                    </p>
+                  </div>
+                  <div class="guidance-badge">
+                    CSAD regression
+                  </div>
+                </div>
+                <div class="control" style="margin-bottom:13px">
+                  <label>Danh sách mã (phân tách bởi dấu phẩy, tối thiểu 5 mã cùng ngành)</label>
     <input id="csadTickers" type="text" value="VCB,BID,CTG,ACB,MBB,TCB,STB,VPB,HDB,TPB" style="color:var(--ink);background:#fff;border:1px solid var(--line)">
     <button id="csadRunButton" style="margin-top:8px;background:var(--ink);color:#fff;border:0;border-radius:12px;padding:12px;font-weight:900;cursor:pointer;width:100%">Chạy kiểm định herding thị trường</button>
-  </div>
-
-  <div class="analysis-summary" id="csadSummary">Chưa chạy kiểm định. Cần backend đang hoạt động (xem hướng dẫn deploy trong backend.py).</div>
-
-  <div class="guidance-cards">
-    <article class="guidance-card"><small>Số phiên có herding (γ2 âm, có ý nghĩa)</small><strong id="csadHerdingDays">-</strong><span id="csadHerdingShare">-</span></article>
-    <article class="guidance-card"><small>Số mã dùng được</small><strong id="csadTickerCount">-</strong><span id="csadTickerList">-</span></article>
-    <article class="guidance-card"><small>Cửa sổ hồi quy trượt</small><strong id="csadWindow">-</strong><span>Rolling OLS, ngưỡng t-stat &lt; -1.96 (mức ý nghĩa 5%)</span></article>
-    <article class="guidance-card"><small>Phương pháp</small><strong style="font-size:12px">Chang-Cheng-Khorana (2000)</strong><span>CSAD_t = α + γ1|Rm| + γ2·Rm²</span></article>
-  </div>
-
-  <div class="card chart-card" style="margin-top:13px">
-    <h3>Hệ số γ2 theo thời gian (rolling)</h3>
-    <p>γ2 &lt; 0 và nằm dưới đường ngưỡng đỏ (t-stat &lt; -1.96) = có bằng chứng herding tại thời điểm đó.</p>
-    <svg id="csadChart"></svg>
-  </div>
-
-  <div class="card" style="margin-top:13px">
-    <h3>10 phiên có bằng chứng herding mạnh nhất</h3>
-    <p>Xếp theo t-stat âm nhất — nên đối chiếu với tin tức/sự kiện thị trường giai đoạn đó.</p>
-    <div class="table-wrap">
-      <table><thead><tr><th>Ngày</th><th>γ2</th><th>t-stat</th><th>CSAD</th><th>Lợi suất thị trường (%)</th></tr></thead><tbody id="csadTable"></tbody></table>
+                </div>
+                <div class="analysis-summary" id="csadSummary">
+                  Chưa chạy kiểm định. Cần backend đang hoạt động (xem hướng dẫn deploy trong backend.py).
+                </div>
+                <div class="guidance-cards">
+                  <article class="guidance-card">
+                    <small>Số phiên có herding (γ2 âm, có ý nghĩa)</small><strong id="csadHerdingDays">-</strong><span id="csadHerdingShare">-</span>
+                  </article>
+                  <article class="guidance-card">
+                    <small>Số mã dùng được</small><strong id="csadTickerCount">-</strong><span id="csadTickerList">-</span>
+                  </article>
+                  <article class="guidance-card">
+                    <small>Cửa sổ hồi quy trượt</small><strong id="csadWindow">-</strong><span>Rolling OLS, ngưỡng t-stat &lt; -1.96 (mức ý nghĩa 5%)</span>
+                  </article>
+                  <article class="guidance-card">
+                    <small>Phương pháp</small><strong style="font-size:12px">Chang-Cheng-Khorana (2000)</strong><span>CSAD_t = α + γ1|Rm| + γ2·Rm²</span>
+                  </article>
+                </div>
+                <div class="card chart-card" style="margin-top:13px">
+                  <h3>
+                    Hệ số γ2 theo thời gian (rolling)
+                  </h3>
+                  <p>
+                    γ2 &lt; 0 và nằm dưới đường ngưỡng đỏ (t-stat &lt; -1.96) = có bằng chứng herding tại thời điểm đó.
+                  </p>
+                  <svg id="csadChart"></svg>
+                </div>
+                <div class="card" style="margin-top:13px">
+                  <h3>
+                    10 phiên có bằng chứng herding mạnh nhất
+                  </h3>
+                  <p>
+                    Xếp theo t-stat âm nhất — nên đối chiếu với tin tức/sự kiện thị trường giai đoạn đó.
+                  </p>
+                  <div class="table-wrap">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>
+                            Ngày
+                          </th>
+                          <th>
+                            γ2
+                          </th>
+                          <th>
+                            t-stat
+                          </th>
+                          <th>
+                            CSAD
+                          </th>
+                          <th>
+                            Lợi suất thị trường (%)
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody id="csadTable">
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="guidance-disclaimer">
+                  <strong>Lưu ý:</strong> Đây là kiểm định thống kê trên dữ liệu lịch sử, không phải dự báo. Herding tại 1 giai đoạn quá khứ không đảm bảo lặp lại. Kết quả phụ thuộc vào nhóm mã được chọn — nên chọn các mã cùng ngành để kết quả có ý nghĩa.
+                </div>
+              </div>
+              <div class="guidance-panel" id="user-action">
+                <div class="guidance-head">
+                  <div>
+                    <h3>
+                      Cổ phiếu này đang như thế nào và người dùng cần làm gì?
+                    </h3>
+                    <p>
+                      Hệ thống chuyển kết quả định lượng thành hướng dẫn quản trị rủi ro dễ hiểu, tự động cập nhật theo dữ liệu.
+                    </p>
+                  </div>
+                  <div class="guidance-badge">
+                    Risk management assistant
+                  </div>
+                </div>
+                <div class="stock-conclusion">
+                  <small id="stockLabel">Đánh giá VNINDEX</small>
+                  <h4 id="scenarioLabel">
+                    Đang xác định trạng thái thị trường...
+                  </h4>
+                  <p id="stockConclusion">
+                    Mô hình đang tổng hợp giá, khối lượng, biến động và tỷ lệ chiến lược.
+                  </p>
+                </div>
+                <div class="guidance-cards">
+                  <article class="guidance-card">
+                    <small>Xu hướng hiện tại</small><strong id="directionValue">-</strong><span id="directionDetail">-</span>
+                  </article>
+                  <article class="guidance-card">
+                    <small>Thanh khoản và biến động</small><strong id="volumeValue">-</strong><span id="volumeDetail">-</span>
+                  </article>
+                  <article class="guidance-card">
+                    <small>Ưu tiên hành động</small><strong id="riskActionValue">-</strong><span id="riskActionDetail">-</span>
+                  </article>
+                  <article class="guidance-card">
+                    <small>Khoảng quan sát đề xuất</small><strong id="monitorValue">-</strong><span id="monitorDetail">-</span>
+                  </article>
+                </div>
+                <div class="action-grid">
+                  <div class="action-box">
+                    <h4>
+                      Người dùng nên làm gì ngay bây giờ?
+                    </h4>
+                    <p>
+                      Danh sách hành động thay đổi theo mức rủi ro hiện tại, không phải lệnh mua hoặc bán.
+                    </p>
+                    <div class="action-list" id="actionList">
+                    </div>
+                  </div>
+                  <div class="action-box">
+                    <h4>
+                      Điều kiện để rủi ro được xem là cải thiện
+                    </h4>
+                    <p>
+                      Dấu chấm thể hiện điều kiện đã đạt, cần theo dõi hoặc vẫn đang ở vùng rủi ro.
+                    </p>
+                    <div class="condition-list" id="improvementList">
+                    </div>
+                  </div>
+                </div>
+                <h4 class="workflow-title">
+                  Quy trình người dùng cần thực hiện
+                </h4>
+                <div class="workflow-grid">
+                  <article class="workflow-step">
+                    <b>01</b><strong>Nhập mã và dữ liệu</strong><span>Điền mã cổ phiếu hoặc chỉ số, sau đó tải CSV có Date, Close và Volume.</span>
+                  </article>
+                  <article class="workflow-step">
+                    <b>02</b><strong>Chạy mô hình</strong><span>Điều chỉnh cửa sổ xu hướng, biến động và tốc độ thích nghi nếu cần.</span>
+                  </article>
+                  <article class="workflow-step">
+                    <b>03</b><strong>Đọc trạng thái</strong><span>Xem Herding Risk Score, chiến lược chi phối và chế độ thị trường.</span>
+                  </article>
+                  <article class="workflow-step">
+                    <b>04</b><strong>Kiểm tra nguyên nhân</strong><span>Xác định rủi ro đến từ áp lực bán, biến động, thanh khoản hay tập trung chiến lược.</span>
+                  </article>
+                  <article class="workflow-step">
+                    <b>05</b><strong>Lập kế hoạch rủi ro</strong><span>Đối chiếu với tin tức, cơ bản doanh nghiệp và mức chịu lỗ cá nhân trước khi quyết định.</span>
+                  </article>
+                </div>
+                <div class="guidance-disclaimer">
+                  <strong>Lưu ý:</strong> Phần hướng dẫn chỉ hỗ trợ quản trị rủi ro và diễn giải mô hình. Hệ thống không xác định giá trị hợp lý, không thay thế phân tích cơ bản và không đưa ra khuyến nghị mua hoặc bán.
+                </div>
+              </div>
+              <div class="card chart-card chart-wide">
+                <h3>
+                  Diễn biến giá và tín hiệu bán tháo
+                </h3>
+                <p>
+                  Tam giác đỏ là các phiên đạt điều kiện cảnh báo.
+                </p>
+                <svg id="priceChart"></svg>
+                <div class="legend">
+                  <span style="--legend-color:#2f8f68">Giá đóng cửa</span><span style="--legend-color:#e45858">Cảnh báo</span>
+                </div>
+              </div>
+              <div class="grid-2">
+                <div class="card chart-card">
+                  <h3>
+                    Tỷ lệ chiến lược
+                  </h3>
+                  <p>
+                    Theo xu hướng và đi ngược đám đông.
+                  </p>
+                  <svg id="strategyChart"></svg>
+                  <div class="legend">
+                    <span style="--legend-color:#7759b8">Theo xu hướng</span><span style="--legend-color:#2b9f91">Contrarian</span>
+                  </div>
+                </div>
+                <div class="card chart-card">
+                  <h3>
+                    Herding Risk Score
+                  </h3>
+                  <p>
+                    Thấp dưới 40, trung bình 40–69, cao từ 70.
+                  </p>
+                  <svg id="riskChart"></svg>
+                  <div class="legend">
+                    <span style="--legend-color:#e5a72f">Điểm rủi ro</span>
+                  </div>
+                </div>
+              </div>
+              <div class="card" id="alerts">
+                <h3>
+                  Các phiên có tín hiệu hoảng loạn bán tháo
+                </h3>
+                <p>
+                  Rủi ro từ 70, lợi suất âm và trend share từ 65%.
+                </p>
+                <div class="table-wrap">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>
+                          Ngày
+                        </th>
+                        <th>
+                          Giá đóng cửa
+                        </th>
+                        <th>
+                          Lợi suất (%)
+                        </th>
+                        <th>
+                          Khối lượng
+                        </th>
+                        <th>
+                          Theo xu hướng (%)
+                        </th>
+                        <th>
+                          Điểm rủi ro
+                        </th>
+                        <th>
+                          Mức độ
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody id="panicTable">
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="container foot">
+      <div>
+        <div class="logo">
+          <span class="mark"></span><span>BầyĐànChứngKhoán</span>
+        </div>
+        <p>
+          MVP phục vụ học tập và nghiên cứu, không phải khuyến nghị đầu tư.
+        </p>
+      </div>
+      <div class="badge">
+        Evolutionary Game Theory
+      </div>
     </div>
-  </div>
-
-  <div class="guidance-disclaimer"><strong>Lưu ý:</strong> Đây là kiểm định thống kê trên dữ liệu lịch sử, không phải dự báo. Herding tại 1 giai đoạn quá khứ không đảm bảo lặp lại. Kết quả phụ thuộc vào nhóm mã được chọn — nên chọn các mã cùng ngành để kết quả có ý nghĩa.</div>
+  </footer>
 </div>
 
-<div class="guidance-panel" id="user-action">
-  <div class="guidance-head">
-    <div>
-      <h3>Cổ phiếu này đang như thế nào và người dùng cần làm gì?</h3>
-      <p>Hệ thống chuyển kết quả định lượng thành hướng dẫn quản trị rủi ro dễ hiểu, tự động cập nhật theo dữ liệu.</p>
-    </div>
-    <div class="guidance-badge">Risk management assistant</div>
-  </div>
-
-  <div class="stock-conclusion">
-    <small id="stockLabel">Đánh giá VNINDEX</small>
-    <h4 id="scenarioLabel">Đang xác định trạng thái thị trường...</h4>
-    <p id="stockConclusion">Mô hình đang tổng hợp giá, khối lượng, biến động và tỷ lệ chiến lược.</p>
-  </div>
-
-  <div class="guidance-cards">
-    <article class="guidance-card"><small>Xu hướng hiện tại</small><strong id="directionValue">-</strong><span id="directionDetail">-</span></article>
-    <article class="guidance-card"><small>Thanh khoản và biến động</small><strong id="volumeValue">-</strong><span id="volumeDetail">-</span></article>
-    <article class="guidance-card"><small>Ưu tiên hành động</small><strong id="riskActionValue">-</strong><span id="riskActionDetail">-</span></article>
-    <article class="guidance-card"><small>Khoảng quan sát đề xuất</small><strong id="monitorValue">-</strong><span id="monitorDetail">-</span></article>
-  </div>
-
-  <div class="action-grid">
-    <div class="action-box">
-      <h4>Người dùng nên làm gì ngay bây giờ?</h4>
-      <p>Danh sách hành động thay đổi theo mức rủi ro hiện tại, không phải lệnh mua hoặc bán.</p>
-      <div class="action-list" id="actionList"></div>
-    </div>
-
-    <div class="action-box">
-      <h4>Điều kiện để rủi ro được xem là cải thiện</h4>
-      <p>Dấu chấm thể hiện điều kiện đã đạt, cần theo dõi hoặc vẫn đang ở vùng rủi ro.</p>
-      <div class="condition-list" id="improvementList"></div>
-    </div>
-  </div>
-
-  <h4 class="workflow-title">Quy trình người dùng cần thực hiện</h4>
-  <div class="workflow-grid">
-    <article class="workflow-step"><b>01</b><strong>Nhập mã và dữ liệu</strong><span>Điền mã cổ phiếu hoặc chỉ số, sau đó tải CSV có Date, Close và Volume.</span></article>
-    <article class="workflow-step"><b>02</b><strong>Chạy mô hình</strong><span>Điều chỉnh cửa sổ xu hướng, biến động và tốc độ thích nghi nếu cần.</span></article>
-    <article class="workflow-step"><b>03</b><strong>Đọc trạng thái</strong><span>Xem Herding Risk Score, chiến lược chi phối và chế độ thị trường.</span></article>
-    <article class="workflow-step"><b>04</b><strong>Kiểm tra nguyên nhân</strong><span>Xác định rủi ro đến từ áp lực bán, biến động, thanh khoản hay tập trung chiến lược.</span></article>
-    <article class="workflow-step"><b>05</b><strong>Lập kế hoạch rủi ro</strong><span>Đối chiếu với tin tức, cơ bản doanh nghiệp và mức chịu lỗ cá nhân trước khi quyết định.</span></article>
-  </div>
-
-  <div class="guidance-disclaimer"><strong>Lưu ý:</strong> Phần hướng dẫn chỉ hỗ trợ quản trị rủi ro và diễn giải mô hình. Hệ thống không xác định giá trị hợp lý, không thay thế phân tích cơ bản và không đưa ra khuyến nghị mua hoặc bán.</div>
-</div>
-
-<div class="card chart-card chart-wide"><h3>Diễn biến giá và tín hiệu bán tháo</h3><p>Tam giác đỏ là các phiên đạt điều kiện cảnh báo.</p><svg id="priceChart"></svg><div class="legend"><span style="--legend-color:#2f8f68">Giá đóng cửa</span><span style="--legend-color:#e45858">Cảnh báo</span></div></div><div class="grid-2"><div class="card chart-card"><h3>Tỷ lệ chiến lược</h3><p>Theo xu hướng và đi ngược đám đông.</p><svg id="strategyChart"></svg><div class="legend"><span style="--legend-color:#7759b8">Theo xu hướng</span><span style="--legend-color:#2b9f91">Contrarian</span></div></div><div class="card chart-card"><h3>Herding Risk Score</h3><p>Thấp dưới 40, trung bình 40–69, cao từ 70.</p><svg id="riskChart"></svg><div class="legend"><span style="--legend-color:#e5a72f">Điểm rủi ro</span></div></div></div><div class="card" id="alerts"><h3>Các phiên có tín hiệu hoảng loạn bán tháo</h3><p>Rủi ro từ 70, lợi suất âm và trend share từ 65%.</p><div class="table-wrap"><table><thead><tr><th>Ngày</th><th>Giá đóng cửa</th><th>Lợi suất (%)</th><th>Khối lượng</th><th>Theo xu hướng (%)</th><th>Điểm rủi ro</th><th>Mức độ</th></tr></thead><tbody id="panicTable"></tbody></table></div></div></div></div></div></div></section>
-</main><footer><div class="container foot"><div><div class="logo"><span class="mark"></span><span>BầyĐànChứngKhoán</span></div><p>MVP phục vụ học tập và nghiên cứu, không phải khuyến nghị đầu tư.</p></div><div class="badge">Evolutionary Game Theory</div></div></footer></div>
 <script>
   const state = {
     rawData: [],
@@ -1111,7 +3255,7 @@ footer{background:var(--ink);color:#fff;padding:40px 0}.foot{display:flex;justif
   // === TỰ ĐỘNG LẤY DỮ LIỆU TỪ BACKEND (thay vì bắt upload CSV thủ công) ===
   // Sau khi deploy backend.py (xem hướng dẫn trong file đó), dán link deploy
   // vào đây, ví dụ: "https://ten-du-an-backend.onrender.com"
-  const BACKEND_URL = "https://bay-dan-chung-khoan-backend.onrender.com"; // <-- ĐỔI thành link backend thật khi deploy
+  const BACKEND_URL = "http://localhost:8000"; // <-- ĐỔI thành link backend thật khi deploy
 
   async function fetchFromBackend() {
     const ticker = $("tickerInput").value.trim().toUpperCase();
@@ -1346,4 +3490,5 @@ footer{background:var(--ink);color:#fff;padding:40px 0}.foot{display:flex;justif
   updateSliderLabels();
   state.rawData = generateDemoData();
   renderDashboard();
-</script></body></html>
+</script>
+</body></html>
