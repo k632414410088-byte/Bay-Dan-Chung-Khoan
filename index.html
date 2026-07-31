@@ -628,8 +628,52 @@
       <h1 class="hero-title">Nhận diện tâm lý đám đông.<br><span style="color: var(--green-primary);">Bảo vệ tài khoản trước sóng gió.</span></h1>
       <p class="hero-subtitle">Mô hình ứng dụng Lý thuyết Trò chơi Tiến hóa (Evolutionary Game Theory) kết hợp hồi quy CSAD để phát hiện rủi ro mua đuổi hoặc bán tháo bầy đàn, giúp bạn đi trước thị trường một bước.</p>
 
-      <!-- HERO ADVISORY CARD -->
-      <div class="advisory-hero-card">
+      <!-- 1. CONTROLS & SEARCH CARD (TRA CỨU TRƯỚC) -->
+      <div class="controls-section" id="controls" style="margin-bottom: 28px;">
+        <div class="controls-header">
+          <div>
+            <h3>🔍 Tra Cứu & Phân Tích Mã Chứng Khoán</h3>
+            <p style="margin: 4px 0 0; font-size: 12px; color: var(--text-muted);">Nhập mã chứng khoán (FPT, HPG, VCB, VNINDEX...) và chọn Trường phái giao dịch</p>
+          </div>
+          <div class="preset-btns">
+            <button class="preset-btn active" data-preset="trading">⚡ Lướt Sóng T+ (Ngắn)</button>
+            <button class="preset-btn" data-preset="investment">📈 Đầu Tư Trung Hạn</button>
+            <button class="preset-btn" data-preset="defensive">🛡️ Bảo Toàn Vốn (Phòng Thủ)</button>
+          </div>
+        </div>
+
+        <div class="search-row">
+          <input type="text" id="tickerInput" value="VNINDEX" placeholder="Nhập mã chứng khoán (VD: FPT, HPG, VCB...)">
+          <button id="fetchAutoBtn" class="btn btn-primary">🚀 Phân Tích Tự Động</button>
+          <button id="demoBtn" class="btn btn-secondary">🎲 Dữ Liệu Mẫu</button>
+        </div>
+
+        <!-- Advanced Options Accordion -->
+        <details class="advanced-controls">
+          <summary>⚙️ Điều chỉnh tham số định lượng nâng cao (Dành cho Quants / Analysts)</summary>
+          <div class="sliders-grid">
+            <div class="slider-item">
+              <label>Cửa sổ Momentum: <strong id="valMomentum">10 phiên</strong></label>
+              <input type="range" id="sliderMomentum" min="3" max="30" value="10">
+            </div>
+            <div class="slider-item">
+              <label>Cửa sổ Biến động: <strong id="valVol">20 phiên</strong></label>
+              <input type="range" id="sliderVol" min="10" max="60" value="20">
+            </div>
+            <div class="slider-item">
+              <label>Cửa sổ Payoff: <strong id="valPayoff">10 phiên</strong></label>
+              <input type="range" id="sliderPayoff" min="3" max="30" value="10">
+            </div>
+            <div class="slider-item">
+              <label>Tốc độ thích nghi (&eta;): <strong id="valEta">35</strong></label>
+              <input type="range" id="sliderEta" min="1" max="100" value="35">
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <!-- 2. HERO ADVISORY RESULT CARD (HIỂN THỊ KẾT QUẢ PHÂN TÍCH SAU) -->
+      <div class="advisory-hero-card" id="resultsCard">
         <div class="advisory-top">
           <div class="stock-identity">
             <span class="ticker-pill" id="heroTicker">VNINDEX</span>
@@ -681,50 +725,6 @@
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- Controls & Presets Section -->
-    <section class="controls-section" id="controls">
-      <div class="controls-header">
-        <div>
-          <h3>🔍 Kiểm Tra & Phân Tích Mã Chứng Khoán</h3>
-          <p style="margin: 4px 0 0; font-size: 12px; color: var(--text-muted);">Nhập mã bất kỳ (FPT, HPG, VCB...) hoặc chọn Trường phái đầu tư</p>
-        </div>
-        <div class="preset-btns">
-          <button class="preset-btn active" data-preset="trading">⚡ Lướt Sóng T+ (Ngắn)</button>
-          <button class="preset-btn" data-preset="investment">📈 Đầu Tư Trung Hạn</button>
-          <button class="preset-btn" data-preset="defensive">🛡️ Bảo Toàn Vốn (Phòng Thủ)</button>
-        </div>
-      </div>
-
-      <div class="search-row">
-        <input type="text" id="tickerInput" value="VNINDEX" placeholder="Nhập mã chứng khoán (VD: FPT, HPG, VCB...)">
-        <button id="fetchAutoBtn" class="btn btn-primary">🚀 Phân Tích Tự Động</button>
-        <button id="demoBtn" class="btn btn-secondary">🎲 Dữ Liệu Mẫu</button>
-      </div>
-
-      <!-- Advanced Options Accordion -->
-      <details class="advanced-controls">
-        <summary>⚙️ Điều chỉnh tham số định lượng nâng cao (Dành cho Quants / Analysts)</summary>
-        <div class="sliders-grid">
-          <div class="slider-item">
-            <label>Cửa sổ Momentum: <strong id="valMomentum">10 phiên</strong></label>
-            <input type="range" id="sliderMomentum" min="3" max="30" value="10">
-          </div>
-          <div class="slider-item">
-            <label>Cửa sổ Biến động: <strong id="valVol">20 phiên</strong></label>
-            <input type="range" id="sliderVol" min="10" max="60" value="20">
-          </div>
-          <div class="slider-item">
-            <label>Cửa sổ Payoff: <strong id="valPayoff">10 phiên</strong></label>
-            <input type="range" id="sliderPayoff" min="3" max="30" value="10">
-          </div>
-          <div class="slider-item">
-            <label>Tốc độ thích nghi (&eta;): <strong id="valEta">35</strong></label>
-            <input type="range" id="sliderEta" min="1" max="100" value="35">
-          </div>
-        </div>
-      </details>
     </section>
 
     <!-- Main Dashboard Charts & Action Checklist -->
@@ -833,7 +833,8 @@
   const state = {
     rawData: [],
     result: [],
-    sourceName: "Dữ liệu mẫu mô phỏng"
+    sourceName: "Dữ liệu mẫu mô phỏng",
+    activePreset: "trading"
   };
 
   const $ = id => document.getElementById(id);
@@ -884,7 +885,17 @@
   }
 
   function generateDemoData(ticker = "VNINDEX") {
-    let current = new Date("2023-01-02");
+    // Generate dates ending at today / most recent trading day
+    const dates = [];
+    let d = new Date();
+    while (dates.length < 500) {
+      if (d.getDay() !== 0 && d.getDay() !== 6) {
+        dates.push(d.toISOString().slice(0, 10));
+      }
+      d.setDate(d.getDate() - 1);
+    }
+    dates.reverse(); // Chronological order (oldest to newest)
+
     let close = getTickerBasePrice(ticker);
     const rows = [];
     let seed = getTickerSeed(ticker);
@@ -905,9 +916,6 @@
     const shock2Start = 280 + (seed % 70);
 
     for (let i = 0; i < 500; i++) {
-      while (current.getDay() === 0 || current.getDay() === 6) {
-        current.setDate(current.getDate() + 1);
-      }
       let mean = 0.0004;
       let vol = 0.009;
       let volMult = 1;
@@ -924,11 +932,10 @@
       const volume = Math.round(Math.exp(Math.log(600000000) + gaussian() * 0.25) * volMult);
 
       rows.push({
-        Date: current.toISOString().slice(0, 10),
+        Date: dates[i],
         Close: Number(close.toFixed(2)),
         Volume: volume
       });
-      current.setDate(current.getDate() + 1);
     }
     return rows;
   }
@@ -1033,55 +1040,97 @@
     return res;
   }
 
-  // Advisory Logic Engine (Mapping Math to Actions)
+  // Advisory Logic Engine (Mapping Math to Actions based on Active Preset)
   function computeAdvisory(latest, prevData) {
     const risk = latest.HerdingRiskScore;
     const trend = latest.TrendShare;
     const ret = latest.Return;
     const mom = latest.Momentum;
+    const preset = state.activePreset || "trading";
+
+    // Dynamic parameters per investment style
+    let stopLossPct = 0.04;
+    let targetPct = 0.07;
+    let presetTitle = "Lướt Sóng T+";
+
+    if (preset === "trading") {
+      stopLossPct = 0.04; // 4% stop-loss for short term
+      targetPct = 0.07;   // 7% target
+      presetTitle = "Lướt Sóng T+";
+    } else if (preset === "investment") {
+      stopLossPct = 0.08; // 8% stop-loss for mid term
+      targetPct = 0.18;   // 18% target
+      presetTitle = "Đầu Tư Trung Hạn";
+    } else if (preset === "defensive") {
+      stopLossPct = 0.025; // 2.5% strict stop-loss for capital preservation
+      targetPct = 0.04;    // 4% quick profit target
+      presetTitle = "Bảo Toàn Vốn (Phòng Thủ)";
+    }
 
     let badgeClass = "hold";
-    let badgeText = "🟡 NẮM GIỮ / THEO DÕI";
+    let badgeText = `🟡 NẮM GIỮ / THEO DÕI [${presetTitle.toUpperCase()}]`;
     let regimeName = "Cân Bằng";
     let regimeDesc = "Chưa có sự tập trung cực đoan của đám đông.";
-    let stopLoss = formatNumber(latest.Close * 0.95, 2);
-    let targetPrice = formatNumber(latest.Close * 1.08, 2);
+    let stopLoss = formatNumber(latest.Close * (1 - stopLossPct), 2) + ` (-${(stopLossPct * 100).toFixed(1)}%)`;
+    let targetPrice = formatNumber(latest.Close * (1 + targetPct), 2) + ` (+${(targetPct * 100).toFixed(1)}%)`;
+
+    // Dynamic Allocation based on Preset + Risk Level
     let allocation = "50% Cổ phiếu / 50% Tiền";
-    let priority = "Quan sát thêm tín hiệu thanh khoản.";
+    if (preset === "trading") allocation = "60% Cổ phiếu / 40% Tiền (Vị thế T+2.5)";
+    else if (preset === "investment") allocation = "70% Cổ phiếu / 30% Tiền (Tầm nhìn 1-3 tháng)";
+    else if (preset === "defensive") allocation = "30% Cổ phiếu / 70% Tiền mặt (Ưu tiên an toàn)";
+
+    let priority = `Theo dõi tín hiệu rủi ro theo trường phái ${presetTitle}.`;
     let checklist = [];
 
     if (risk >= 70 && ret < 0) {
       badgeClass = "sell";
-      badgeText = "🔴 CẢNH BÁO MUA ĐUỔI - NÊN HẠ TỶ TRỌNG 30-50%";
+      badgeText = `🔴 CẢNH BÁO MUA ĐUỔI - HẠ TỶ TRỌNG [${presetTitle.toUpperCase()}]`;
       regimeName = "Bán Tháo Bầy Đàn";
       regimeDesc = "Áp lực bán tháo lan rộng kèm đám đông tháo chạy.";
-      stopLoss = formatNumber(latest.Close * 0.97, 2) + " (Kích hoạt ngay)";
-      targetPrice = "Bảo toàn vốn";
-      allocation = "20% Cổ phiếu / 80% Tiền mặt";
-      priority = "Hạ tỷ trọng đòn bẩy margin, dừng mua mới.";
+      stopLoss = formatNumber(latest.Close * (1 - stopLossPct * 0.7), 2) + " (Kích hoạt cắt lỗ ngay)";
+      targetPrice = "Bảo toàn nguồn vốn";
+
+      if (preset === "trading") {
+        allocation = "10% Cổ phiếu / 90% Tiền mặt";
+        priority = "Hạ hết đòn bẩy margin, dừng mở vị thế T+ mới.";
+      } else if (preset === "investment") {
+        allocation = "30% Cổ phiếu / 70% Tiền mặt";
+        priority = "Hạ tỷ trọng mã yếu, giữ sức mua cho vòng tích lũy mới.";
+      } else {
+        allocation = "0% Cổ phiếu / 100% Tiền mặt";
+        priority = "Chuyển toàn bộ tài khoản về tiền mặt đứng ngoài thị trường.";
+      }
 
       checklist = [
-        { status: "alert", title: "Không mở vị thế mua mới", desc: "Tâm lý đám đông đang hoảng loạn, nguy cơ giảm tiếp cao." },
-        { status: "alert", title: "Rà soát mức lỗ tài khoản", desc: "Cắt giảm danh mục nếu chạm ngưỡng chịu đựng tối đa." },
+        { status: "alert", title: `Không mua mới (${presetTitle})`, desc: "Tâm lý đám đông đang hoảng loạn, nguy cơ sụt giảm tài sản cao." },
+        { status: "alert", title: "Cắt giảm danh mục chạm ngưỡng cắt lỗ", desc: `Kích hoạt lệnh dừng lỗ -${(stopLossPct * 100).toFixed(1)}% theo đúng kỷ luật.` },
         { status: "warn", title: "Chờ điểm cân bằng 3-5 phiên", desc: "Chỉ đánh giá lại khi Herding Risk Score hạ bên dưới 50." }
       ];
     } else if (trend >= 0.70 && mom > 0 && risk >= 60) {
       badgeClass = "takeprofit";
-      badgeText = "🟠 VÙNG HƯNG PHẤN - KHUYẾN NGHỊ CHỐT LỜI MỘT PHẦN";
+      badgeText = `🟠 VÙNG HƯNG PHẤN - KHUYẾN NGHỊ CHỐT LỜI [${presetTitle.toUpperCase()}]`;
       regimeName = "Đám Đông Mua Đuổi";
       regimeDesc = "Tỷ lệ trend-following quá cao, giá có dấu hiệu quá mua.";
-      stopLoss = formatNumber(latest.Close * 0.94, 2);
-      targetPrice = formatNumber(latest.Close * 1.03, 2);
-      allocation = "40% Cổ phiếu / 60% Tiền";
-      priority = "Chốt lời chủ động, nâng mức chặn lãi (Trailing stop).";
+
+      if (preset === "trading") {
+        allocation = "30% Cổ phiếu / 70% Tiền";
+        priority = "Chốt lời chủ động 30-50% danh mục T+, khóa lợi nhuận.";
+      } else if (preset === "investment") {
+        allocation = "50% Cổ phiếu / 50% Tiền";
+        priority = "Chốt lời từng phần 20%, nâng mức trailing stop-loss.";
+      } else {
+        allocation = "20% Cổ phiếu / 80% Tiền";
+        priority = "Chốt lời toàn bộ vị thế ngắn hạn, đứng ngoài bảo vệ thành quả.";
+      }
 
       checklist = [
-        { status: "warn", title: "Chốt lời chủ động 20-30%", desc: "Bảo vệ lợi nhuận khi đám đông đang hưng phấn cực độ." },
-        { status: "ok", title: "Nâng đường trailing stop-loss", desc: "Khóa lợi nhuận nếu giá quay đầu giảm quá 3% từ đỉnh." }
+        { status: "warn", title: `Chốt lời chủ động (${presetTitle})`, desc: "Bảo vệ lợi nhuận khi đám đông đang hưng phấn cực độ." },
+        { status: "ok", title: "Nâng đường trailing stop-loss", desc: "Khóa lợi nhuận nếu giá quay đầu giảm quá 2-3% từ đỉnh." }
       ];
     } else if (trend <= 0.35 && risk < 45) {
       badgeClass = "buy";
-      badgeText = "🟢 VÙNG MUA TÍCH LŨY - TÂM LÝ ĐÃ CHẮC CHẮN GIẢM";
+      badgeText = `🟢 VÙNG MUA TÍCH LŨY [${presetTitle.toUpperCase()}]`;
       regimeName = "Tích Lũy / Đảo Chiều";
       regimeDesc = "Đám đông chán nản, cơ hội mua tích lũy cổ phiếu giá tốt.";
       stopLoss = formatNumber(latest.Close * 0.93, 2);
@@ -1246,6 +1295,7 @@
       document.querySelectorAll(".preset-btn").forEach(b => b.classList.remove("active"));
       e.target.classList.add("active");
       const preset = e.target.dataset.preset;
+      state.activePreset = preset; // Update active preset in state
 
       if (preset === "trading") {
         $("sliderMomentum").value = 5;
@@ -1301,6 +1351,7 @@
       renderDashboard();
       btn.disabled = false;
       btn.textContent = origText;
+      $("resultsCard").scrollIntoView({ behavior: "smooth", block: "nearest" });
     }, 250);
   });
 
