@@ -2291,7 +2291,7 @@ input[type=text]:focus {
                   </p>
                   <svg id="strategyChart"></svg>
                   <div class="legend">
-                    <span style="--legend-color:#7759b8">Theo xu hướng</span><span style="--legend-color:#2b9f91">Contrarian</span>
+                    <span style="--legend-color:#7759b8">Theo xu hướng</span>
                   </div>
                 </div>
                 <div class="card chart-card">
@@ -2905,7 +2905,6 @@ input[type=text]:focus {
     drawXAxisLabels(data, context);
 
     const trend = data.map(row => row.TrendShare * 100);
-    const contrarian = data.map(row => row.ContrarianShare * 100);
 
     context.svg.appendChild(svgElement("path", {
       d: linePath(trend, context, 0, 100),
