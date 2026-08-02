@@ -1451,7 +1451,7 @@
   // Falls back to simulated data only if every attempt above fails.
   async function fetchRealMarketData(ticker, onProgress) {
     try {
-      onProgress && onProgress(`Đang gọi backend riêng (có thể mất tới 30s nếu Render mới "thức dậy")...`);
+      onProgress && onProgress(`Đang gọi backend riêng (có thể mất tới 45s nếu Render mới "thức dậy")...`);
       return await fetchFromOwnBackend(ticker);
     } catch (err) {
       console.warn("Backend riêng thất bại, thử TCBS trực tiếp/proxy:", err);
