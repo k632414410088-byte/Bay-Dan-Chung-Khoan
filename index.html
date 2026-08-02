@@ -1451,7 +1451,7 @@
   // Falls back to simulated data only if every attempt above fails.
   async function fetchRealMarketData(ticker, onProgress) {
     try {
-      onProgress && onProgress(`Đang gọi backend riêng (có thể mất tới 45s nếu Render mới "thức dậy")...`);
+      onProgress && onProgress(`Có thể mất tới 45s...`);
       return await fetchFromOwnBackend(ticker);
     } catch (err) {
       console.warn("Backend riêng thất bại, thử TCBS trực tiếp/proxy:", err);
@@ -2012,7 +2012,7 @@
       console.warn("Không tải được dữ liệu thực (cả backend riêng lẫn nguồn dự phòng), chuyển sang dữ liệu mô phỏng:", err);
       state.rawData = generateDemoData(ticker);
       state.sourceName = `Tải tự động mã ${ticker} (${state.rawData.length} phiên, dữ liệu mô phỏng)`;
-      setDataStatus("demo", `⚠️ Không kết nối được nguồn dữ liệu thực nào (đã thử backend riêng + TCBS + proxy) — đang dùng dữ liệu mô phỏng cho ${ticker}`, true);
+      setDataStatus("demo", `⚠️ Không kết nối được nguồn dữ liệu thực nào — đang dùng dữ liệu mô phỏng cho ${ticker}`, true);
     }
 
     renderDashboard();
