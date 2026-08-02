@@ -1347,7 +1347,7 @@
   // thời gian rảnh có thể mất 20-50s để "đánh thức" — vì vậy timeout ở đây
   // dài hơn hẳn so với các nguồn dự phòng khác.
   const OWN_BACKEND_BASE = "https://bay-dan-chung-khoan-backend.onrender.com";
-  const OWN_BACKEND_TIMEOUT_MS = 30000;
+  const OWN_BACKEND_TIMEOUT_MS = 55000; // Render free tier có thể cần 40-50s để thức dậy
 
   // Chuẩn hoá nhiều dạng JSON khác nhau mà backend có thể trả về, để không bị
   // vỡ trận nếu tên field không khớp 100% với giả định ban đầu.
@@ -2785,7 +2785,17 @@
     state.activePreset="investment";
     document.querySelectorAll(".preset-btn").forEach(b=>b.classList.toggle("active",b.dataset.preset==="investment"));
     state.rawData=generateDemoData("VCB"); state.sourceName="Dữ liệu mô phỏng VCB"; setDataStatus("demo","Dữ liệu mô phỏng — nhấn Phân tích để tải dữ liệu thật");
-    setMode(true);
+
+// Âm thầm "đánh thức" backend ngay khi trang vừa mở, để lúc user bấm nút
+// "Phân tích" thì server (nếu đang ngủ) đã kịp tỉnh, không bị timeout 30s.
+// Không chặn giao diện, không báo lỗi nếu thất bại — chỉ là ping làm ấm server.
+(function warmUpBackend() {
+  fetch(`${OWN_BACKEND_BASE}/`, { method: "GET", cache: "no-store" })
+    .then(() => console.log("Backend đã sẵn sàng."))
+    .catch(() => console.log("Backend chưa phản hồi lúc mở trang, sẽ thử lại khi bấm Phân tích."));
+})();
+
+setMode(true);
     window.renderDashboard();
     window.addEventListener("resize",()=>{ if(state.result.length){drawPriceChart(state.result); if(document.getElementById('model-panel').classList.contains('active')){drawStrategyChart(state.result);drawRiskChart(state.result);} }});
 
